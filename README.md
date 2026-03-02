@@ -155,8 +155,25 @@ F15: System powinien umożliwiać przesyłanie komunikatów do wybranych grup u�
 | :--- | :--- | :--- |
 | Priorytet i trudność: Przydatne || Wydanie: 1.0 |
 | Zaimplementowanie funkcjonalności pozwalającej organizatorowi na kierowanie powiadomień i informacji fabularnych do konkretnych podzbiorów uczestników. System powinien wspierać segmentację odbiorców na podstawie przypisanych im ról, przynależności do frakcji lub aktualnej lokalizacji w świecie gry. |
----
+-
+F16: System powinien umożliwiać wystawienie oceny i opinii o wydarzeniu LARP.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: FilobokHlib |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Przydatne || Wydanie: 1.0 |
+| Po zakończeniu wydarzenia użytkownik powinien mieć możliwość wystawienia oceny (np. w skali 1–5 gwiazdek) oraz dodania krótkiej opinii tekstowej. |
 
+F17: System powinien umożliwiać wyświetlanie ocen i opinii wybranego wydarzenia LARP.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: FilobokHlib |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Przydatne || Wydanie: 1.0 |
+| Podczas wyszukiwania wydarzeń użytkownik powinien mieć możliwość zobaczenia średniej oceny danego wydarzenia (lub organizatora — na podstawie ocen z jego poprzednich wydarzeń) oraz zapoznania się z opiniami w opisie tego wydarzenia. |
+
+F18: System powinien informować użytkowników o odwołaniu gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: FilobokHlib |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Istotne || Wydanie: 1.0 |
+| W przypadku odwołania wydarzenia z przyczyn technicznych lub z powodu niewystarczającej liczby uczestników (nieosiągnięcia minimalnego limitu), system powinien wysłać powiadomienie w aplikacji (w zakładce „Wiadomości”) oraz kopię powiadomienia na adres e-mail użytkownika. |
+---
 ## 3.4 Cechy jakościowe
 
 J02: System powinien wyświetlać dezygnowane ekrany oczekiwania w momentach ładowania się strony.
