@@ -73,6 +73,9 @@ Problem związany z .... dotyczący... co powoduje ... można rozwiązać ...
 
 ## 3.3 Cechy funkcjonalne
 
+
+
+
 F03: System powinien umożliwiać tworzenie profili postaci.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina |
 | :--- | :--- | :--- |
@@ -120,6 +123,25 @@ F10: System powinien umożliwiać interakcję z otoczeniem poprzez kody QR.
 | Priorytet i trudność: Istotne || Wydanie: 1.0 |
 | Zaimplementowanie w aplikacji mobilnej skanera kodów QR, który pozwoli graczom na wchodzenie w interakcję z fizycznymi elementami gry. Po zeskanowaniu kodu system powinien wyświetlić opis obiektu, dodać przedmiot do ekwipunku lub uruchomić przypisaną akcję fabularną. |
 
+F11: System powinien pozwalać użytkownikom na wybór postaci przed rozpoczęciem gry.
+
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: mkkami |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Kluczowe || Wydanie: 1.0|
+| Uczestnicy powinni mieć możliwość wyboru roli z listy przypisanej do gry. System powinien prezentować listę dostępnych postaci wraz z ich opisami i umożliwiać zgłoszenie chęci odgrywania konkretnej postaci przez użytkownika. ||
+
+F12: System powinien wspierać mechanizm priorytetyzacji wyboru ról.
+
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: mkkami |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Istotne || Wydanie: 1.0|
+| Uczestnicy, którzy nie grali danej roli powinni mieć priorytet w zapisach, aby umożliwić im zdobycie nowych doświadczeń. Jednocześnie uczestnicy, którzy ostatnio odgrywali dane role powinni mieć mniejszy priorytet. ||
+
+F13: System powinien umożliwiać obsługę płatności za wydarzenia poprzez integrację z systemem zewnętrznym.
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: mkkami |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Kluczowe || Wydanie: 1.0|
+| Zapewnienie uczestnikom możliwości opłacenia udziału w wydarzeniu bezpośrednio po zatwierdzeniu ich zgłoszenia. System powinien integrować się z zewnętrznymi systemami płatności i automatycznie aktualizować status zapisu uczestnika po otrzymaniu potwierdzenia transakcji. ||
 ---
 
 ## 3.4 Cechy jakościowe
