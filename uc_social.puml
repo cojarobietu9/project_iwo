@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+
+actor "Administrator systemu" as admin
+actor "Gracz" as gracz
+
+package "System społecznościowy" {
+    usecase "Odczytanie listy wydarzeń" as UC1
+    usecase "Wystawienie oceny wydarzeniu" as UC2
+
+    usecase "Sprawdzenie rankingu graczy" as UC3
+    usecase "Dodanie punktów doświadczenia za grę" as UC4
+    usecase "Przyznanie odznaki graczowi" as UC5
+
+    usecase "Wysłanie wiadomości na czacie" as UC6
+    usecase "Odczytanie wiadomości z czatu" as UC7
+    usecase "Usunięcie wiadomości z czatu" as UC8
+
+    UC1 ..> UC2 : <<invokes>>
+
+}
+gracz --> UC1
+gracz --> UC3
+
+admin --> UC4
+admin --> UC5
+gracz --> UC6
+gracz --> UC7
+
+gracz --|> :Edytujący wiadomość:
+admin --|> :Edytujący wiadomość:
+:Edytujący wiadomość: --> UC8
+@enduml
