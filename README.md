@@ -43,18 +43,25 @@ Tutaj znajdzie się streszczenie dla kierownictwa...
 
 ## 3.1 Opis problemu
 
-**Diagram:** Opis problemu
+**P001: Problem organizacji wydarzeń LARP**
 
-**P001: Problem obsługi klientów**
+**Typ: «Wizja»**
 
-- Typ: «Wizja»
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Istotne 1
-- Wydanie: 1.0
+Wersja: 1.0 (10.03.2026)
 
-Problem związany z .... dotyczący... co powoduje ... można rozwiązać ...
+Odpowiedzialny: Maksym Andruchchenko
 
+Priorytet i trudność: Istotne
+
+Wydanie: 1.0
+
+Problem związany z organizacją i zarządzaniem wydarzeniami LARP, dotyczący graczy, organizatorów wydarzeń oraz administratorów platformy, czego wynikiem jest trudność w wyszukiwaniu wydarzeń, zarządzaniu zapisami uczestników, komunikacji między uczestnikami oraz kontrolowaniu przebiegu gry.
+
+Obecnie wiele zadań organizacyjnych wykonywanych jest ręcznie lub przy użyciu różnych, niespójnych narzędzi (np. komunikatorów, arkuszy kalkulacyjnych czy formularzy internetowych), co prowadzi do błędów organizacyjnych, problemów komunikacyjnych oraz ograniczonej kontroli nad przebiegiem wydarzenia.
+
+Problem można rozwiązać budując zintegrowany system wspierający organizację wydarzeń LARP, który umożliwia tworzenie wydarzeń, zarządzanie uczestnikami, obsługę scenariuszy gry oraz interakcję graczy z elementami świata gry poprzez aplikację mobilną.
+
+Dzięki temu organizatorzy będą mogli sprawniej zarządzać wydarzeniami, gracze łatwiej znajdą interesujące rozgrywki, a cały proces organizacji i prowadzenia wydarzeń stanie się bardziej uporządkowany i efektywny.
 ---
 
 ## 3.2 Interesariusze
