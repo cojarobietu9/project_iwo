@@ -1,0 +1,29 @@
+' Polina
+@startuml zarzadzanie_profilem_i_postaciami
+
+skinparam Monochrome true
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Gracz" as gracz
+actor "Organizator wydarzeń" as org
+
+package "Zarządzanie profilem użytkownika i postaciami" {
+    usecase "Utworzenie profilu użytkownika" as UC1
+    usecase "Edycja profilu użytkownika" as UC2
+    usecase "Utworzenie postaci" as UC3
+    usecase "Edycja postaci" as UC4
+    usecase "Wyświetlenie historii uczestnictwa" as UC5
+    
+    UC3 ..> UC4 : <<include>>
+}
+
+gracz --> UC1
+gracz --> UC2
+gracz --> UC3
+gracz --> UC4
+gracz --> UC5
+
+org --> UC2
+
+@enduml

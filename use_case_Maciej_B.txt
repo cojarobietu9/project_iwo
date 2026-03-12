@@ -1,0 +1,11 @@
+@startuml
+:Użytkownik: --> (Utwórz wydarzenie)
+Użytkownik --> (Wystaw ocenę wydarzeniu)
+Użytkownik --> (Zapisz się na wydarzenie)
+Użytkownik --> (Zarejestruj się)
+
+:Administrator: --> (Zmień stan gracza)
+Administrator --> (Odwołaj grę)
+Administrator --> (Zablokuj użytkownika)
+Administrator --> (Wyceń wstępnie wydarzenie)
+@enduml

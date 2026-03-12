@@ -1,0 +1,39 @@
+@startuml zarzadzanie_wydarzeniami
+
+skinparam Monochrome true
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Gracz" as gracz
+actor "Organizator wydarzeń" as org
+actor "Administrator systemu" as admin
+
+package "Zarządzanie wydarzeniami LARP" {
+    usecase "Wyszukiwanie wydarzeń" as UC1
+    usecase "Zapisanie się na wydarzenie" as UC2
+    usecase "Opłacenie udziału" as UC3
+    
+    usecase "Tworzenie wydarzenia LARP" as UC4
+    usecase "Wstępna wycena wydarzenia" as UC5
+    usecase "Uruchomienie wydarzenia" as UC6
+    usecase "Odwołanie wydarzenia" as UC7
+    
+    usecase "Zatwierdzenie ostatecznej wyceny" as UC8
+
+    ' Zależności Gracza
+    UC2 .> UC3 : <<extend>>
+    
+    ' Zależności Organizatora
+    UC4 ..> UC5 : <<include>>
+}
+
+gracz --> UC1
+gracz --> UC2
+
+org --> UC4
+org --> UC6
+org --> UC7
+
+admin --> UC8
+
+@enduml

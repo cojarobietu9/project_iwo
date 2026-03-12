@@ -1,0 +1,42 @@
+' Tomasz Rogalski
+' Michał Marciniak
+
+@startuml zarzadzanie_wydarzeniami
+skinparam Monochrome true
+
+left to right direction
+
+skinparam packageStyle rectangle
+
+actor "Gracz" as gracz
+actor "Organizator wydarzeń" as org
+actor "Administrator systemu" as admin
+
+package "Zarządzanie Wydarzeniami" {
+usecase "Utworzenie wydarzenia" as UC1
+usecase "Obsługa procesu akceptacji gry" as UC2
+usecase "Wyszukanie wydarzeń" as UC3
+usecase "Zapisanie się na wydarzenie" as UC4
+usecase "Zapisanie na listę rezerwową" as UC5
+usecase "Wyświetlenie listy wydarzeń" as UC6
+usecase "Zakończenie wydarzenia" as UC7
+usecase "Uruchomienie wydarzenia" as UC8
+usecase "Odwołanie wydarzenia" as UC9
+usecase "Podsumowanie wydarzenia" as UC10
+
+UC6 ..> UC4 : <<invoke>>
+UC4 <.. UC5 : <<extends>>
+UC6 ..> UC3 : <<invoke>>
+UC7 ..> UC10: <<invoke>>
+}
+
+
+org --> UC1
+org --> UC7
+org --> UC9
+org --> UC8
+admin --> UC2
+gracz --> UC6
+gracz --> UC8
+
+@enduml

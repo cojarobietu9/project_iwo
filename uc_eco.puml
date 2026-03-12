@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+:Gracz: --> (Wpłać zaliczkę)
+:Gracz: --> (Opłać wydarzenie)
+:Gracz: "2" --> (Przeprowadź transakcję z innym graczem)
+
+
+:Organizator wydarzenia: --> (Zarządź zwrot zaliczek)
+
+
+:Administrator systemu: as admin
+
+admin --> (uca1)
+"Wyświetl rabaty dla stałych klientów" as (uca1)
+
+admin --> (uca2)
+"Dodaj rabat" as (uca2)
+
+(uca1) ..> (uca2) : <<invokes>>
+
+
+:Osoba wyceniająca wydarzenia: as oww
+
+oww --> (Wstępnie wyceń wydarzenie)
+
+(Wyświetl wycenę wydarzenia) as (ucoww1)
+oww --> (ucoww1)
+
+(Zmień wycenę wydarzenia) as (ucoww2)
+oww --> (ucoww2)
+
+(ucoww1) ..> (ucoww2): <<invokes>>
+@enduml

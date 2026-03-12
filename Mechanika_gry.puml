@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+actor "Projektant gry" as projektant
+
+package "Mechanika i projektowanie gry" {
+
+    usecase "Projektowanie mechaniki gry" as UC0
+
+    usecase "Projektowanie przedmiotu" as UC1
+    usecase "Projektowanie mini-gier" as UC2
+    usecase "Projektowanie zadań" as UC3
+    usecase "Projektowanie przeszkód" as UC4
+    usecase "Określanie warunków zwycięstwa" as UC5
+
+    usecase "Projektowanie systemu walki między graczami" as UC6
+    usecase "Definiowanie poziomu trudności gry" as UC7
+    usecase "Ustawienie limitu czasu gry" as UC8
+    usecase "Aktywacja zaawansowanego trybu gry" as UC9
+
+    UC0 ..> UC1 : <<include>>
+    UC0 ..> UC2 : <<include>>
+    UC0 ..> UC3 : <<include>>
+    UC0 ..> UC4 : <<include>>
+    UC0 ..> UC5 : <<include>>
+    UC0 ..> UC6 : <<include>>
+    UC0 ..> UC7 : <<include>>
+    UC0 ..> UC8 : <<include>>
+    UC0 ..> UC9 : <<include>>
+
+}
+
+projektant --> UC0
+
+@enduml
