@@ -1,0 +1,35 @@
+@startuml zarzadzanie_kontem
+skinparam Monochrome true
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Gracz" as G
+actor "Administrator systemu" as A
+
+package "Zarządzanie kontami" {
+    usecase "Zarejestrowanie nowego konta" as UC1
+    usecase "Dodanie weryfikacji dwuetapowej" as UC2
+    usecase "Zmiana nazwy konta" as UC3
+    usecase "Usunięcie konta" as UC4
+    usecase "Zmiana hasła" as UC5
+    usecase "Zgłoszenie konta innego gracza" as UC6
+    
+    usecase "Tymczasowe zablokowanie konta gracza" as UC7
+    usecase "Usunięcie konta gracza" as UC8
+
+    UC1 ..> UC2 : <<invokes>>
+}
+
+G --> UC1
+G --> UC2
+G --> UC3
+G --> UC4
+
+G --> UC5
+G --> UC6
+
+A --> UC7
+A --> UC8
+
+@enduml
+
