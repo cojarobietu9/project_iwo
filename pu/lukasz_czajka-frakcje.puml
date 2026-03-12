@@ -1,0 +1,44 @@
+@startuml Publiczne API
+skinparam Monochrome true
+left to right direction
+
+skinparam packageStyle rectangle
+
+actor org as "Organizator"
+actor przypisujacy as "Uprawniony do edycji listy członków frakcji"
+actor admin_frakcji as "Administrator frakcji"
+
+org --|> przypisujacy
+admin_frakcji --|> przypisujacy
+
+usecase uc_lista_czlonkow as "Wyświetl listę członków frakcji"
+usecase uc_lista_frakcji as "Wyświetl listę frakcji"
+usecase uc_dodaj_frakcje as "Dodaj frakcję"
+usecase uc_usun_frakcje as "Usuń frakcję"
+usecase uc_dodaj as "Dodaj gracza do frakcji"
+usecase uc_usun as "Usuń gracza z frakcji"
+usecase uc_zapros as "Zaproś gracza do frakcji"
+usecase uc_prosba as "Wyślij prośbę o dodanie do frakcji"
+usecase uc_lista_prosb as "Wyświetl listę próśb"
+usecase uc_zakceptuj_prosbe as "Zakceptuj prośbę o dodanie do frakcji"
+usecase uc_odrzuc_prosbe as "Odrzuć prośbę o dodanie do frakcji"
+usecase uc_wysietl_zaproszenia as "Wyświetl zaproszenia do frakcji"
+usecase uc_odrzuc_zaproszenie as "Odrzuć zaproszenie do frakcji"
+usecase uc_zakceptuj_zaproszenie as "Zakceptuj zaproszenie do frakcji"
+
+
+przypisujacy --> uc_zapros
+uczestnik ---> uc_prosba
+przypisujacy --> uc_lista_prosb
+przypisujacy --> uc_lista_czlonkow
+uc_lista_prosb <.. uc_zakceptuj_prosbe : "<<extends>>"
+uc_lista_prosb <.. uc_odrzuc_prosbe : "<<extends>>"
+uczestnik ---> uc_wysietl_zaproszenia
+uc_wysietl_zaproszenia <.. uc_zakceptuj_zaproszenie : "<<extends>>"
+uc_wysietl_zaproszenia <.. uc_odrzuc_zaproszenie : "<<extends>>"
+org ---> uc_lista_frakcji
+uc_lista_frakcji <.. uc_dodaj_frakcje : "<<extends>>"
+uc_lista_frakcji <.. uc_usun_frakcje : "<<extends>>"
+uc_lista_frakcji <.. uc_dodaj : "<<extends>>"
+uc_lista_czlonkow <.. uc_usun : "<<extends>>"
+@enduml
