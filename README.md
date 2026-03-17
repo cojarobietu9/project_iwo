@@ -103,123 +103,396 @@ Organizator wydarzeń odpowiada za przygotowanie i przeprowadzenie wydarzeń LAR
 ---
 
 ## 3.3 Cechy funkcjonalne
-F01: System powinien umożliwiać wystawienie oceny wydarzeniu, w którym brał udział użytkownik.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (28.02.2026) | Odpowiedzialny: Maciej Bankiewicz |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Zaimplementowanie opcji umożliwiającej wystawienie oceny danemu wydarzeniu w skali od 1 do 5 gwiazdek. Ocenę można wystawić tylko wtedy, gdy użytkownik był zgłoszony na dane wydarzenie i zarejestrowano jego udział. |
 
-F02: System powinien umożliwiać usunięcie konta użytkownika.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (28.02.2026) | Odpowiedzialny: Maciej Bankiewicz |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Zaimplementowanie opcji usunięcia konta użytkownika. Ta opcja powinna być jasno przedstawiona użytkownikowi i opatrzona ostrzeżeniami przed przypadkowym usunięciem konta, jednak musi byc łatwo dostępna. |
+### 3.3.1 Zarządzanie Użytkownikami
 
-F03: System powinien umożliwiać tworzenie profili postaci.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Zaimplementowanie funkcjonalności umożliwiającej użytkownikowi tworzenie nowych profili postaci do gry LARP. Użytkownik powinien móc zdefiniować podstawowe atrybuty postaci (imię, klasa/rasa np. elf, krasnolud, rycerz, poziom doświadczenia), dodać opis biografii oraz wybrać wygląd postaci. Każda utworzona postać jest automatycznie powiązana z kontem użytkownika, który ją stworzył. |
-
-F04: System powinien umożliwiać edycję i przeglądanie szczegółów postaci.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-|Zaimplementowanie funkcjonalności pozwalającej użytkownikowi na edycję wszystkich danych istniejącej postaci (imię, biografia, atrybuty, ekwipunek) oraz przeglądanie jej szczegółowych statystyk. System powinien wyświetlać informacje o poziomie doświadczenia, posiadanych przedmiotach, osiągnięciach z poprzednich sesji oraz historię rozgrywek daną postacią. Edycja postaci powinna być możliwa tylko gdy postać nie bierze aktualnie udziału w trwającej sesji LARP. |
-
-F05: System powinien umożliwiać przeglądanie historii uczestnictwa w wydarzeniach.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Zaimplementowanie sekcji pozwalającej użytkownikowi na przeglądanie pełnej historii wydarzeń LARP, w których brał udział. System powinien wyświetlać listę wszystkich ukończonych sesji z podstawowymi informacjami (data, nazwa wydarzenia, lokalizacja, odegrana postać, czas trwania), a także prezentować zagregowane statystyki takie jak: całkowita liczba ukończonych sesji, najczęściej grane role, ulubione scenariusze i typy wydarzeń. Historia powinna być sortowalna według daty oraz filtrowalna według typu wydarzenia, odgrywanej postaci lub organizatora. |
-
-F06: System powinien umożliwiać edycję danych osobowych w profilu użytkownika.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Zaimplementowanie panelu umożliwiającego użytkownikowi edycję swoich danych osobowych w systemie. Użytkownik powinien móc zmienić imię, nazwisko, adres email, numer telefonu oraz hasło do konta. System powinien wymagać potwierdzenia zmiany wrażliwych danych (email, hasło) poprzez weryfikację aktualnego hasła lub kod wysłany na dotychczasowy adres email. Wszystkie zmiany danych osobowych powinny być zapisywane w historii zmian konta dla celów bezpieczeństwa. |
-
-F07: System powinien umożliwiać zarządzanie preferencjami użytkownika.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Zaimplementowanie sekcji konfiguracji preferencji systemowych użytkownika. Użytkownik powinien móc skonfigurować ustawienia powiadomień (email, SMS, powiadomienia push dla aplikacji mobilnej), określić preferencje dotyczące typów wydarzeń LARP (fantasy, sci-fi, horror, historyczne), wskazać preferowane dni tygodnia i przedziały czasowe uczestnictwa, oraz ustawić poziom prywatności profilu określający widoczność swoich danych i statystyk dla innych użytkowników systemu. |
-
-F08: System powinien umożliwiać rejestrację nowego konta.
+#### Wysoki Priorytet
+F01: System powinien umożliwiać rejestrację nowego konta.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Karolina Wiśniewska|
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0 |
 | Zaimplementowanie funkcjonalności umożliwiającej użytkownikowi rejestrację konta na platformie. Tworzone konto wymaga od użytkownika podania swojego adresu e-mail, dostępnej i unikatowej nazwy konta, oraz dwukrotnego podania hasła. System powinien posiadać odpowiednie wymagania dotyczące hasła (np. długość, rodzaj znaków) i informować, kiedy użytkownik podał odpowiedni przykład. Rejestracja konta możliwa jest po potwierdzeniu tożsamości za pomocą podanego adresu e-mail.|
 
-F09: System powinien umożliwiać logowanie metodą dwuetapową.
+F02: System powinien umożliwiać edycję danych osobowych w profilu użytkownika.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Zaimplementowanie panelu umożliwiającego użytkownikowi edycję swoich danych osobowych w systemie. Użytkownik powinien móc zmienić imię, nazwisko, adres email, numer telefonu oraz hasło do konta. System powinien wymagać potwierdzenia zmiany wrażliwych danych (email, hasło) poprzez weryfikację aktualnego hasła lub kod wysłany na dotychczasowy adres email. Wszystkie zmiany danych osobowych powinny być zapisywane w historii zmian konta dla celów bezpieczeństwa. |
+
+F03: System powinien umożliwiać usunięcie konta użytkownika.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (28.02.2026) | Odpowiedzialny: Maciej Bankiewicz |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Zaimplementowanie opcji usunięcia konta użytkownika. Ta opcja powinna być jasno przedstawiona użytkownikowi i opatrzona ostrzeżeniami przed przypadkowym usunięciem konta, jednak musi byc łatwo dostępna. |
+
+#### Średni Priorytet
+
+F04: System powinien umożliwiać przeglądanie historii uczestnictwa w wydarzeniach.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Zaimplementowanie sekcji pozwalającej użytkownikowi na przeglądanie pełnej historii wydarzeń LARP, w których brał udział. System powinien wyświetlać listę wszystkich ukończonych sesji z podstawowymi informacjami (data, nazwa wydarzenia, lokalizacja, odegrana postać, czas trwania), a także prezentować zagregowane statystyki takie jak: całkowita liczba ukończonych sesji, najczęściej grane role, ulubione scenariusze i typy wydarzeń. Historia powinna być sortowalna według daty oraz filtrowalna według typu wydarzenia, odgrywanej postaci lub organizatora. |
+
+F05: System powinien umożliwiać zarządzanie preferencjami użytkownika.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Zaimplementowanie sekcji konfiguracji preferencji systemowych użytkownika. Użytkownik powinien móc skonfigurować ustawienia powiadomień (email, SMS, powiadomienia push dla aplikacji mobilnej), określić preferencje dotyczące typów wydarzeń LARP (fantasy, sci-fi, horror, historyczne), wskazać preferowane dni tygodnia i przedziały czasowe uczestnictwa, oraz ustawić poziom prywatności profilu określający widoczność swoich danych i statystyk dla innych użytkowników systemu. |
+
+F06: System powinien umożliwiać logowanie metodą dwuetapową.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Karolina Wiśniewska|
 | :--- | :--- | :--- |
 | Priorytet: Użyteczne || Wydanie: 1.0 |
 | Zaimplementowanie funkcjonalności umożliwiającej użytkownikowi dwuetapowe potwierdzenie tożsamości, pierwszy raz za pomocą hasła i drugi raz np. za pomocą kodu QR pochodzącego od dezygnowanej aaplikacji. Użytkownik powinien mieć możliwość włączenia tej opcji wedle życzenia, oraz wyłączenia jej przy pomocy np. adresu mailowego.|
 
-F10: System powinien umożliwiać interakcję z otoczeniem poprzez kody QR.
+#### Niski Priorytet
+
+F07: System powinien umożliwiać tworzenie rankingu graczy.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| System powinien tworzyć ranking graczy na podstawie ich osiągnięć, zdobytych punktów oraz aktywności w wydarzeniach. Ranking powinien być widoczny dla użytkowników w systemie. 
+
+F08: System powinien umożliwiać naliczanie doświadczenia graczy.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Po zakończeniu wydarzenia system powinien przyznawać graczom punkty doświadczenia na podstawie ich aktywności oraz wyników w trakcie rozgrywki. Punkty doświadczenia powinny wpływać na poziom postaci oraz statystyki użytkownika. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 3.3.2 Zarządzanie wydarzeniami
+
+#### Wysoki Priorytet
+
+F09: System powinien umożliwiać tworzenie wydarzeń LARP.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien umożliwiać organizatorowi tworzenie nowego wydarzenia LARP. Organizator powinien móc określić nazwę wydarzenia, lokalizację, datę, maksymalną liczbę uczestników oraz wymagania dotyczące postaci. Utworzone wydarzenie powinno być widoczne dla użytkowników w systemie po jego zatwierdzeniu. |
+
+F10: System powinien umożliwiać zapisanie się na wydarzenie.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Użytkownik powinien mieć możliwość zapisania się na wydarzenie poprzez wybór dostępnego wydarzenia z listy. System powinien automatycznie dodawać użytkownika do listy uczestników lub do listy rezerwowej w przypadku osiągnięcia maksymalnej liczby miejsc. |
+
+F11: System powinien umożliwiać wyszukiwanie wydarzeń.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien umożliwiać użytkownikom wyszukiwanie wydarzeń LARP według różnych kryteriów, takich jak data, lokalizacja, liczba uczestników, poziom trudności oraz typ gry. Wyniki wyszukiwania powinny być prezentowane w formie listy wraz z podstawowymi informacjami o wydarzeniu. |
+
+F12: System powinien umożliwiać uruchomienie wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość uruchomienia wydarzenia w systemie w momencie rozpoczęcia rozgrywki. Uruchomienie wydarzenia aktywuje mechaniki gry, interakcje z obiektami oraz funkcje komunikacyjne dla uczestników. |
+
+F13: System powinien umożliwiać odwołanie wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość odwołania wydarzenia przed jego rozpoczęciem. W przypadku anulowania wydarzenia system powinien powiadomić wszystkich zapisanych użytkowników oraz zaktualizować status wydarzenia. |
+
+F14: System powinien umożliwiać automatyczne odwołanie wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| System powinien automatycznie anulować wydarzenie w przypadku niespełnienia określonych warunków, takich jak brak minimalnej liczby uczestników lub problemy techniczne uniemożliwiające przeprowadzenie wydarzenia. |
+
+
+#### Średni Priorytet
+
+F15: System powinien umożliwiać zapraszanie graczy do wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość wyszukiwania użytkowników systemu oraz wysyłania im zaproszeń do udziału w konkretnym wydarzeniu. Zaproszeni użytkownicy powinni otrzymać powiadomienie w systemie oraz możliwość zaakceptowania lub odrzucenia zaproszenia. |
+
+F15: System powinien udostępniać panel zarządzania wydarzeniem dla organizatora.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator powinien mieć dostęp do panelu zarządzania wydarzeniem umożliwiającego przeglądanie listy uczestników, zarządzanie zapisami, wysyłanie komunikatów do graczy oraz kontrolowanie przebiegu wydarzenia w trakcie jego trwania. |
+
+F16: System powinien informować użytkowników o odwołaniu gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Filobok Hlib |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| W przypadku odwołania wydarzenia z przyczyn technicznych lub z powodu niewystarczającej liczby uczestników (nieosiągnięcia minimalnego limitu), system powinien wysłać powiadomienie w aplikacji (w zakładce „Wiadomości”) oraz kopię powiadomienia na adres e-mail użytkownika. |
+
+F17: System powinien umożliwiać zarządzanie kalendarzem wydarzeń.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| System powinien udostępniać kalendarz wydarzeń umożliwiający przeglądanie zaplanowanych wydarzeń LARP w ujęciu czasowym. Kalendarz powinien umożliwiać filtrowanie wydarzeń oraz wyświetlanie szczegółów wybranego wydarzenia. |
+
+#### Niski Priorytet
+
+F18: System powinien umożliwiać dodanie wydarzenia do osobistego kalendarza użytkownika.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Użytkownik powinien mieć możliwość dodania wybranego wydarzenia do swojego osobistego kalendarza w systemie lub eksportowania go do zewnętrznych aplikacji kalendarzowych. |
+
+F19: System powinien umożliwiać rekomendowanie wydarzeń użytkownikom.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| System powinien analizować historię aktywności użytkownika oraz jego preferencje dotyczące typów wydarzeń LARP i na tej podstawie rekomendować wydarzenia, które mogą być dla niego interesujące. |
+
+F20: System powinien udostępniać podsumowanie wydarzenia po jego zakończeniu.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Po zakończeniu wydarzenia system powinien udostępnić uczestnikom podsumowanie rozgrywki zawierające informacje o zdobytych punktach, osiągnięciach, ukończonych zadaniach oraz statystyki przebiegu gry. |
+
+
+
+
+
+
+
+
+
+
+
+
+### 3.3.3 System gry (Gameplay)
+
+#### Wysoki Priorytet
+
+F21: System powinien umożliwiać zgłoszenie problemu w trakcie rozgrywki.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Cezary Rybiński |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien umożliwiać zgłoszenie problemu w trakcie rozgrywki poprzez wybranie opcji w menu i opisanie problemu. Zgłoszenie nie przerywa automatycznie rozgrywki a powiadamia jedynie organizatora o konieczności interwencji. |
+
+F22: System powinien umożliwiać definiowanie warunków zwycięstwa w scenariuszu gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość określenia warunków zwycięstwa dla uczestników lub frakcji w scenariuszu gry. Warunki te mogą obejmować zdobycie określonej liczby punktów, wykonanie konkretnych zadań. |
+
+F23: System powinien umożliwiać definiowanie limitu czasu trwania gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość określenia maksymalnego czasu trwania rozgrywki. Po upływie zdefiniowanego czasu system powinien automatycznie zakończyć wydarzenie oraz zapisać wyniki gry. |
+
+F24: System powinien umożliwiać zarządzanie punktacją graczy w trakcie gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien automatycznie rejestrować zdobywane przez graczy punkty podczas wykonywania zadań lub interakcji z elementami gry. Punkty powinny być przypisywane do odpowiedniej postaci oraz zapisywane w historii rozgrywki. |
+
+F25: System powinien umożliwiać obsługę sytuacji awaryjnych w trakcie gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość wstrzymania lub zakończenia gry w przypadku wystąpienia sytuacji awaryjnej. System powinien powiadomić uczestników o przerwaniu gry oraz zapisać aktualny stan rozgrywki. |
+
+#### Średni Priorytet
+
+F26: System powinien umożliwiać definiowanie poziomu trudności scenariusza gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość określenia poziomu trudności scenariusza gry (np. łatwy, średni, trudny). Poziom trudności może wpływać na parametry rozgrywki takie jak liczba zadań, dostępność wskazówek lub liczba przeciwników. |
+
+F27: System powinien umożliwiać tworzenie frakcji graczy w wydarzeniu.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość podziału uczestników na frakcje. System powinien umożliwiać przypisywanie graczy do frakcji oraz śledzenie postępów każdej z nich podczas rozgrywki. |
+
+F28: System powinien umożliwiać projektowanie zadań w scenariuszu gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość tworzenia zadań fabularnych dla graczy. Zadania mogą wymagać wykonania określonych akcji, odnalezienia przedmiotów lub rozwiązania zagadek. System powinien umożliwiać śledzenie postępów graczy w realizacji tych zadań. |
+
+F29: System powinien udostępniać interaktywną mapę terenu gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Kacper Koziara |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Zaimplementowanie w aplikacji widoku mapy przedstawiającej plan układu pomieszczeń (komnat) wydarzenia. Mapa powinna dynamicznie dostosowywać się do posiadanych przez postać uprawnień, odkrywając przed graczem strefy, do których uzyskał dostęp (np. po zdobyciu odpowiedniego klucza lub przedmiotu questowego), oraz ukrywając obszary, które są dla niego niedostępne lub tajne. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 3.3.4 Mechaniki gry
+
+#### Wysoki Priorytet
+
+F30: System powinien umożliwiać interakcję z otoczeniem poprzez kody QR.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Tomasz Rogalski |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Zaimplementowanie w aplikacji mobilnej skanera kodów QR, który pozwoli graczom na wchodzenie w interakcję z fizycznymi elementami gry. Po zeskanowaniu kodu system powinien wyświetlić opis obiektu, dodać przedmiot do ekwipunku lub uruchomić przypisaną akcję fabularną. |
 
-F11: System powinien pozwalać użytkownikom na wybór postaci przed rozpoczęciem gry.
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0|
-| Uczestnicy powinni mieć możliwość wyboru roli z listy przypisanej do gry. System powinien prezentować listę dostępnych postaci wraz z ich opisami i umożliwiać zgłoszenie chęci odgrywania konkretnej postaci przez użytkownika. ||
-
-F12: System powinien wspierać mechanizm priorytetyzacji wyboru ról.
-
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0|
-| Uczestnicy, którzy nie grali danej roli powinni mieć priorytet w zapisach, aby umożliwić im zdobycie nowych doświadczeń. Jednocześnie uczestnicy, którzy ostatnio odgrywali dane role powinni mieć mniejszy priorytet. ||
-
-F13: System powinien umożliwiać obsługę płatności za wydarzenia poprzez integrację z systemem zewnętrznym.
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0|
-| Zapewnienie uczestnikom możliwości opłacenia udziału w wydarzeniu bezpośrednio po zatwierdzeniu ich zgłoszenia. System powinien integrować się z zewnętrznymi systemami płatności i automatycznie aktualizować status zapisu uczestnika po otrzymaniu potwierdzenia transakcji. ||
--
-F14: System powinien umożliwiać definiowanie logicznych powiązań między czujnikami a zdarzeniami w grze.
+F31: System powinien umożliwiać definiowanie logicznych powiązań między czujnikami a zdarzeniami w grze.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Igor Ochocki |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Zaimplementowanie modułu zarządzania terenem, który pozwala przypisać konkretne akcje systemowe lub fabularne do fizycznych czujników oraz kodów QR rozmieszczonych w pomieszczeniach. System powinien reagować na interakcję z czujnikiem poprzez zmianę statusu gry lub powiadomienie gracza. |
 
-F15: System powinien umożliwiać przesyłanie komunikatów do wybranych grup użytkowników.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Igor Ochocki |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Zaimplementowanie funkcjonalności pozwalającej organizatorowi na kierowanie powiadomień i informacji fabularnych do konkretnych podzbiorów uczestników. System powinien wspierać segmentację odbiorców na podstawie przypisanych im ról, przynależności do frakcji lub aktualnej lokalizacji w świecie gry. |
+#### Średni Priorytet
 
-F16: System powinien umożliwiać odblokowywanie materiałów multimedialnych przez użytkowników. 
+F32: System powinien umożliwiać odblokowywanie materiałów multimedialnych przez użytkowników. 
 | Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Cezary Rybiński |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | System powinien umożliwiać odblokowywanie materiałów multimedialnych (nagrania audio, tajne dokumenty PDF, fragmenty wideo) po wejściu w interakcję z obiektem w świecie gry. Materiały te są trwale zapisywane w "dzienniku" postaci, umożliwiając ich późniejszą analizę. |
 
-F17: System powinien umożliwiać zgłoszenie problemu w trakcie rozgrywki.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Cezary Rybiński |
+F33: System powinien umożliwiać wymianę wirtualnych zasobów pomiędzy graczami.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Kacper Koziara |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Zaimplementowanie modułu handlu pozwalającego graczom na bezpieczną wymianę posiadanych przedmiotów i wirtualnej waluty za pomocą aplikacji mobilnej. Proces wymiany powinien wymagać potwierdzenia transakcji przez obie strony (np. poprzez zeskanowanie jednorazowego kodu QR wygenerowanego na ekranie urządzenia jednego z graczy). System musi na bieżąco aktualizować stany ekwipunków zaangażowanych postaci i zapisywać historię transakcji w logach. |
+
+### Ekonomia / płatności
+
+#### Wysoki Priorytet
+
+F34: System powinien umożliwiać obsługę płatności za wydarzenia poprzez integrację z systemem zewnętrznym.
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0|
+| Zapewnienie uczestnikom możliwości opłacenia udziału w wydarzeniu bezpośrednio po zatwierdzeniu ich zgłoszenia. System powinien integrować się z zewnętrznymi systemami płatności i automatycznie aktualizować status zapisu uczestnika po otrzymaniu potwierdzenia transakcji. ||
+
+F35: System powinien umożliwiać wstępną wycenę wydarzenia LARP.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien umożliwiać zgłoszenie problemu w trakcie rozgrywki poprzez wybranie opcji w menu i opisanie problemu. Zgłoszenie nie przerywa automatycznie rozgrywki a powiadamia jedynie organizatora o konieczności interwencji. |
----
+| Podczas tworzenia wydarzenia system powinien umożliwiać organizatorowi oszacowanie kosztu organizacji wydarzenia na podstawie wybranych elementów takich jak liczba pomieszczeń, wykorzystane dekoracje, liczba uczestników oraz dodatkowe zasoby. System powinien wyświetlać przybliżony koszt organizacji wydarzenia. |
 
-F18: System powinien umożliwiać wystawianie oceny użytkownikom
+F36: System powinien umożliwiać obsługę ostatecznej wyceny wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien umożliwiać pracownikowi platformy zatwierdzenie ostatecznej ceny wydarzenia przed jego publikacją. Cena wydarzenia powinna być widoczna dla użytkowników podczas zapisu na wydarzenie. |
+
+#### Średni Priorytet
+
+F37: System powinien umożliwiać zwrot zaliczki za wydarzenie.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| W przypadku odwołania wydarzenia lub rezygnacji użytkownika w dopuszczalnym terminie system powinien umożliwiać automatyczny zwrot zaliczki poprzez zintegrowany system płatności. |
+
+
+F38: System powinien umożliwiać zarządzanie rabatami dla użytkowników.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Administrator systemu powinien mieć możliwość przyznawania rabatów dla wybranych użytkowników lub grup użytkowników, na przykład dla stałych klientów lub uczestników wielu wydarzeń. Rabaty powinny być automatycznie uwzględniane podczas płatności za wydarzenie. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 3.3.5 System techniczny
+
+#### Wysoki Priorytet
+
+F39: System powinien umożliwiać przywrócenie stanu gry po awarii.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| System powinien automatycznie zapisywać stan gry w regularnych odstępach czasu, aby umożliwić przywrócenie rozgrywki w przypadku awarii systemu lub utraty połączenia z serwerem. |
+
+F40: System powinien umożliwiać obsługę sytuacji awaryjnych w trakcie gry.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+| Organizator wydarzenia powinien mieć możliwość wstrzymania lub zakończenia gry w przypadku wystąpienia sytuacji awaryjnej. System powinien powiadomić uczestników o przerwaniu gry oraz zapisać aktualny stan rozgrywki. |
+
+#### Średni Priorytet
+
+F41: System powinien umożliwiać proces akceptacji nowych scenariuszy wydarzeń.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: TBD |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Istotne || Wydanie: 1.0 |
+| Scenariusze wydarzeń zgłoszone przez użytkowników powinny przechodzić proces weryfikacji przez pracownika systemu przed ich publikacją. |
+
+F42: System powinien umożliwiać udostępnianie instrukcji do budowy wydarzenia.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| System powinien umożliwiać przechowywanie oraz udostępnianie instrukcji dotyczących przygotowania wydarzenia, takich jak rozmieszczenie elementów scenografii, opis zadań oraz wymagania techniczne. |
+
+#### Niski Priorytet
+
+F43: System powinien udostępniać publiczne API.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| System powinien udostępniać publiczne API umożliwiające integrację z zewnętrznymi aplikacjami oraz systemami wspierającymi organizację wydarzeń LARP. |
+
+
+
+
+
+
+
+
+
+
+### 3.3.6 System społecznościowy
+
+#### Wysoki priorytet
+
+F44: System powinien umożliwiać wystawienie oceny wydarzeniu, w którym brał udział użytkownik.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (28.02.2026) | Odpowiedzialny: Maciej Bankiewicz |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+| Zaimplementowanie opcji umożliwiającej wystawienie oceny danemu wydarzeniu w skali od 1 do 5 gwiazdek. Ocenę można wystawić tylko wtedy, gdy użytkownik był zgłoszony na dane wydarzenie i zarejestrowano jego udział. |
+
+F45: System powinien umożliwiać wystawianie oceny użytkownikom
 | Typ: _funkcjonalne_ | Wersja 1.0 (02.03.2025) | Odpowiedzialny: Łukasz Czajka |
 | :--- | :--- | :--- |
 | Priorytet i trudność: Istotne || Wydanie: 1.0 |
 | Użytkownik powinien być w stanie wystawić opinię na temat innego użytkownika. Użytkownik nie może wystawić wielu opinii dla jednego użytkownika. System powinien analizować zachowanie zgłaszających w celu oflagowania podejrzanych zgłoszeń. |
 
-F19: System powinien umożliwaić wyświetlanie oceny użytkownika
+#### Średni Priorytet
+
+F46: System powinien umożliwaić wyświetlanie oceny użytkownika
 | Typ: _funkcjonalne_ | Wersja 1.0 (02.03.2025) | Odpowiedzialny: Łukasz Czajka |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | System ma zapewniać organizatorom wyłączny dostęp do ocen użytkowników w celu sprawnej selekcji uczestników wydarzenia. Interfejs musi prezentować zarówno średnią, jak i szczegółową listę wszystkich wystawionych opinii wraz z ich treścią. W przypadku wykrycia podejrzanych wpisów mechanizm powinien umożliwiać nałożenie ostrzeżenia, obniżenie ich wpływu na wynik ogólny lub usunięcie. |
 
-F20: System powinien umożliwiać zgłaszanie nieprzyzwoitych zachowań użytkowników
+F47: System powinien umożliwiać zgłaszanie nieprzyzwoitych zachowań użytkowników
 | Typ: _funkcjonalne_ | Wersja 1.0 (02.03.2025) | Odpowiedzialny: Łukasz Czajka |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
@@ -227,270 +500,122 @@ F20: System powinien umożliwiać zgłaszanie nieprzyzwoitych zachowań użytkow
 W przypadku złamania reguły wydarzenia zgłaszający wybiera — użytkownika, wydarzenie, złamaną regułę, dodaję opis incydentu oraz ewentualnie załączniki. Zgłoszenie trafia do organizatorów wydarzenia.
 W przypadku złamania reguły serwisu zgłaszający wybiera — użytkownika, wydarzenie (opcjonalnie), złamaną regułę serwisu, dodaje opis incydentu oraz ewentualne załączniki. Zgłoszenie trafia do administracji serwisu. |
 
-F21: System powinien umożliwiać wystawienie oceny i opinii o wydarzeniu LARP.
+#### Niski Priorytet
+
+F48: System powinien umożliwiać wystawienie oceny i opinii o wydarzeniu LARP.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Filobok Hlib |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | Po zakończeniu wydarzenia użytkownik powinien mieć możliwość wystawienia oceny (np. w skali 1–5 gwiazdek) oraz dodania krótkiej opinii tekstowej. |
 
-F22: System powinien umożliwiać wyświetlanie ocen i opinii wybranego wydarzenia LARP.
+F49: System powinien umożliwiać wyświetlanie ocen i opinii wybranego wydarzenia LARP.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Filobok Hlib |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | Podczas wyszukiwania wydarzeń użytkownik powinien mieć możliwość zobaczenia średniej oceny danego wydarzenia (lub organizatora — na podstawie ocen z jego poprzednich wydarzeń) oraz zapoznania się z opiniami w opisie tego wydarzenia. |
 
-F23: System powinien informować użytkowników o odwołaniu gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Filobok Hlib |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| W przypadku odwołania wydarzenia z przyczyn technicznych lub z powodu niewystarczającej liczby uczestników (nieosiągnięcia minimalnego limitu), system powinien wysłać powiadomienie w aplikacji (w zakładce „Wiadomości”) oraz kopię powiadomienia na adres e-mail użytkownika. |
-
-F24: System powinien umożliwiać wymianę wirtualnych zasobów pomiędzy graczami.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Kacper Koziara |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Zaimplementowanie modułu handlu pozwalającego graczom na bezpieczną wymianę posiadanych przedmiotów i wirtualnej waluty za pomocą aplikacji mobilnej. Proces wymiany powinien wymagać potwierdzenia transakcji przez obie strony (np. poprzez zeskanowanie jednorazowego kodu QR wygenerowanego na ekranie urządzenia jednego z graczy). System musi na bieżąco aktualizować stany ekwipunków zaangażowanych postaci i zapisywać historię transakcji w logach. |
-
-F25: System powinien udostępniać interaktywną mapę terenu gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Kacper Koziara |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Zaimplementowanie w aplikacji widoku mapy przedstawiającej plan układu pomieszczeń (komnat) wydarzenia. Mapa powinna dynamicznie dostosowywać się do posiadanych przez postać uprawnień, odkrywając przed graczem strefy, do których uzyskał dostęp (np. po zdobyciu odpowiedniego klucza lub przedmiotu questowego), oraz ukrywając obszary, które są dla niego niedostępne lub tajne. |
-
-F25: System powinien pozwalać na zgłaszanie własnych pomysłów na grę.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Użytkownicy powinni mieć możliwość zgłaszania własnych pomysłów na gry publiczne i prywatne. Przed zatwierdzeniem gra musi zostać zweryfikowana przez pracownika pod względem wykonalności projektu oraz sensowności zgłoszenia.
-
-
-F26: System powinien udostępniać edytor komnat
-| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Stworzenie edytora pozwalającego użytkownikowi na samodzielne dostosowanie komnat do potrzeb gry stworzonej przez siebie. Lista dostępnych materiałów, z których można tworzyć komnaty, musi pokrywać się z dostępnym stanem magazynowym.
-
-
-F27: System powinien dać możliwość zamówienia niestandardowych obiektów
-| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
-| :--- | :--- | :--- |
-| Priorytet i trudność: Przydatne || Wydanie: 1.0 |
-| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika. 
-
-
-F28: System powinien umożliwiać tworzenie wydarzeń LARP.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien umożliwiać organizatorowi tworzenie nowego wydarzenia LARP. Organizator powinien móc określić nazwę wydarzenia, lokalizację, datę, maksymalną liczbę uczestników oraz wymagania dotyczące postaci. Utworzone wydarzenie powinno być widoczne dla użytkowników w systemie po jego zatwierdzeniu. |
-
-
-F29: System powinien umożliwiać zapisanie się na wydarzenie.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Użytkownik powinien mieć możliwość zapisania się na wydarzenie poprzez wybór dostępnego wydarzenia z listy. System powinien automatycznie dodawać użytkownika do listy uczestników lub do listy rezerwowej w przypadku osiągnięcia maksymalnej liczby miejsc. |
-
-
-F30: System powinien umożliwiać wyszukiwanie wydarzeń.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien umożliwiać użytkownikom wyszukiwanie wydarzeń LARP według różnych kryteriów, takich jak data, lokalizacja, liczba uczestników, poziom trudności oraz typ gry. Wyniki wyszukiwania powinny być prezentowane w formie listy wraz z podstawowymi informacjami o wydarzeniu. |
-
-
-F31: System powinien umożliwiać uruchomienie wydarzenia.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość uruchomienia wydarzenia w systemie w momencie rozpoczęcia rozgrywki. Uruchomienie wydarzenia aktywuje mechaniki gry, interakcje z obiektami oraz funkcje komunikacyjne dla uczestników. |
-
-
-F32: System powinien umożliwiać odwołanie wydarzenia.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość odwołania wydarzenia przed jego rozpoczęciem. W przypadku anulowania wydarzenia system powinien powiadomić wszystkich zapisanych użytkowników oraz zaktualizować status wydarzenia. |
-
-
-F33: System powinien umożliwiać automatyczne odwołanie wydarzenia.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| System powinien automatycznie anulować wydarzenie w przypadku niespełnienia określonych warunków, takich jak brak minimalnej liczby uczestników lub problemy techniczne uniemożliwiające przeprowadzenie wydarzenia. |
-
-F34: System powinien umożliwiać zarządzanie kalendarzem wydarzeń.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| System powinien udostępniać kalendarz wydarzeń umożliwiający przeglądanie zaplanowanych wydarzeń LARP w ujęciu czasowym. Kalendarz powinien umożliwiać filtrowanie wydarzeń oraz wyświetlanie szczegółów wybranego wydarzenia. |
-
-F35: System powinien umożliwiać dodanie wydarzenia do osobistego kalendarza użytkownika.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Użytkownik powinien mieć możliwość dodania wybranego wydarzenia do swojego osobistego kalendarza w systemie lub eksportowania go do zewnętrznych aplikacji kalendarzowych. |
-
-
-F36: System powinien umożliwiać zapraszanie graczy do wydarzenia.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość wyszukiwania użytkowników systemu oraz wysyłania im zaproszeń do udziału w konkretnym wydarzeniu. Zaproszeni użytkownicy powinni otrzymać powiadomienie w systemie oraz możliwość zaakceptowania lub odrzucenia zaproszenia. |
-
-
-F37: System powinien udostępniać panel zarządzania wydarzeniem dla organizatora.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator powinien mieć dostęp do panelu zarządzania wydarzeniem umożliwiającego przeglądanie listy uczestników, zarządzanie zapisami, wysyłanie komunikatów do graczy oraz kontrolowanie przebiegu wydarzenia w trakcie jego trwania. |
-
-
-F38: System powinien umożliwiać rekomendowanie wydarzeń użytkownikom.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| System powinien analizować historię aktywności użytkownika oraz jego preferencje dotyczące typów wydarzeń LARP i na tej podstawie rekomendować wydarzenia, które mogą być dla niego interesujące. |
-
-
-F39: System powinien udostępniać podsumowanie wydarzenia po jego zakończeniu.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| Po zakończeniu wydarzenia system powinien udostępnić uczestnikom podsumowanie rozgrywki zawierające informacje o zdobytych punktach, osiągnięciach, ukończonych zadaniach oraz statystyki przebiegu gry. |
-
-
-F40: System powinien umożliwiać definiowanie warunków zwycięstwa w scenariuszu gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość określenia warunków zwycięstwa dla uczestników lub frakcji w scenariuszu gry. Warunki te mogą obejmować zdobycie określonej liczby punktów, wykonanie konkretnych zadań. |
-
-
-F41: System powinien umożliwiać definiowanie limitu czasu trwania gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość określenia maksymalnego czasu trwania rozgrywki. Po upływie zdefiniowanego czasu system powinien automatycznie zakończyć wydarzenie oraz zapisać wyniki gry. |
-
-
-F42: System powinien umożliwiać definiowanie poziomu trudności scenariusza gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość określenia poziomu trudności scenariusza gry (np. łatwy, średni, trudny). Poziom trudności może wpływać na parametry rozgrywki takie jak liczba zadań, dostępność wskazówek lub liczba przeciwników. |
-
-
-F43: System powinien umożliwiać zarządzanie punktacją graczy w trakcie gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien automatycznie rejestrować zdobywane przez graczy punkty podczas wykonywania zadań lub interakcji z elementami gry. Punkty powinny być przypisywane do odpowiedniej postaci oraz zapisywane w historii rozgrywki. |
-
-
-F44: System powinien umożliwiać tworzenie frakcji graczy w wydarzeniu.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość podziału uczestników na frakcje. System powinien umożliwiać przypisywanie graczy do frakcji oraz śledzenie postępów każdej z nich podczas rozgrywki. |
-
-
-F45: System powinien umożliwiać projektowanie zadań w scenariuszu gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość tworzenia zadań fabularnych dla graczy. Zadania mogą wymagać wykonania określonych akcji, odnalezienia przedmiotów lub rozwiązania zagadek. System powinien umożliwiać śledzenie postępów graczy w realizacji tych zadań. |
-
-
-F46: System powinien umożliwiać wstępną wycenę wydarzenia LARP.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Podczas tworzenia wydarzenia system powinien umożliwiać organizatorowi oszacowanie kosztu organizacji wydarzenia na podstawie wybranych elementów takich jak liczba pomieszczeń, wykorzystane dekoracje, liczba uczestników oraz dodatkowe zasoby. System powinien wyświetlać przybliżony koszt organizacji wydarzenia. |
-
-
-F47: System powinien umożliwiać obsługę ostatecznej wyceny wydarzenia.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien umożliwiać pracownikowi platformy zatwierdzenie ostatecznej ceny wydarzenia przed jego publikacją. Cena wydarzenia powinna być widoczna dla użytkowników podczas zapisu na wydarzenie. |
-
-
-F48: System powinien umożliwiać zwrot zaliczki za wydarzenie.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| W przypadku odwołania wydarzenia lub rezygnacji użytkownika w dopuszczalnym terminie system powinien umożliwiać automatyczny zwrot zaliczki poprzez zintegrowany system płatności. |
-
-
-F49: System powinien umożliwiać zarządzanie rabatami dla użytkowników.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Administrator systemu powinien mieć możliwość przyznawania rabatów dla wybranych użytkowników lub grup użytkowników, na przykład dla stałych klientów lub uczestników wielu wydarzeń. Rabaty powinny być automatycznie uwzględniane podczas płatności za wydarzenie. |
-
-
-F50: System powinien umożliwiać tworzenie rankingu graczy.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| System powinien tworzyć ranking graczy na podstawie ich osiągnięć, zdobytych punktów oraz aktywności w wydarzeniach. Ranking powinien być widoczny dla użytkowników w systemie. |
-
-
-F51: System powinien umożliwiać naliczanie doświadczenia graczy.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-| Po zakończeniu wydarzenia system powinien przyznawać graczom punkty doświadczenia na podstawie ich aktywności oraz wyników w trakcie rozgrywki. Punkty doświadczenia powinny wpływać na poziom postaci oraz statystyki użytkownika. |
-
-
-F52: System powinien umożliwiać komunikację tekstową między graczami.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
-| :--- | :--- | :--- |
-| Priorytet: Przydatne || Wydanie: 1.0 |
-| System powinien udostępniać czat tekstowy umożliwiający komunikację pomiędzy graczami. Czat powinien umożliwiać komunikację w ramach wydarzenia, w obrębie frakcji oraz w kanałach globalnych. |
-
-
-F53: System powinien umożliwiać przyznawanie odznak i osiągnięć graczom.
+F50: System powinien umożliwiać przyznawanie odznak i osiągnięć graczom.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | System powinien przyznawać graczom odznaki i osiągnięcia za wykonanie określonych działań takich jak ukończenie wielu wydarzeń, zdobycie wysokiej liczby punktów lub wykonanie specjalnych zadań w grze. |
 
 
-F54: System powinien umożliwiać przywrócenie stanu gry po awarii.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+
+
+
+
+
+
+
+
+
+### 3.3.7 Zarządzanie postaciami
+
+#### Wysoki priorytet
+
+F51: System powinien umożliwiać tworzenie profili postaci.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0 |
-| System powinien automatycznie zapisywać stan gry w regularnych odstępach czasu, aby umożliwić przywrócenie rozgrywki w przypadku awarii systemu lub utraty połączenia z serwerem. |
+| Zaimplementowanie funkcjonalności umożliwiającej użytkownikowi tworzenie nowych profili postaci do gry LARP. Użytkownik powinien móc zdefiniować podstawowe atrybuty postaci (imię, klasa/rasa np. elf, krasnolud, rycerz, poziom doświadczenia), dodać opis biografii oraz wybrać wygląd postaci. Każda utworzona postać jest automatycznie powiązana z kontem użytkownika, który ją stworzył. |
 
-
-F55: System powinien umożliwiać obsługę sytuacji awaryjnych w trakcie gry.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+F52: System powinien pozwalać użytkownikom na wybór postaci przed rozpoczęciem gry.
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
 | :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-| Organizator wydarzenia powinien mieć możliwość wstrzymania lub zakończenia gry w przypadku wystąpienia sytuacji awaryjnej. System powinien powiadomić uczestników o przerwaniu gry oraz zapisać aktualny stan rozgrywki. |
+| Priorytet: Kluczowe || Wydanie: 1.0|
+| Uczestnicy powinni mieć możliwość wyboru roli z listy przypisanej do gry. System powinien prezentować listę dostępnych postaci wraz z ich opisami i umożliwiać zgłoszenie chęci odgrywania konkretnej postaci przez użytkownika. ||
 
+#### Średni priorytet
 
-F56: System powinien umożliwiać proces akceptacji nowych scenariuszy wydarzeń.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: TBD |
+F53: System powinien umożliwiać edycję i przeglądanie szczegółów postaci.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (01.03.2026) | Odpowiedzialny: Polina Nesterova |
 | :--- | :--- | :--- |
-| Priorytet i trudność: Istotne || Wydanie: 1.0 |
-| Scenariusze wydarzeń zgłoszone przez użytkowników powinny przechodzić proces weryfikacji przez pracownika systemu przed ich publikacją. |
+| Priorytet: Istotne || Wydanie: 1.0 |
+|Zaimplementowanie funkcjonalności pozwalającej użytkownikowi na edycję wszystkich danych istniejącej postaci (imię, biografia, atrybuty, ekwipunek) oraz przeglądanie jej szczegółowych statystyk. System powinien wyświetlać informacje o poziomie doświadczenia, posiadanych przedmiotach, osiągnięciach z poprzednich sesji oraz historię rozgrywek daną postacią. Edycja postaci powinna być możliwa tylko gdy postać nie bierze aktualnie udziału w trwającej sesji LARP. |
+
+F54: System powinien wspierać mechanizm priorytetyzacji wyboru ról.
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0|
+| Uczestnicy, którzy nie grali danej roli powinni mieć priorytet w zapisach, aby umożliwić im zdobycie nowych doświadczeń. Jednocześnie uczestnicy, którzy ostatnio odgrywali dane role powinni mieć mniejszy priorytet. ||
 
 
-F57: System powinien umożliwiać udostępnianie instrukcji do budowy wydarzenia.
+
+
+
+
+### 3.3.8 System komunikacji
+
+#### Średni Priorytet
+
+F55: System powinien umożliwiać przesyłanie komunikatów do wybranych grup użytkowników.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Igor Ochocki |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Zaimplementowanie funkcjonalności pozwalającej organizatorowi na kierowanie powiadomień i informacji fabularnych do konkretnych podzbiorów uczestników. System powinien wspierać segmentację odbiorców na podstawie przypisanych im ról, przynależności do frakcji lub aktualnej lokalizacji w świecie gry. |
+
+#### Niski Priorytet
+
+F56: System powinien umożliwiać komunikację tekstową między graczami.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
-| System powinien umożliwiać przechowywanie oraz udostępnianie instrukcji dotyczących przygotowania wydarzenia, takich jak rozmieszczenie elementów scenografii, opis zadań oraz wymagania techniczne. |
+| System powinien udostępniać czat tekstowy umożliwiający komunikację pomiędzy graczami. Czat powinien umożliwiać komunikację w ramach wydarzenia, w obrębie frakcji oraz w kanałach globalnych. |
 
 
-F58: System powinien udostępniać publiczne API.
-| Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
+
+
+
+
+### 3.3.9 Projektowanie świata gry
+#### Priorytet Średni
+
+F57: System powinien pozwalać na zgłaszanie własnych pomysłów na grę.
+| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
-| System powinien udostępniać publiczne API umożliwiające integrację z zewnętrznymi aplikacjami oraz systemami wspierającymi organizację wydarzeń LARP. |
+| Użytkownicy powinni mieć możliwość zgłaszania własnych pomysłów na gry publiczne i prywatne. Przed zatwierdzeniem gra musi zostać zweryfikowana przez pracownika pod względem wykonalności projektu oraz sensowności zgłoszenia.
+
+F58: System powinien udostępniać edytor komnat
+| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
+| :--- | :--- | :--- |
+| Priorytet: Przydatne || Wydanie: 1.0 |
+| Stworzenie edytora pozwalającego użytkownikowi na samodzielne dostosowanie komnat do potrzeb gry stworzonej przez siebie. Lista dostępnych materiałów, z których można tworzyć komnaty, musi pokrywać się z dostępnym stanem magazynowym.
+
+F59: System powinien dać możliwość zamówienia niestandardowych obiektów
+| Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
+| :--- | :--- | :--- |
+| Priorytet i trudność: Przydatne || Wydanie: 1.0 |
+| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika. 
+
+
+
+
+
+
+
+
 ---
 
 
@@ -540,29 +665,250 @@ J07: Interfejs aplikacji powinien posiadać tryb 'Dark-Mode'.
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Interfejs aplikacji mobilnej musi być dostosowany do pracy w warunkach niskiego oświetlenia. |
 
+
 ## 3.5 Słownik
 
 **Diagram:** Słownik
 
-**Model samochodu**
+---
 
-- Typ:
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność:
+**Gra**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-dokładny opis samochodów o tych samych parametrach
+Zdefiniowany zestaw zasad określających interakcje między uczestnikami systemu. Gra zawiera elementy takie jak mapa, postacie, przedmioty oraz możliwe akcje wykonywane przez graczy.
 
-**Samochód**
+---
 
-- Typ:
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność:
+**Wydarzenie**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-konkretny egzemplarz danego modelu samochodu
+Konkretna instancja gry uruchomiona w określonym czasie i miejscu. W wydarzeniu uczestniczą gracze wykonujący akcje zgodnie z zasadami gry.
+
+---
+
+**Postać**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Rola przypisana graczowi podczas wydarzenia. Postać posiada określone atrybuty, przedmioty oraz możliwe akcje w trakcie rozgrywki.
+
+---
+
+**Przedmiot**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Obiekt w świecie gry, który może być posiadany przez postać. Przedmiot może umożliwiać wykonanie określonych akcji lub wywoływać efekty w grze.
+
+---
+
+**Mapa**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Reprezentacja przestrzeni, w której odbywa się gra. Mapa zawiera pomieszczenia, przejścia, przeszkody oraz inne elementy środowiska gry.
+
+---
+
+**Pomieszczenie**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Element mapy reprezentujący konkretną lokalizację w świecie gry. Pomieszczenie może zawierać przedmioty, zdarzenia lub inne elementy interakcji.
+
+---
+
+**Akcja**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Działanie wykonywane przez system w wyniku interakcji użytkownika, postaci lub zdarzeń w świecie gry.
+
+---
+
+**Użytkownik**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Osoba posiadająca konto w systemie i korzystająca z jego funkcjonalności.
+
+---
+
+**Gracz**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Użytkownik uczestniczący w wydarzeniu i wykonujący akcje w trakcie rozgrywki.
+
+---
+
+**Organizator**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Użytkownik odpowiedzialny za tworzenie i zarządzanie wydarzeniami w systemie.
+
+---
+
+**Organizator zewnętrzny**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu, takich jak przeglądanie kalendarza wydarzeń.
+
+---
+
+**Twórca gier**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Użytkownik odpowiedzialny za definiowanie struktury gry, w tym mapy, postaci oraz akcji dostępnych w rozgrywce.
+
+---
+
+**Mistrz wydarzenia**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Osoba prowadząca wydarzenie i kontrolująca jego przebieg w trakcie rozgrywki.
+
+---
+
+**Recenzent**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Użytkownik odpowiedzialny za ocenę i weryfikację zgłoszonych gier.
+
+---
+
+**Administrator**
+
+- Typ: aktor systemu
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Użytkownik posiadający najwyższe uprawnienia w systemie odpowiedzialny za moderowanie i zarządzanie systemem.
+
+---
+
+**Kalendarz wydarzeń**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym.
+
+---
+
+**Zaproszenie**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Powiadomienie wysyłane do użytkownika umożliwiające dołączenie do wydarzenia.
+
+---
+
+**Kod QR**
+
+- Typ: pojęcie techniczne
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Kod graficzny wykorzystywany do identyfikacji elementów gry oraz inicjowania interakcji w aplikacji.
+
+---
+
+**Mini-gra**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Dodatkowa aktywność dostępna w trakcie wydarzenia umożliwiająca wykonanie krótkiej interakcji lub zadania.
+
+---
+
+**Skarga**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (16.03.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub administratora o problemie.
 
 ---
 
