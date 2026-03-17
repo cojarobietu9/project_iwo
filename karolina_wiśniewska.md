@@ -1,14 +1,13 @@
-```plantuml
-@startuml
-left to right direction
+```mermaid
+flowchart LR
+    Admin(["Administrator"])
+    User(["Użytkownik"])
 
-"Zablokowanie konta uzytkownika" as (uc1)
-"Usunięcie konta uzytkownika" as (uc2)
-"Zgłoszenie konta innego uzytkownika" as (uc3)
+    uc1(["Zablokowanie konta użytkownika"])
+    uc2(["Usunięcie konta użytkownika"])
+    uc3(["Zgłoszenie konta innego użytkownika"])
 
-:Administrator: --> (uc1)
-:Administrator: --> (uc2)
-:Uzytkownik: --> (uc3)
-
-@enduml
+    Admin --> uc1
+    Admin --> uc2
+    User --> uc3
 ```
