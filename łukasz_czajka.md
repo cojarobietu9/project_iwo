@@ -30,27 +30,35 @@ pu_lista_gier_rec -."&lt;&lt;invoke&gt;&gt;".-> pu_komunikat
 end
 ```
 
+# Opisy przypadków użycia
 
-# Przesłanie komunikatu do twórcy
+## Przesłanie komunikatu do twórcy
 
 Recenzent powinien być w stanie przesłać komunikaty do twórcy gry z poziomu gry. 
 
-# Wyświeltenie listy swoich gier
+## Wyświeltenie listy swoich gier
 
 Twórca jest w stanie wyświetlić listę gier, których jest autorem.
 Z widoku listy powinien być w stanie wejść w tryby edycji i statystyk dotyczących danej gry.
 
-# Wyświetlenie listy gier przez organizatora
+## Wyświetlenie listy gier przez organizatora
 
 Organizator jest w stanie wyświetlić listę gier możliwych do organizacji. Organizator może z tego miejsca wyświetlić sczegóły gry, oraz rozpocząć jej organizację.
 
-# Wyświetlenie listy gier przez recenzenta
+## Wyświetlenie listy gier przez recenzenta
 
 Recenzent jest w stanie wyświetlić nie opublikowane gry, które zostały przypisane mu do zrecenzowania. 
 Recenzent może dalej przejść w tryb wyświetlenia gry, a następnie komunikatu lub dopuszczenia do publikacji gry.
 
-# Wyświetlenie listy gier
+## Wyświetlenie listy gier
 Usecase abstrakcyjny, określający wyświetlenie listy. Podstawowe funkcje to filtrowanie i wyszukiwanie. 
+
+# Wymagania funkcjonalne
+
+## czas dostarczenia komunikatu do twórcy
+
+Komunikat do twórcy przychodzi z opóźnieniem max 30 minut.
+
 
 
 # Słownik dziedziny
