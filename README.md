@@ -925,6 +925,52 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
+### 4.1.3 Gracz i jego akcje podczas wydarzenia
+
+**Diagram:** Gracz i jego akcje podczas wydarzenia
+
+**PU301: Skanowanie kodu QR**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+- **Opis:** Gracz skanuje kod QR umieszczony na przedmiocie lub w otoczeniu gry, aby uruchomić mini-grę, albo skanuje kod QR innego gracza, aby zainicjować walkę.
+
+**PU302: Granie w mini-grę**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System uruchamia mini-grę opartą na szablonie. Gracz musi ukończyć ją w wyznaczonym czasie.
+
+**PU303: Walczenie z innym graczem**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System kalkuluje wynik walki na podstawie statystyk obu postaci i wyłania zwycięzcę.
+
+**PU304: Otrzymanie nagrody**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Po wygranej mini-grze lub walce system przyznaje graczowi nagrodę (np. przedmiot, punkty doświadczenia).
+
+**PU305: Poniesienie konsekwencji**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Po przegranej mini-grze lub walce gracz ponosi konsekwencje w postaci spadku HP lub utraty przedmiotu z ekwipunku.
+
+---
+
 ## 4.2 Wymagania jakościowe i ograniczenia
 
 **Diagram:** Wymagania jakościowe i ograniczenia
