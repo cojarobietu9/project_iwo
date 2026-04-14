@@ -36,11 +36,11 @@ Recenzent powinien być w stanie przesłać komunikaty do twórcy gry z poziomu 
 ## Wyświeltenie listy swoich gier
 
 Twórca jest w stanie wyświetlić listę gier, których jest autorem.
-Z widoku listy powinien być w stanie wejść w tryby edycji i statystyk dotyczących danej gry.
+Z widoku listy powinien być w stanie wejść w tryby edycji danej gry.
 
 ## Wyświetlenie listy gier przez organizatora
 
-Organizator jest w stanie wyświetlić listę gier możliwych do organizacji. Organizator może z tego miejsca wyświetlić sczegóły gry, oraz rozpocząć jej organizację.
+Organizator jest w stanie wyświetlić listę gier możliwych do organizacji/organizowanycch. Organizator może z tego miejsca wyświetlić sczegóły gry, oraz rozpocząć jej organizację.
 
 ## Wyświetlenie listy gier
 Usecase abstrakcyjny, określający wyświetlenie listy. Podstawowe funkcje to filtrowanie i wyszukiwanie. 
@@ -49,7 +49,7 @@ Usecase abstrakcyjny, określający wyświetlenie listy. Podstawowe funkcje to f
 
 ## czas dostarczenia komunikatu do twórcy
 
-Komunikat do twórcy przychodzi z opóźnieniem max 30 minut.
+Komunikat między twórcą a recenzentem przychodzi z opóźnieniem max. 30 minut.
 
 
 
