@@ -912,6 +912,18 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
+**Recenzja**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Opis uwag i spostrzeżeń dotyczących recenzowanej gry. Jest uzasadnieniem decyzji o dopuszczeniu lub niedopuszczeniu gry do realizacji. Wystawia ją recenzent.
+
+---
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
@@ -920,30 +932,35 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 **Diagram:** Zarządzanie ofertą
 
-**PU001: Dodanie nowego samochodu**
+**PU001: Wyświetlenie listy gier**
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Istotne 1
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry].
 
-**PU002: Przejrzenie cennika**
+**PU002: Wyświetlenie listy gier przez recenzenta**
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Priorytet i trudność: Istotne 1
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry] dodając do każdego rekordu opcję recenzji [gry].
 
-**PU003: Wygenerowanie raportu sprzedaży**
+**PU003: Recenzja gry**
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
+- **Opis:** System wyświetla okno do zapisu tekstu. [Recenzent] zapisuje [recenzję] i zatwierdza ją.
 
 **PU004: Zmiana ceny samochodu**
 
 - Wersja: 1.0 (15.02.2023)
 - Odpowiedzialny: kamil
+- Priorytet i trudność: 
 - Wydanie: 1.0
 
 ---
