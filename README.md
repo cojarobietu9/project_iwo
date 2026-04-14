@@ -912,6 +912,102 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
+**Dane opisu ogólnego gry**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Konkretne parametry uzupełniane w formularzu *opisu ogólnego gry*. Obejmują one: tytuł gry, zarys tematyki i scenerii (przedstawienie klimatu i tematu świata), minimalną i maksymalną liczbę graczy oraz minimalny i maksymalny czas trwania rozgrywki.
+
+---
+
+**Definicja akcji**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Formularz systemowy służący do kreowania nowej akcji, wymagający określenia jej *typu akcji* oraz *skutków akcji*.
+
+---
+
+**Komunikat do recenzenta**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Treść tekstowa wysyłana przez twórcę gier do recenzenta w celu wyjaśnienia mechanik gry lub odpowiedzi na uwagi w procesie weryfikacji.
+
+---
+
+**Okno komunikacji twórcy gry z recenzentem**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Interfejs wymiany informacji zawierający obszar wiadomości (historia komunikacji) oraz obszar wysyłania, umożliwiający przekazanie komunikatu do recenzenta.
+
+---
+
+**Opis ogólny gry**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Systemowy formularz stanowiący abstrakt projektu gry, w którym definiuje się dane opisu ogólnego gry.
+
+---
+
+**Pozostałe elementy gry**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zbiór komponentów rozszerzających definicję gry poza opis podstawowy, do których należą: akcje, mapa, postacie oraz przedmioty.
+
+---
+
+**Skutek akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Efekt wynikający z wykonania akcji. Może być fabularny (zdarzenie w świecie gry wpływające na narrację) lub systemowy (techniczna zmiana stanu gry, np. zmiana parametrów postaci).
+
+---
+
+**Typ akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Kategoria określająca mechanikę działania wybraną przez twórcę gier w procesie definicji akcji. Do typów akcji należą: akcja czasowa, akcja czujnika lub akcja przedmiotu.
+
+---
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
@@ -1009,21 +1105,21 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 - Odpowiedzialny: Igor Ochocki
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
-- **Opis:** Twórca wprowadza dane podstawowe szablonu: tytuł, opis świata przedstawionego oraz określa limity uczestników i czas trwania rozgrywki.
+- **Opis:** System wyświetla formularz [opisu ogólnego gry]. Twórca gry wprowadza [dane opisu ogólnego gry] do formularza. Twórca gry może dodać [pozostałe elementy gry]. Twórca gry wciska przycisk zapisz. System zamyka formularz [opisu ogólnego gry] i wyświetla informację o poprawnym zapisie.
 
 **PU202: Zdefiniowanie akcji**
 - Wersja: 1.0 (08.04.2026)
 - Odpowiedzialny: Igor Ochocki
 - Priorytet i trudność: Kluczowe
 - Wydanie: 1.0
-- **Opis:** Twórca definiuje typy akcji (czasowe, czujnika, przedmiotu) i przypisuje im konkretne skutki fabularne lub systemowe (np. otrzymanie wskazówki).
+- **Opis:** System wyświetla formularz [definicji akcji]. Twórca gry wybiera [typ akcji], a następnie uzupełnia [skutki akcji]. Na koniec twórca gry wciska przycisk `zapisz i zamknij`. System zamyka formularz [definicji akcji].
 
 **PU203: Przesłanie komunikatu do recenzenta**
 - Wersja: 1.0 (08.04.2026)
 - Odpowiedzialny: Igor Ochocki
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
-- **Opis:** Twórca przesyła wyjaśnienia lub odpowiedzi na uwagi zgłoszone przez Recenzenta w trakcie weryfikacji projektu gry przed jej publikacją.
+- **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
 
 ---
 
@@ -1070,33 +1166,20 @@ Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
 
 **Opis:** Interfejs edycji akcji i parametrów gry musi reagować na działania użytkownika bez zauważalnych opóźnień, zapewniając płynność pracy twórczej (dotyczy PU201, PU202).
 
-**Sposób pomiaru:** Pomiar czasu odpowiedzi interfejsu przy zapisie zmian w akcji.
+**Sposób pomiaru:** Pomiar czasu odpowiedzi interfejsu przy zapisie zmian w akcji przy wykorzystaniu wyspecjalizowanego oprogramowania.
 
 **Oczekiwane wartości:** 95% interakcji poniżej 200 ms.
 
 ---
 
-**J011-2: System powinien gwarantować integralność Szablonu Gry podczas recenzji**
-| Typ: _bezpieczeństwo - integralność_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-
-**Opis:** System musi uniemożliwiać modyfikację danych Szablonu Gry (opisów, akcji, przedmiotów), gdy posiada on status "Do recenzji", aby zapewnić spójność procesu weryfikacji.
-
-**Sposób pomiaru:** Próba zapisu zmian danych gry poprzez API lub interfejs w trakcie trwania aktywnego procesu recenzji.
-
-**Oczekiwane wartości:** 100% odrzuconych prób modyfikacji (zwrócenie błędu uprawnień).
-
----
-
-**J011-3: System powinien gwarantować bezpieczeństwo danych podczas edycji (Autozapis)**
+**J011-2: System powinien gwarantować bezpieczeństwo danych podczas edycji (Autozapis)**
 | Typ: _niezawodność - odtwarzalność_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0 |
 
-**Opis:** System musi chronić postęp prac Twórcy przed utratą danych w wyniku nagłego zamknięcia przeglądarki lub awarii łącza.
+**Opis:** System musi chronić postęp prac Twórcy Gry przed utratą danych w wyniku nagłego zamknięcia przeglądarki lub awarii łącza.
 
-**Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania opisu świata gry. Sprawdzenie stanu danych po ponownym zalogowaniu.
+**Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania [opisu ogólnego gry]. Sprawdzenie stanu danych po ponownym zalogowaniu.
 
 **Oczekiwane wartości:** Maksymalna utrata danych nie może przekraczać ostatnich 30 sekund pracy.
 
@@ -1125,9 +1208,6 @@ Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
 - Pozycja cennika
 - Samochód
 - Zamówienie na samochód
-- **Szablon Gry** - (Pojęcie domenowe) Kompletny projekt logiczny i fabularny wydarzenia LARP stworzony przez Twórcę. Stanowi wzorzec (scenariusz), z którego Organizator tworzy konkretne Wydarzenia.
-- **Akcja Systemowa** - (Pojęcie domenowe) Reguła logiczna określająca efekt (np. komunikat, zmiana statystyk) wywołany przez zewnętrzną akcję (czas, czujnik, kod QR).
-- **Status Gry** - (Pojęcie domenowe) Znacznik etapu gotowości Szablonu Gry, określający dostępność do edycji lub publikacji (np. W edycji, Do recenzji, Zatwierdzony).
 
 ---
 
