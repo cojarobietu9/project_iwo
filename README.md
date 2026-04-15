@@ -912,33 +912,25 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-**Filtry wydarzeń**
-- Typ: pojęcie domenowe
+**Warunek rozpoczęcia wydarzenia**
+
+- Typ: pojęcie systemowe
 - Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Michał Marciniak
+- Odpowiedzialny: Julian Stefan
 - Wydanie: 1.0
 
-Zbiór parametrów (lokalizacja, data, poziom trudności, kategoria) wg. których gracz może dopasować listę wydarzeń 
+Rzecz która musi się wydarzyć aby mozna było uruchomić wydarzenie
 
 ---
 
-**Rejestracja na wydarzenie**
+**Warunek zakończenia wydarzenia**
+
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Michał Marciniak
+- Odpowiedzialny: Julian Stefan
 - Wydanie: 1.0
 
-Proces przypisania gracza do listy uczestników nadchodzącego wydarzenia, skutkujący rezerwacją miejsca.
-
----
-
-**Dołączenie do wydarzenia**
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Michał Marciniak
-- Wydanie: 1.0
-
-Rozpoczęcie udziału w wydarzeniu na żywo.
+Rzecz która musi się wydarzyć aby mozna było zakończyć wydarzenie
 
 ---
 
@@ -1207,6 +1199,22 @@ flowchart LR
 - Odpowiedzialna: Polina Nesterova
 - Wydanie: 1.0
 - Opis: Invoked by PU1106. Użytkownik wybiera konkretne wydarzenie z listy. System wyświetla szczegółowy widok wydarzenia — pełny opis postaci, przebieg sesji, współuczestników oraz dodatkowe materiały powiązane z wydarzeniem.
+
+### 4.1.4 Obsługa wydarzeń
+
+**PU401: Uruchomienie wydarzenia**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Julian Stefan
+- Wydanie: 1.0
+- **Opis:** Po osiągnięciu warunków rozpoczęcia wydarzenia, mistrz wydarzenia rozpoczyna wydarzenie.
+
+**PU402: Zakończenie wydarzenia**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Julian Stefan
+- Wydanie: 1.0
+- **Opis:** Po osiągnięciu warunków zakończenia wydarzenia, mistrz wydarzenia konczy wydarzenie.
 
 ---
 ## 4.1.12 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
