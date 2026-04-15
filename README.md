@@ -1100,6 +1100,27 @@ Kategoria określająca mechanikę działania wybraną przez twórcę gier w pro
 
 ### 4.1.3 Projektowanie świata gry
 
+DIAGRAM:
+```mermaid
+flowchart LR
+
+%% ===== AKTORZY =====
+subgraph AKTORZY
+TG((Twórca gier))
+end
+
+%% ===== FUNKCJE TWORCY =====
+subgraph FUNKCJE_TWORCY
+GDF([Zdefiniowanie gry])
+ADF([Zdefiniowanie akcji])
+SCR([Przesłanie komunikatu do recenzenta])
+end
+
+%% ===== RELACJE =====
+TG --> GDF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+```
 **PU201: Zdefiniowanie gry**
 - Wersja: 1.0 (08.04.2026)
 - Odpowiedzialny: Igor Ochocki
