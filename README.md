@@ -1142,6 +1142,38 @@ flowchart LR
 - Wydanie: 1.0
 - Opis: Invoked by PU1012. Użytkownik wybiera konkretne wydarzenie z listy. System wyświetla szczegółowy widok wydarzenia — pełny opis postaci, przebieg sesji, współuczestników oraz dodatkowe materiały powiązane z wydarzeniem.
 
+---
+## 4.1.12 Zarządzanie wydarzeniami przez organizatora
+DIAGRAM:
+```mermaid
+flowchart TD
+    User[👤 Organizator]
+    A([Dodanie wydarzenia do kalendarza])
+    B([Zaproszenie graczy])
+    C([Udostępnienie wydarzenia graczom])
+
+    User-->A
+    A-.->|<< invoke >>|B
+    A-.->|<< invoke >>|C
+```
+
+**PU1016: Dodanie wydarzenia do kalendarza**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Organizator dodaje wydarzenie do kalendarza. Przy dodawaniu musi podać najważniejsze informacje na temat wydarzenia - nazwę i ewentualny opis, datę i godzinę, miejsce, maksymalną liczbę graczy oraz wymagania dotyczące postaci. Po dodaniu wydarzenie jest widoczne w kalendarzu dla każdego użytkownika systemu.
+
+**PU1017: Zaproszenie graczy**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk *Zaproś graczy* w menu wydarzenia. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk *Wyślij zaproszenie*. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
+
+**PU1018: Udostępnienie wydarzenia graczom**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Organizator, klikając przycisk *Udostępnij dla graczy* w menu wydarzenia, otwiera graczom możliwość zapisania się na dane wydarzenie. Gracz będzie mógł dokonać zapisu, jeżeli są jeszcze wolne miejsca na wydarzenie.
 
 ---
 
