@@ -1033,6 +1033,27 @@ Rozpoczęcie udziału w wydarzeniu na żywo.
 ---
 
 ### 4.1.4 Rejestracja i zapis przed wydarzeniem
+```mermaid
+flowchart LR
+  
+G((#128100; \n Gracz))
+
+SRG([Wyświetlenie listy zarejestrowanych wydarzeń])
+JG([Dołączenie do wydarzenia])
+SIL([Wyświetlenie listy zaproszeń])
+AI([Akceptacja zaproszenia])
+SEL([Wyświetlenie listy wydarzeń])
+
+G --> SRG
+G --> SIL
+G --> SEL
+
+SRG -..->|&lt;&lt;invoke&gt;&gt;| JG
+SIL -..->|&lt;&lt;invoke&gt;&gt;| AI
+
+
+```
+
 **PU301: Wyświetlenie listy wydarzeń**
 - Wersja: 1.0 (14.04.2026)
 - Odpowiedzialny: Michał Marciniak

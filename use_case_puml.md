@@ -7,30 +7,6 @@
 ## Gracz i jego przypadki użycia przed wydarzeniem
 ![diagram](https://www.plantuml.com/plantuml/png/VP71IiGm48RlUOgXztq1MUekAg8dGSJpJtPmOsjIacbBSnHy2b_7VI-JMZ1qONFyv_l_cP_iWi1B_z4gQ76UdbfCx0c1gdiF7Ikb-i0QWUdvwCQNmFu6BTi3_g3NwVGz6fOa6QPc6KLGvoD7UiiPgFup65uV5sU8VMD6PECuPLVAADYzrjp9WnsCG8opislVP17w7HJHUHTMfaTdxDt0LcRwrfq-VxvqPfWEhbXpdLxgjjJTREgpUiLiERjKriSfjLOoLfnpHTkjiODhkAxLUjT5TjvzYTYbZFI3lm00)
 
----
-
-```mermaid
-flowchart LR
-  
-G((#128100; \n Gracz))
-
-SRG([Wyświetlenie listy zarejestrowanych wydarzeń])
-JG([Dołączenie do wydarzenia])
-SIL([Wyświetlenie listy zaproszeń])
-AI([Akceptacja zaproszenia])
-SEL([Wyświetlenie listy wydarzeń])
-
-G --> SRG
-G --> SIL
-G --> SEL
-
-SRG -..->|&lt;&lt;invoke&gt;&gt;| JG
-SIL -..->|&lt;&lt;invoke&gt;&gt;| AI
-
-
-```
----
-
 ## Gracz i jego akcje podczas wydarzenia
 ![diagram](https://www.plantuml.com/plantuml/png/JSz1JeGm5CRnVK_HiESAPX8JPwE9EfEu_b9Uy4bRp2j8OEajp5n7xYLGiDt-ts_nlbFe85tlh8BfMj7F5YE9Hj35MM2cGga-a44WVJ7mBw_RwTB0jmCyarvAqrPzyS-kWeesTONKkmhy-vF8VUi-BTXlwcqCu_mTLGEfERb7mXVjw6E-cOLCUXWho4IUaU03r-zTXB1cFQwoOJVV4dfYpsSuEiQjQD1kgMKjwtjg7r-MT_lOhCHTUJXMP2r-d8NuMHwEBzI9VDKx-mS0)
 
