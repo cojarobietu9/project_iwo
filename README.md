@@ -912,7 +912,37 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-**Sesja**
+**Filtry wydarzeń**
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+
+Zbiór parametrów (lokalizacja, data, poziom trudności, kategoria) wg. których gracz może dopasować listę wydarzeń 
+
+---
+
+**Rejestracja na wydarzenie**
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+
+Proces przypisania gracza do listy uczestników nadchodzącego wydarzenia, skutkujący rezerwacją miejsca.
+
+---
+
+**Dołączenie do wydarzenia**
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+
+Rozpoczęcie udziału w wydarzeniu na żywo.
+
+---
+
+# 4. Wymagania użytkownika
 
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (15.04.2026)
@@ -1255,6 +1285,63 @@ flowchart TD
 - Opis: Invoked by PU1016. Organizator, klikając przycisk *Udostępnij dla graczy* w menu wydarzenia, otwiera graczom możliwość zapisania się na dane wydarzenie. Gracz będzie mógł dokonać zapisu, jeżeli są jeszcze wolne miejsca na wydarzenie.
 
 ---
+
+### 4.1.4 Rejestracja i zapis przed wydarzeniem
+```mermaid
+flowchart LR
+  
+G((#128100; \n Gracz))
+
+SRG([Wyświetlenie listy zarejestrowanych wydarzeń])
+JG([Dołączenie do wydarzenia])
+SIL([Wyświetlenie listy zaproszeń])
+AI([Akceptacja zaproszenia])
+SEL([Wyświetlenie listy wydarzeń])
+
+G --> SRG
+G --> SIL
+G --> SEL
+
+SRG -..->|&lt;&lt;invoke&gt;&gt;| JG
+SIL -..->|&lt;&lt;invoke&gt;&gt;| AI
+
+
+```
+
+**PU301: Wyświetlenie listy wydarzeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę wydarzeń. Gracz określa filtry wydarzeń. System wyświetla wydarzenia spełniające dane kryteria.
+
+**PU302: Wyświetlenie listy zaproszeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Istotne 
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę otrzymanych zaproszeń gracza na wydarzenie, które nie zostały jeszcze rozpatrzone.
+
+**PU303: Akceptacja zaproszenia**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Istotne 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera zaproszenie do akceptacji. System sprawdza dostępność miejsc. W przypadku wolnych miejsc, system dodaje gracza do listy zarejestrowanych i usuwa zaproszenie z listy. W przeciwnym razie, system informuje o braku miejsc.
+
+**PU304: Wyświetlenie listy zarejestrowanych wydarzeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera wgląd w swoje rejestracje. System wyświetla wydarzenia, na które gracz jest zarejestrowany.
+
+**PU305: Dołączenie do wydarzenia**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera zarejestrowane wydarzenie i deklaruje chęć dołączenia. System sprawdza status wydarzenia i rejestruje obecność gracza.
 
 ## 4.2 Wymagania jakościowe i ograniczenia
 
