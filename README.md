@@ -61,8 +61,7 @@ Obecnie wiele zadań organizacyjnych wykonywanych jest ręcznie lub przy użyciu
 
 Problem można rozwiązać budując zintegrowany system wspierający organizację wydarzeń LARP, który umożliwia tworzenie wydarzeń, zarządzanie uczestnikami, obsługę scenariuszy gry oraz interakcję graczy z elementami świata gry poprzez aplikację mobilną.
 
-Dzięki temu organizatorzy będą mogli sprawniej zarządzać wydarzeniami, gracze łatwiej znajdą interesujące rozgrywki, a cały proces organizacji i prowadzenia wydarzeń stanie się bardziej uporządkowany i efektywny.
----
+## Dzięki temu organizatorzy będą mogli sprawniej zarządzać wydarzeniami, gracze łatwiej znajdą interesujące rozgrywki, a cały proces organizacji i prowadzenia wydarzeń stanie się bardziej uporządkowany i efektywny.
 
 ## 3.2 Interesariusze
 
@@ -78,7 +77,6 @@ Dzięki temu organizatorzy będą mogli sprawniej zarządzać wydarzeniami, grac
 
 Gracz jest użytkownikiem systemu biorącym udział w wydarzeniach LARP. Jego głównym celem jest znalezienie interesujących wydarzeń, zapisanie się na nie oraz uczestnictwo w rozgrywce. Gracz korzysta z systemu do zarządzania swoim profilem, wybierania postaci, komunikacji z innymi uczestnikami oraz śledzenia swoich osiągnięć i historii wydarzeń.
 
-
 **Administrator systemu**
 
 - Typ: «interesariusz»
@@ -88,7 +86,6 @@ Gracz jest użytkownikiem systemu biorącym udział w wydarzeniach LARP. Jego g�
 - Wydanie: 1.0
 
 Administrator systemu odpowiada za utrzymanie poprawnego działania platformy. Jego zadaniem jest zarządzanie użytkownikami, moderowanie zgłoszeń problemów, kontrolowanie bezpieczeństwa systemu oraz weryfikowanie wydarzeń tworzonych przez użytkowników. Administrator posiada dostęp do narzędzi umożliwiających monitorowanie działania systemu.
-
 
 **Organizator wydarzeń**
 
@@ -107,6 +104,7 @@ Organizator wydarzeń odpowiada za przygotowanie i przeprowadzenie wydarzeń LAR
 ### 3.3.1 Zarządzanie Użytkownikami
 
 #### Wysoki Priorytet
+
 F01: System powinien umożliwiać rejestrację nowego konta.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (02.03.2026) | Odpowiedzialny: Karolina Wiśniewska|
 | :--- | :--- | :--- |
@@ -151,25 +149,13 @@ F07: System powinien umożliwiać tworzenie rankingu graczy.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
-| System powinien tworzyć ranking graczy na podstawie ich osiągnięć, zdobytych punktów oraz aktywności w wydarzeniach. Ranking powinien być widoczny dla użytkowników w systemie. 
+| System powinien tworzyć ranking graczy na podstawie ich osiągnięć, zdobytych punktów oraz aktywności w wydarzeniach. Ranking powinien być widoczny dla użytkowników w systemie.
 
 F08: System powinien umożliwiać naliczanie doświadczenia graczy.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Po zakończeniu wydarzenia system powinien przyznawać graczom punkty doświadczenia na podstawie ich aktywności oraz wyników w trakcie rozgrywki. Punkty doświadczenia powinny wpływać na poziom postaci oraz statystyki użytkownika. |
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### 3.3.2 Zarządzanie wydarzeniami
 
@@ -210,7 +196,6 @@ F14: System powinien umożliwiać automatyczne odwołanie wydarzenia.
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | System powinien automatycznie anulować wydarzenie w przypadku niespełnienia określonych warunków, takich jak brak minimalnej liczby uczestników lub problemy techniczne uniemożliwiające przeprowadzenie wydarzenia. |
-
 
 #### Średni Priorytet
 
@@ -257,17 +242,6 @@ F20: System powinien udostępniać podsumowanie wydarzenia po jego zakończeniu.
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | Po zakończeniu wydarzenia system powinien udostępnić uczestnikom podsumowanie rozgrywki zawierające informacje o zdobytych punktach, osiągnięciach, ukończonych zadaniach oraz statystyki przebiegu gry. |
-
-
-
-
-
-
-
-
-
-
-
 
 ### 3.3.3 System gry (Gameplay)
 
@@ -329,18 +303,6 @@ F29: System powinien udostępniać interaktywną mapę terenu gry.
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | Zaimplementowanie w aplikacji widoku mapy przedstawiającej plan układu pomieszczeń (komnat) wydarzenia. Mapa powinna dynamicznie dostosowywać się do posiadanych przez postać uprawnień, odkrywając przed graczem strefy, do których uzyskał dostęp (np. po zdobyciu odpowiedniego klucza lub przedmiotu questowego), oraz ukrywając obszary, które są dla niego niedostępne lub tajne. |
 
-
-
-
-
-
-
-
-
-
-
-
-
 ### 3.3.4 Mechaniki gry
 
 #### Wysoki Priorytet
@@ -359,7 +321,7 @@ F31: System powinien umożliwiać definiowanie logicznych powiązań między czu
 
 #### Średni Priorytet
 
-F32: System powinien umożliwiać odblokowywanie materiałów multimedialnych przez użytkowników. 
+F32: System powinien umożliwiać odblokowywanie materiałów multimedialnych przez użytkowników.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (03.03.2026) | Odpowiedzialny: Cezary Rybiński |
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
@@ -376,7 +338,7 @@ F33: System powinien umożliwiać wymianę wirtualnych zasobów pomiędzy gracza
 #### Wysoki Priorytet
 
 F34: System powinien umożliwiać obsługę płatności za wydarzenia poprzez integrację z systemem zewnętrznym.
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: Michał Marciniak |
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0|
 | Zapewnienie uczestnikom możliwości opłacenia udziału w wydarzeniu bezpośrednio po zatwierdzeniu ich zgłoszenia. System powinien integrować się z zewnętrznymi systemami płatności i automatycznie aktualizować status zapisu uczestnika po otrzymaniu potwierdzenia transakcji. ||
@@ -401,25 +363,11 @@ F37: System powinien umożliwiać zwrot zaliczki za wydarzenie.
 | Priorytet: Istotne || Wydanie: 1.0 |
 | W przypadku odwołania wydarzenia lub rezygnacji użytkownika w dopuszczalnym terminie system powinien umożliwiać automatyczny zwrot zaliczki poprzez zintegrowany system płatności. |
 
-
 F38: System powinien umożliwiać zarządzanie rabatami dla użytkowników.
 | Typ: _funkcjonalne_ | Wersja: 1.0 (08.03.2026) | Odpowiedzialny: Maksym Andrushchenko |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Administrator systemu powinien mieć możliwość przyznawania rabatów dla wybranych użytkowników lub grup użytkowników, na przykład dla stałych klientów lub uczestników wielu wydarzeń. Rabaty powinny być automatycznie uwzględniane podczas płatności za wydarzenie. |
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #### 3.3.5 System techniczny
 
@@ -458,15 +406,6 @@ F43: System powinien udostępniać publiczne API.
 | :--- | :--- | :--- |
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | System powinien udostępniać publiczne API umożliwiające integrację z zewnętrznymi aplikacjami oraz systemami wspierającymi organizację wydarzeń LARP. |
-
-
-
-
-
-
-
-
-
 
 ### 3.3.6 System społecznościowy
 
@@ -520,16 +459,6 @@ F50: System powinien umożliwiać przyznawanie odznak i osiągnięć graczom.
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | System powinien przyznawać graczom odznaki i osiągnięcia za wykonanie określonych działań takich jak ukończenie wielu wydarzeń, zdobycie wysokiej liczby punktów lub wykonanie specjalnych zadań w grze. |
 
-
-
-
-
-
-
-
-
-
-
 ### 3.3.7 Zarządzanie postaciami
 
 #### Wysoki priorytet
@@ -541,7 +470,7 @@ F51: System powinien umożliwiać tworzenie profili postaci.
 | Zaimplementowanie funkcjonalności umożliwiającej użytkownikowi tworzenie nowych profili postaci do gry LARP. Użytkownik powinien móc zdefiniować podstawowe atrybuty postaci (imię, klasa/rasa np. elf, krasnolud, rycerz, poziom doświadczenia), dodać opis biografii oraz wybrać wygląd postaci. Każda utworzona postać jest automatycznie powiązana z kontem użytkownika, który ją stworzył. |
 
 F52: System powinien pozwalać użytkownikom na wybór postaci przed rozpoczęciem gry.
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: Michał Marciniak |
 | :--- | :--- | :--- |
 | Priorytet: Kluczowe || Wydanie: 1.0|
 | Uczestnicy powinni mieć możliwość wyboru roli z listy przypisanej do gry. System powinien prezentować listę dostępnych postaci wraz z ich opisami i umożliwiać zgłoszenie chęci odgrywania konkretnej postaci przez użytkownika. ||
@@ -555,15 +484,10 @@ F53: System powinien umożliwiać edycję i przeglądanie szczegółów postaci.
 |Zaimplementowanie funkcjonalności pozwalającej użytkownikowi na edycję wszystkich danych istniejącej postaci (imię, biografia, atrybuty, ekwipunek) oraz przeglądanie jej szczegółowych statystyk. System powinien wyświetlać informacje o poziomie doświadczenia, posiadanych przedmiotach, osiągnięciach z poprzednich sesji oraz historię rozgrywek daną postacią. Edycja postaci powinna być możliwa tylko gdy postać nie bierze aktualnie udziału w trwającej sesji LARP. |
 
 F54: System powinien wspierać mechanizm priorytetyzacji wyboru ról.
-| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny:  Michał Marciniak |
+| Typ: Funkcjonalne | Wersja: 1.0 (2.03.2026) | Odpowiedzialny: Michał Marciniak |
 | :--- | :--- | :--- |
 | Priorytet: Istotne || Wydanie: 1.0|
 | Uczestnicy, którzy nie grali danej roli powinni mieć priorytet w zapisach, aby umożliwić im zdobycie nowych doświadczeń. Jednocześnie uczestnicy, którzy ostatnio odgrywali dane role powinni mieć mniejszy priorytet. ||
-
-
-
-
-
 
 ### 3.3.8 System komunikacji
 
@@ -583,12 +507,8 @@ F56: System powinien umożliwiać komunikację tekstową między graczami.
 | Priorytet: Przydatne || Wydanie: 1.0 |
 | System powinien udostępniać czat tekstowy umożliwiający komunikację pomiędzy graczami. Czat powinien umożliwiać komunikację w ramach wydarzenia, w obrębie frakcji oraz w kanałach globalnych. |
 
-
-
-
-
-
 ### 3.3.9 Projektowanie świata gry
+
 #### Priorytet Średni
 
 F57: System powinien pozwalać na zgłaszanie własnych pomysłów na grę.
@@ -607,17 +527,9 @@ F59: System powinien dać możliwość zamówienia niestandardowych obiektów
 | Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
 | :--- | :--- | :--- |
 | Priorytet i trudność: Przydatne || Wydanie: 1.0 |
-| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika. 
-
-
-
-
-
-
-
+| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika.
 
 ---
-
 
 ## 3.4 Cechy jakościowe
 
@@ -665,7 +577,6 @@ J07: Interfejs aplikacji powinien posiadać tryb 'Dark-Mode'.
 | Priorytet: Istotne || Wydanie: 1.0 |
 | Interfejs aplikacji mobilnej musi być dostosowany do pracy w warunkach niskiego oświetlenia. |
 
-
 ## 3.5 Słownik
 
 **Diagram:** Słownik
@@ -693,6 +604,18 @@ Zdefiniowany zestaw zasad określających interakcje między uczestnikami system
 - Wydanie: 1.0
 
 Konkretna instancja gry uruchomiona w określonym czasie i miejscu. W wydarzeniu uczestniczą gracze wykonujący akcje zgodnie z zasadami gry.
+
+---
+
+**Interakcja**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Akcja zachodząca między graczem a przedmiotem (np. mini-grą) lub innym graczem (np. walka). Interakcja wymaga zeskanowania kodu QR i wiąże się bezpośrednio z nałożeniem na gracza ograniczeń czasowych (cooldown) uniemożliwiających natychmiastowe powtórzenie tej samej akcji wobec tego samego przedmiotu lub gracza.
 
 ---
 
@@ -1426,11 +1349,53 @@ flowchart LR
 - Wydanie: 1.0
 - Opis: System wyświetla ekran z mapą układu pomieszczeń (komnat). Mapa dynamicznie dostosowuje się do uprawnień posiadanych przez postać, prezentując graczowi ogólny zarys terenu i szczegóły dostępnych dla niego lokacji.
 
-**PU1017: Odkrycie nowej strefy na mapie**
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Kacper Koziara
+### 4.1.3 Gracz i jego akcje podczas wydarzenia
+
+**Diagram:** Gracz i jego akcje podczas wydarzenia
+
+**PU301: Skanowanie kodu QR**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Kluczowe
 - Wydanie: 1.0
-- Opis: Invoked by PU1016. Po uzyskaniu odpowiedniego uprawnienia (np. zdobycie fizycznego klucza, przedmiotu questowego lub zeskanowaniu kodu QR strefy), system odblokowuje przed graczem wcześniej niedostępną lub ukrytą część mapy.
+- **Opis:** Gracz skanuje kod QR umieszczony na przedmiocie lub w otoczeniu gry, aby uruchomić mini-grę, albo skanuje kod QR innego gracza, aby zainicjować walkę.
+
+**PU302: Granie w mini-grę**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System uruchamia mini-grę opartą na szablonie. Gracz musi ukończyć ją w wyznaczonym czasie.
+
+**PU303: Walczenie z innym graczem**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System kalkuluje wynik walki na podstawie statystyk obu postaci i wyłania zwycięzcę.
+
+**PU304: Otrzymanie nagrody**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Po wygranej mini-grze lub walce system przyznaje graczowi nagrodę (np. przedmiot, punkty doświadczenia).
+
+**PU305: Poniesienie konsekwencji**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Po przegranej mini-grze lub walce gracz ponosi konsekwencje w postaci spadku HP lub utraty przedmiotu z ekwipunku.
+
+---
+
+## 4.2 Wymagania jakościowe i ograniczenia
 
 **PU1018: Zainicjowanie wymiany zasobów**
 - Wersja: 1.0 (15.04.2026)
