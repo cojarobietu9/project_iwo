@@ -800,7 +800,7 @@ Użytkownik odpowiedzialny za tworzenie i zarządzanie wydarzeniami w systemie.
 - Priorytet i trudność: Przydatne
 - Wydanie: 1.0
 
-Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu, takich jak przeglądanie kalendarza wydarzeń.
+Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu. Osoba tworzy grę w systemie (wypełnia formularz gdzie można zdefiniować małe poprawki), rezerwuje czas dla swoich wydarzeń, przegląd zgłoszeń i komunikację z uczestnikami.
 
 ---
 
@@ -860,7 +860,7 @@ Użytkownik posiadający najwyższe uprawnienia w systemie odpowiedzialny za mod
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym.
+Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym i planowanie wydarzeń.
 
 ---
 
@@ -912,11 +912,96 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
+**Rezerwacja**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Proces przypisania konkretnego terminu w kalendarzu do planowanej gry.
+
+---
+
+**Termin / slot czasowy**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Określony przedział czasu dostępny do zarezerwowania na grę.
+
+---
+
+**Uczestnik**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Osoba zgłaszająca się do udziału w grze.
+
+---
+
+**Akceptacja zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zatwierdzenie udziału uczestnika w grze przez organizatora.
+
+---
+
+**Odrzucenie zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Odmowa udziału uczestnika w grze.
+
+---
+
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
 
 ### 4.1.3 Zarządzanie wydarzeniami
+
+```mermaid
+flowchart LR
+
+organizator["Organizator zewnętrzny"]
+
+subgraph "Zarządzanie zgłoszeniami i rezerwacją gry"
+
+UC1(("Wyświetlenie kalendarza"))
+UC2(("Rezerwacja czasu dla gry"))
+UC3(("Wyświetlenie listy zgłoszeń do gry"))
+UC4(("Akceptacja / odrzucenie zgłoszenia"))
+UC5(("Wysłanie zaproszenia na grę"))
+
+UC1 -. include .-> UC2
+UC3 -. include .-> UC4
+
+end
+
+organizator --> UC1
+organizator --> UC3
+organizator --> UC5
+
+```
 
 #### PU1: Wyświetlenie kalendarza
 
