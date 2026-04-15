@@ -800,7 +800,7 @@ Użytkownik odpowiedzialny za tworzenie i zarządzanie wydarzeniami w systemie.
 - Priorytet i trudność: Przydatne
 - Wydanie: 1.0
 
-Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu, takich jak przeglądanie kalendarza wydarzeń.
+Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu. Osoba tworzy grę w systemie (wypełnia formularz gdzie można zdefiniować małe poprawki), rezerwuje czas dla swoich wydarzeń, przegląd zgłoszeń i komunikację z uczestnikami.
 
 ---
 
@@ -860,7 +860,7 @@ Użytkownik posiadający najwyższe uprawnienia w systemie odpowiedzialny za mod
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym.
+Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym i planowanie wydarzeń.
 
 ---
 
@@ -912,19 +912,68 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-**Dane opisu ogólnego gry**
 
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
+**Rezerwacja**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Konkretne parametry uzupełniane w formularzu *opisu ogólnego gry*. Obejmują one: tytuł gry, zarys tematyki i scenerii (przedstawienie klimatu i tematu świata), minimalną i maksymalną liczbę graczy oraz minimalny i maksymalny czas trwania rozgrywki.
+Proces przypisania konkretnego terminu w kalendarzu do planowanej gry.
 
 ---
 
-**Definicja akcji**
+**Termin / slot czasowy**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Określony przedział czasu dostępny do zarezerwowania na grę.
+
+---
+
+**Uczestnik**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Osoba zgłaszająca się do udziału w grze.
+
+---
+
+**Akceptacja zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zatwierdzenie udziału uczestnika w grze przez organizatora.
+
+---
+
+**Odrzucenie zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Odmowa udziału uczestnika w grze.
+
+---
+
+**Sesja**
 
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (08.04.2026)
@@ -1098,12 +1147,92 @@ Bezpieczny transfer zasobów wirtualnych między dwoma graczami, autoryzowany za
 
 ---
 
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
 
+### 4.1.1 Zarządzanie wydarzeniami
+
+```mermaid
+flowchart LR
+
+organizator["Organizator zewnętrzny"]
+
+subgraph "Zarządzanie zgłoszeniami i rezerwacją gry"
+
+UC1(("Wyświetlenie kalendarza"))
+UC2(("Rezerwacja czasu dla gry"))
+UC3(("Wyświetlenie listy zgłoszeń do gry"))
+UC4(("Akceptacja / odrzucenie zgłoszenia"))
+UC5(("Wysłanie zaproszenia na grę"))
+
+UC1 -. include .-> UC2
+UC3 -. include .-> UC4
+
+end
+
+organizator --> UC1
+organizator --> UC3
+organizator --> UC5
+
+```
+
+#### PU1: Wyświetlenie kalendarza
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok 
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator przegląda kalendarz dostępnych terminów gry. System wyświetla wolne i zajęte sloty czasowe na podstawie typu wybranej gry.
 
 ---
+
+#### PU2: Rezerwacja czasu dla gry
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator wybiera dostępny termin w kalendarzu i dokonuje rezerwacji. System wyświetla prośbę o potwierdzenie (z opcją cofnięcia), następnie wymaga dokonania płatności. Potwierdzenie wysyła się do jego skrzynki wiadomości.
+
+---
+
+#### PU3: Wyświetlenie listy zgłoszeń do gry
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator przegląda listę zgłoszeń uczestników w swojej skrzynce wiadomości.
+
+---
+
+#### PU4: Akceptacja/odrzucenie zgłoszenia
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator wybiera zgłoszenie z listy i widzi profil gracza. Po naciśnięciu "Akceptuj" lub "Odrzuć" gracz jest przypisany do gry lub zgłoszenie zostaje odrzucone. Wiadomość znika ze skrzynki organizatora.
+
+---
+
+#### PU5: Wysłanie zaproszenia na grę
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator przechodzi do zakładki "Przyjaciele" i wybiera użytkownika. Po naciśnięciu "Zaproś" system wyświetla listę aktualnych gier. Po wyborze gry zaproszenie zostaje wysłane użytkownikowi.
+
+---
+
 ## 4.1.10 Administracja kont
 DIAGRAM:
 ```mermaid
@@ -1497,43 +1626,6 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 - Wydanie: 1.0
 - **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
 
----
-
-## 4.2 Wymagania jakościowe i ograniczenia
-
-**Diagram:** Wymagania jakościowe i ograniczenia
-
-**J022-1: Maksymalna liczba kliknięć w celu otwarcia formularza awarii**
-
-- Typ: «Uzytecznosc»
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Przydatne 1
-- Wydanie: 1.0
-
-**Sposób pomiaru:**  
-Przeprowadzenie serii nawigacji do ekranu formularza awarii z różnych miejsc w interfejsie użytkownika, zgodnie ze scenariuszem TS112
-
-**Oczekiwane wartości:**  
-liczba kliknięć dla 90% sytuacji wynosi mniej niż 3; dla wszystkich sytuacji wynosi mniej niż 5
-
----
-
-**J022-2: Rejestracja awarii powinna trwać średnio nie dłużej niż minutę**
-
-- Typ: «Uzytecznosc»
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Istotne 1
-- Wydanie: 1.0
-
-**Sposób pomiaru:**  
-Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
-
-**Oczekiwane wartości:**  
-średni czas wynosi < 1 min, maksymalny czas wynosi (…)
-
----
 
 **J011-1: System powinien zapewniać natychmiastową responsywność Panelu Projektanta**
 | Typ: _efektywność wydajnościowa - czas_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
