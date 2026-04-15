@@ -912,25 +912,15 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-**Warunek rozpoczęcia wydarzenia**
+**Recenzja**
 
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Julian Stefan
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Rzecz która musi się wydarzyć aby mozna było uruchomić wydarzenie
-
----
-
-**Warunek zakończenia wydarzenia**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Julian Stefan
-- Wydanie: 1.0
-
-Rzecz która musi się wydarzyć aby mozna było zakończyć wydarzenie
+Opis uwag i spostrzeżeń dotyczących recenzowanej gry. Jest uzasadnieniem decyzji o dopuszczeniu lub niedopuszczeniu gry do realizacji. Wystawia ją recenzent.
 
 ---
 
@@ -944,55 +934,37 @@ Rzecz która musi się wydarzyć aby mozna było zakończyć wydarzenie
 
 Aktywny okres korzystania z systemu przez zalogowanego użytkownika. Sesja jest identyfikowana przez token sesji, ma ograniczony czas ważności (wygasa po zdefiniowanym czasie nieaktywności) i może zostać zakończona przez wylogowanie lub unieważniona przez system (np. po zmianie hasła).
 
----
+**Diagram:** Funkcje recenzenta
 
-**Link aktywacyjny**
+```mermaid
+flowchart TB
+ A["Recenzent gry"] --> n1(["Wyświetlenie listy gier przez recenzenta"]) -->|generalization| n2(["Wyświetlenie listy gier"])
+ A -->|&lt;&lt;invoke&gt;&gt;| n3(["Recenzja gry"])
+```
 
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialna: Polina Nesterova
+**PU001: Wyświetlenie listy gier**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry].
 
-Jednorazowy odnośnik wysyłany na adres e-mail podany przy rejestracji, służący do potwierdzenia tożsamości użytkownika i aktywacji konta. Po kliknięciu w link konto zmienia status z „nieaktywne" na „aktywne".
+**PU002: Wyświetlenie listy gier przez recenzenta**
 
----
-
-**Link resetu hasła**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialna: Polina Nesterova
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry] dodając do każdego rekordu opcję recenzji [gry].
 
-Jednorazowy odnośnik wysyłany na adres e-mail użytkownika w odpowiedzi na żądanie zmiany zapomnianego hasła. Link jest ważny przez określony czas (1 godzina), a jego użycie powoduje unieważnienie go przez system.
+**PU003: Recenzja gry**
 
----
-
-**Historia wydarzeń**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialna: Polina Nesterova
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
-
-Chronologiczny zbiór wydarzeń LARP, w których użytkownik brał udział. Każda pozycja zawiera nazwę wydarzenia, datę, lokalizację, odgrywaną postać, czas trwania oraz status wydarzenia.
-
----
-
-**Statystyki uczestnictwa**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialna: Polina Nesterova
-- Priorytet i trudność: Przydatne
-- Wydanie: 1.0
-
-Zagregowane dane liczbowe dotyczące aktywności użytkownika w systemie wyliczane na podstawie historii wydarzeń: liczba ukończonych sesji, sumaryczny czas uczestnictwa, najczęściej grane typy postaci, ulubione scenariusze i ranking organizatorów.
-
----
+- **Opis:** System wyświetla okno do zapisu tekstu. [Recenzent] zapisuje [recenzję] i zatwierdza ją.
 
 **Blokada konta**
 
