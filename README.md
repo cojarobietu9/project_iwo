@@ -527,7 +527,8 @@ F59: System powinien dać możliwość zamówienia niestandardowych obiektów
 | Typ: _funkcjonalne_ | Wersja: 1.0 (04.03.2026) | Odpowiedzialny: Julian Stefan |
 | :--- | :--- | :--- |
 | Priorytet i trudność: Przydatne || Wydanie: 1.0 |
-| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika.
+| Użytkownik powinien mieć możliwość zamówienia niestandardowych obiektów na potrzeby tworzonej przez siebie gry. Ocena wykonalności oraz wycena takiego obiektu musi zostać dokonana przez pracownika. 
+
 
 ---
 
@@ -835,148 +836,14 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-
-**Rezerwacja**
-
+**Wiadomość**
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Zespół projektowy
-- Priorytet i trudność: Istotne
+- Odpowiedzialny: Łukasz Czajka
 - Wydanie: 1.0
 
-Proces przypisania konkretnego terminu w kalendarzu do planowanej gry.
-
----
-
-**Termin / slot czasowy**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Zespół projektowy
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Określony przedział czasu dostępny do zarezerwowania na grę.
-
----
-
-**Uczestnik**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Zespół projektowy
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Osoba zgłaszająca się do udziału w grze.
-
----
-
-**Akceptacja zgłoszenia**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Zespół projektowy
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Zatwierdzenie udziału uczestnika w grze przez organizatora.
-
----
-
-**Odrzucenie zgłoszenia**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Zespół projektowy
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Odmowa udziału uczestnika w grze.
-
----
-
-**Sesja**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Kluczowe
-- Wydanie: 1.0
-
-Formularz systemowy służący do kreowania nowej akcji, wymagający określenia jej *typu akcji* oraz *skutków akcji*.
-
----
-
-**Komunikat do recenzenta**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Treść tekstowa wysyłana przez twórcę gier do recenzenta w celu wyjaśnienia mechanik gry lub odpowiedzi na uwagi w procesie weryfikacji.
-
----
-
-**Okno komunikacji twórcy gry z recenzentem**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Przydatne
-- Wydanie: 1.0
-
-Interfejs wymiany informacji zawierający obszar wiadomości (historia komunikacji) oraz obszar wysyłania, umożliwiający przekazanie komunikatu do recenzenta.
-
----
-
-**Opis ogólny gry**
-
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Systemowy formularz stanowiący abstrakt projektu gry, w którym definiuje się dane opisu ogólnego gry.
-
----
-
-**Pozostałe elementy gry**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Zbiór komponentów rozszerzających definicję gry poza opis podstawowy, do których należą: akcje, mapa, postacie oraz przedmioty.
-
----
-
-**Skutek akcji**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Kluczowe
-- Wydanie: 1.0
-
-Efekt wynikający z wykonania akcji. Może być fabularny (zdarzenie w świecie gry wpływające na narrację) lub systemowy (techniczna zmiana stanu gry, np. zmiana parametrów postaci).
-
----
-
-**Typ akcji**
-
-- Typ: pojęcie domenowe
-- Wersja: 1.0 (08.04.2026)
-- Odpowiedzialny: Igor Ochocki
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-
-Kategoria określająca mechanikę działania wybraną przez twórcę gier w procesie definicji akcji. Do typów akcji należą: akcja czasowa, akcja czujnika lub akcja przedmiotu.
+Wiadomość wysłana przez jednego użytkownika do drugiego. Wiadomość może zawierać tekst, obrazy lub inne pliki.
+Tyko użytkownik, do którego dana wiadomość została wysłana jest w stanie ją zobaczyć.
 
 ---
 
@@ -1393,6 +1260,50 @@ flowchart LR
 - Wydanie: 1.0
 - **Opis:** Po przegranej mini-grze lub walce gracz ponosi konsekwencje w postaci spadku HP lub utraty przedmiotu z ekwipunku.
 
+### 4.1.3 Tworzenie gier
+```mermaid
+flowchart LR
+
+subgraph Aktorzy
+rec((Recenzent))
+org((Organizator))
+tworca((Twórca))
+end
+
+subgraph Przypadki użycia
+pu_lista_gier_tw([Wyświetlenie listy swoich gier])
+pu_komunikat([Przesłanie komunikatu do twórcy])
+pu_lista_gier_org([Wyświetlenie listy gier przez organizatora])
+pu_lista_gier([Wyświetlenie listy gier])
+pu_recenzja_gry([Recenzja gry])
+
+tworca --> pu_lista_gier_tw
+org --> pu_lista_gier_org
+rec --> pu_recenzja_gry
+
+pu_lista_gier_org ~~~ pu_lista_gier
+pu_lista_gier_tw ~~~ pu_lista_gier
+pu_lista_gier_org --> pu_lista_gier 
+pu_lista_gier_tw --> pu_lista_gier
+pu_recenzja_gry -."&lt;&lt;invoke&gt;&gt;".-> pu_komunikat
+
+end
+```
+
+**PU109: Wyświetlenie listy gier przez twórcę** 
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Łukasz Czajka
+- Opis: Twórcy gier mają możliwość wyświetlania listy gier, których są twórcami. Wybranie pozycji z listy pozwala na czynności takie jak edycja.
+
+**PU110: Wyświetlenie listy gier przez organizatora** 
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Łukasz Czajka
+- Opis: Organizatorzy mają możliwość wyświetlania gier, które mogą zostać zorganizowane.
+
+**PU111: Przesłanie komunikatu do twórcy** 
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Łukasz Czajka
+- Opis: Recenzenci mają możliwość przesłania uwag dotyczących recenzowanej gry.
 ---
 
 ## 4.2 Wymagania jakościowe i ograniczenia
@@ -1615,6 +1526,8 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 **Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania [opisu ogólnego gry]. Sprawdzenie stanu danych po ponownym zalogowaniu.
 
 **Oczekiwane wartości:** Maksymalna utrata danych nie może przekraczać ostatnich 30 sekund pracy.
+
+
 
 ---
 
