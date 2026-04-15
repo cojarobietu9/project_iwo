@@ -1023,7 +1023,7 @@ organizator --> UC5
 
 ---
 
-## 4.1.10 Administracja kont
+## 4.1.2 Administracja kont
 DIAGRAM:
 ```mermaid
 flowchart LR
@@ -1091,7 +1091,7 @@ flowchart LR
 
 
 ---
-## 4.1.11 Autentykacja i historia wydarzeń
+## 4.1.3 Autentykacja i historia wydarzeń
 DIAGRAM:
 ```mermaid
 flowchart LR
@@ -1192,7 +1192,7 @@ flowchart LR
 - **Opis:** Po osiągnięciu warunków zakończenia wydarzenia, mistrz wydarzenia konczy wydarzenie.
 
 ---
-## 4.1.12 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
+## 4.1.4 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
 DIAGRAM:
 ```mermaid
 flowchart LR
@@ -1260,7 +1260,7 @@ flowchart LR
 - Wydanie: 1.0
 - **Opis:** Po przegranej mini-grze lub walce gracz ponosi konsekwencje w postaci spadku HP lub utraty przedmiotu z ekwipunku.
 
-### 4.1.3 Tworzenie gier
+### 4.1.5 Tworzenie gier
 ```mermaid
 flowchart LR
 
@@ -1306,8 +1306,6 @@ end
 - Opis: Recenzenci mają możliwość przesłania uwag dotyczących recenzowanej gry.
 ---
 
-## 4.2 Wymagania jakościowe i ograniczenia
-
 **PU1018: Zainicjowanie wymiany zasobów**
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Kacper Koziara
@@ -1321,7 +1319,7 @@ end
 - Opis: Invoked by PU1018. Drugi gracz przy użyciu swojej aplikacji skanuje kod QR z ekranu inicjatora. System wyświetla podsumowanie, a po obustronnej akceptacji aktualizuje stany ekwipunków obu postaci i zapisuje transakcję w logach.
 
 ---
-## 4.1.12 Zarządzanie wydarzeniami przez organizatora
+## 4.1.6 Zarządzanie wydarzeniami przez organizatora
 DIAGRAM:
 ```mermaid
 flowchart TD
@@ -1355,7 +1353,7 @@ flowchart TD
 
 ---
 
-### 4.1.4 Rejestracja i zapis przed wydarzeniem
+### 4.1.7 Rejestracja i zapis przed wydarzeniem
 ```mermaid
 flowchart LR
   
@@ -1412,7 +1410,7 @@ SIL -..->|&lt;&lt;invoke&gt;&gt;| AI
 - Wydanie: 1.0
 - **Opis:** Gracz wybiera zarejestrowane wydarzenie i deklaruje chęć dołączenia. System sprawdza status wydarzenia i rejestruje obecność gracza.
 
-### 4.1.12 Zarządzanie organizacją wydarzeń
+### 4.1.8 Zarządzanie organizacją wydarzeń
 
 DIAGRAM:
 ```mermaid
@@ -1435,7 +1433,7 @@ uco --generalization--> uc
 - Opis: System wyświetla kalendarz wydarzeń organizatora. Organizator widzi
   nadchodzące wydarzenia oraz wolne terminy.
 
-### 4.1.13 Zapisy na wydarzenia
+### 4.1.9 Zapisy na wydarzenia
 
 DIAGRAM:
 ```mermaid
@@ -1458,7 +1456,7 @@ ucg --generalization--> uc
 - Opis: System wyświetla kalendarz wydarzeń gracza. Gracz widzi dostępne
   wydarzenia, wydarzenia w których bierze udział.
 
-### 4.1.3 Projektowanie świata gry
+### 4.1.10 Projektowanie świata gry
 
 DIAGRAM:
 ```mermaid
@@ -1503,57 +1501,6 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 - **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
 
 
-**J011-1: System powinien zapewniać natychmiastową responsywność Panelu Projektanta**
-| Typ: _efektywność wydajnościowa - czas_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
-| :--- | :--- | :--- |
-| Priorytet: Istotne || Wydanie: 1.0 |
-
-**Opis:** Interfejs edycji akcji i parametrów gry musi reagować na działania użytkownika bez zauważalnych opóźnień, zapewniając płynność pracy twórczej (dotyczy PU201, PU202).
-
-**Sposób pomiaru:** Pomiar czasu odpowiedzi interfejsu przy zapisie zmian w akcji przy wykorzystaniu wyspecjalizowanego oprogramowania.
-
-**Oczekiwane wartości:** 95% interakcji poniżej 200 ms.
-
----
-
-**J011-2: System powinien gwarantować bezpieczeństwo danych podczas edycji (Autozapis)**
-| Typ: _niezawodność - odtwarzalność_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
-| :--- | :--- | :--- |
-| Priorytet: Kluczowe || Wydanie: 1.0 |
-
-**Opis:** System musi chronić postęp prac Twórcy Gry przed utratą danych w wyniku nagłego zamknięcia przeglądarki lub awarii łącza.
-
-**Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania [opisu ogólnego gry]. Sprawdzenie stanu danych po ponownym zalogowaniu.
-
-**Oczekiwane wartości:** Maksymalna utrata danych nie może przekraczać ostatnich 30 sekund pracy.
-
-
-
----
-
-## 4.3 Słownik
-
-### 4.3.1 Aktorzy
-
-- Kierownik
-- Klient
-- Magazynier
-- SI Producenta
-- SI Płatności
-- Sprzedawca
-
----
-
-### 4.3.2 Słownik dziedziny
-
-- Cennik
-- Dodatek
-- Dodatkowa pozycja cennika
-- Model samochodu
-- Podstawowa pozycja cennika
-- Pozycja cennika
-- Samochód
-- Zamówienie na samochód
 
 ---
 
