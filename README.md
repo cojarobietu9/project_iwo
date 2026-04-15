@@ -984,6 +984,42 @@ Tymczasowe wstrzymanie dostępu do konta użytkownika w reakcji na zdarzenie bez
 
 ---
 
+**Strefa / Komnata**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Wydzielony fizycznie i wirtualnie obszar terenu gry, który może posiadać własne ograniczenia dostępu. Strefy mogą być ukryte na interaktywnej mapie gracza, dopóki jego postać nie zdobędzie odpowiednich uprawnień.
+
+---
+
+**Ekwipunek**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Zbiór wirtualnych zasobów (przedmiotów questowych, kluczy, wirtualnej waluty) przypisanych do danej postaci w konkretnym wydarzeniu. Stan ekwipunku może ulegać zmianie poprzez akcje w grze oraz system handlu.
+
+---
+
+**Transakcja wymiany**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Bezpieczny transfer zasobów wirtualnych między dwoma graczami, autoryzowany za pomocą aplikacji mobilnej (np. poprzez skanowanie kodu QR). Wymaga obecności obu stron transakcji i zatwierdzenia jej w systemie.
+
+---
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
@@ -1142,6 +1178,49 @@ flowchart LR
 - Wydanie: 1.0
 - Opis: Invoked by PU1012. Użytkownik wybiera konkretne wydarzenie z listy. System wyświetla szczegółowy widok wydarzenia — pełny opis postaci, przebieg sesji, współuczestników oraz dodatkowe materiały powiązane z wydarzeniem.
 
+---
+## 4.1.12 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
+DIAGRAM:
+```mermaid
+flowchart LR
+    Gracz([Gracz])
+
+    u1["Wyświetl interaktywną mapę terenu"]
+    u2["Odkryj nową strefę na mapie"]
+    u3["Zainicjuj wymianę zasobów"]
+    u4["Potwierdź transakcję wymiany (QR)"]
+
+    Gracz --> u1
+    Gracz --> u3
+
+    u1 -.->|invoke| u2
+    u3 -.->|invoke| u4
+```
+
+**PU1016: Wyświetlenie interaktywnej mapy terenu**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: System wyświetla ekran z mapą układu pomieszczeń (komnat). Mapa dynamicznie dostosowuje się do uprawnień posiadanych przez postać, prezentując graczowi ogólny zarys terenu i szczegóły dostępnych dla niego lokacji.
+
+**PU1017: Odkrycie nowej strefy na mapie**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Po uzyskaniu odpowiedniego uprawnienia (np. zdobycie fizycznego klucza, przedmiotu questowego lub zeskanowaniu kodu QR strefy), system odblokowuje przed graczem wcześniej niedostępną lub ukrytą część mapy.
+
+**PU1018: Zainicjowanie wymiany zasobów**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: Gracz wybiera w module handlu przedmioty lub wirtualną walutę ze swojego ekwipunku, które chce przekazać innemu graczowi. System generuje na ekranie jego urządzenia unikalny, jednorazowy kod QR reprezentujący tę ofertę.
+
+**PU1019: Potwierdzenie transakcji wymiany (QR)**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: Invoked by PU1018. Drugi gracz przy użyciu swojej aplikacji skanuje kod QR z ekranu inicjatora. System wyświetla podsumowanie, a po obustronnej akceptacji aktualizuje stany ekwipunków obu postaci i zapisuje transakcję w logach.
+
 
 ---
 
@@ -1297,4 +1376,43 @@ Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
 
 3a. Użytkownik wybiera opcję „Nie pamiętam hasła" zamiast potwierdzania logowania.
 1. System przekierowuje do przypadku użycia PU1010 (Reset hasła).
+
+---
+
+## 5.5 PU1018/PU1019: Dokonanie wymiany zasobów między graczami
+
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Aktor główny: Gracz A (Inicjator)
+- Aktor pomocniczy: Gracz B (Odbiorca)
+- Warunek początkowy: Obaj gracze są zalogowani do aplikacji, uczestniczą w tym samym aktywnym wydarzeniu LARP, a Gracz A posiada w ekwipunku zasoby, które chce przekazać.
+- Warunek końcowy (sukces): Wybrane zasoby zostały bezpiecznie przeniesione z ekwipunku Gracza A do ekwipunku Gracza B, a system zapisał log z transakcji.
+
+**Scenariusz główny**
+
+1. Gracz A wybiera w swojej aplikacji moduł „Handel / Wymiana”.
+2. System wyświetla listę dostępnych zasobów w ekwipunku Gracza A.
+3. Gracz A zaznacza przedmioty i/lub wpisuje kwotę wirtualnej waluty, którą chce przekazać, a następnie klika „Generuj ofertę”.
+4. System tymczasowo blokuje wybrane zasoby u Gracza A i wyświetla na jego ekranie jednorazowy kod QR reprezentujący ofertę.
+5. Gracz B otwiera w swojej aplikacji skaner kodów i skanuje kod QR z ekranu Gracza A.
+6. System wyświetla na ekranie Gracza B okno podsumowania („Gracz A chce przekazać Ci: [lista]”) i prosi o akceptację.
+7. Gracz B wybiera przycisk „Zatwierdź transakcję”.
+8. System weryfikuje poprawność danych i dokonuje transferu, aktualizując stany ekwipunków obu postaci w bazie danych.
+9. System zapisuje szczegóły operacji (data, strony transakcji, zasoby) w logach wydarzenia.
+10. System wyświetla obu graczom komunikat o pomyślnym zakończeniu wymiany.
+
+**Scenariusz alternatywny A: Odrzucenie transakcji przez Odbiorcę**
+
+7a. Gracz B wybiera przycisk „Odrzuć”.
+1. System przerywa operację i zdejmuje blokadę z zasobów Gracza A.
+2. System wyświetla Graczowi A komunikat „Transakcja została odrzucona przez drugą stronę”.
+3. Wygenerowany kod QR zostaje trwale unieważniony.
+
+**Scenariusz alternatywny B: Przekroczenie limitu czasu (Timeout)**
+
+5a. Gracz B nie zdąży zeskanować kodu lub zatwierdzić operacji w określonym czasie (np. 3 minuty).
+1. System automatycznie anuluje ofertę i zdejmuje blokadę z zasobów Gracza A.
+2. System wyświetla Graczowi A komunikat „Czas na akceptację transakcji minął”.
+3. Kod QR zostaje unieważniony, proces wymiany należy zainicjować od nowa.
 
