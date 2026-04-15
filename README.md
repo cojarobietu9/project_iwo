@@ -901,7 +901,7 @@ Tymczasowe wstrzymanie dostępu do konta użytkownika w reakcji na zdarzenie bez
 
 ---
 
-**Strefa / Komnata**
+**Strefa (Komnata)**
 
 - Typ: pojęcie domenowe
 - Wersja: 1.0 (15.04.2026)
@@ -1192,30 +1192,6 @@ flowchart LR
 - **Opis:** Po osiągnięciu warunków zakończenia wydarzenia, mistrz wydarzenia konczy wydarzenie.
 
 ---
-## 4.1.4 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
-DIAGRAM:
-```mermaid
-flowchart LR
-    Gracz([Gracz])
-
-    u1["Wyświetl interaktywną mapę terenu"]
-    u2["Odkryj nową strefę na mapie"]
-    u3["Zainicjuj wymianę zasobów"]
-    u4["Potwierdź transakcję wymiany (QR)"]
-
-    Gracz --> u1
-    Gracz --> u3
-
-    u1 -.->|invoke| u2
-    u3 -.->|invoke| u4
-```
-
-**PU1016: Wyświetlenie interaktywnej mapy terenu**
-- Wersja: 1.0 (15.04.2026)
-- Odpowiedzialny: Kacper Koziara
-- Wydanie: 1.0
-- Opis: System wyświetla ekran z mapą układu pomieszczeń (komnat). Mapa dynamicznie dostosowuje się do uprawnień posiadanych przez postać, prezentując graczowi ogólny zarys terenu i szczegóły dostępnych dla niego lokacji.
-
 ### 4.1.3 Gracz i jego akcje podczas wydarzenia
 
 **Diagram:** Gracz i jego akcje podczas wydarzenia
@@ -1305,6 +1281,80 @@ end
 - Odpowiedzialny: Łukasz Czajka
 - Opis: Recenzenci mają możliwość przesłania uwag dotyczących recenzowanej gry.
 ---
+
+## 4.1.12 Akcje Gracza w trakcie gry (Cezary Rybiński)
+DIAGRAM:
+```mermaid
+flowchart LR
+    Player([Gracz])
+
+    u1["Wysłanie skargi"]
+    u2["Wyjście z wydarzenia"]
+    u3["Targowanie się"]
+    u4["Skanowanie kodu QR"]
+
+    Player --> u1
+    Player --> u2
+    Player --> u3
+    u3-.->|<< invoke >>|u4
+```
+
+**PU1201: Wysłanie skargi**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Opis: Gracz inicjuje proces zgłoszenia poprzez menu aplikacji. System wymaga zdefiniowania kategorii problemu (błąd techniczny, zachowanie gracza, naruszenie bezpieczeństwa) oraz opisania go w dodatkowym polu. 
+
+**PU1202: Wyjście z wydarzenia**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Opis: Gracz rezygnuje z dalszego udziału przed zakończeniem eventu. System weryfikuje posiadane przez gracza wirtualne przedmioty o znaczeniu krytycznym dla fabuły i przekazuje stosowny komunikat.
+
+**PU1203: Targowanie się**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Opis: Gracz inicjujący wybiera zasoby do przekazania. System generuje unikalny kod QR transakcji. Aby sfinalizować proces drugi gracz musi dołączyć do interakcji, co realizowane jest poprzez PU1019: Skanowanie kodu QR. Następnie muszą zaakceptować wymianę lub ją odrzucić (wystarczy aby jedna ze stron się nie zgodziła na wymianę aby nie doszła do skutku).
+
+**PU1204: Skanowanie kodu QR**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Opis: Gracz uruchamia skaner kodów QR w aplikacji i nakierowuje aparat na kod (wyświetlony u innego gracza lub umieszczony w przestrzeni gry). System dekoduje informację i wywołuje przypisaną do niej akcję.
+
+
+---
+
+## 4.1.13 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
+DIAGRAM:
+```mermaid
+flowchart LR
+    Gracz([Gracz])
+
+    u1["Wyświetl interaktywną mapę terenu"]
+    u2["Odkryj nową strefę na mapie"]
+    u3["Zainicjuj wymianę zasobów"]
+    u4["Potwierdź transakcję wymiany (QR)"]
+
+    Gracz --> u1
+    Gracz --> u3
+
+    u1 -.->|invoke| u2
+    u3 -.->|invoke| u4
+```
+
+**PU1016: Wyświetlenie interaktywnej mapy terenu**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: System wyświetla ekran z mapą układu pomieszczeń (komnat). Mapa dynamicznie dostosowuje się do uprawnień posiadanych przez postać, prezentując graczowi ogólny zarys terenu i szczegóły dostępnych dla niego lokacji.
+
+**PU1017: Odkrycie nowej strefy na mapie**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Po uzyskaniu odpowiedniego uprawnienia (np. zdobycie fizycznego klucza, przedmiotu questowego lub zeskanowaniu kodu QR strefy), system odblokowuje przed graczem wcześniej niedostępną lub ukrytą część mapy.
 
 **PU1018: Zainicjowanie wymiany zasobów**
 - Wersja: 1.0 (15.04.2026)
