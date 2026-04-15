@@ -723,7 +723,7 @@ Użytkownik odpowiedzialny za tworzenie i zarządzanie wydarzeniami w systemie.
 - Priorytet i trudność: Przydatne
 - Wydanie: 1.0
 
-Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu, takich jak przeglądanie kalendarza wydarzeń.
+Podmiot zewnętrzny mający dostęp do wybranych funkcji systemu. Osoba tworzy grę w systemie (wypełnia formularz gdzie można zdefiniować małe poprawki), rezerwuje czas dla swoich wydarzeń, przegląd zgłoszeń i komunikację z uczestnikami.
 
 ---
 
@@ -783,7 +783,7 @@ Użytkownik posiadający najwyższe uprawnienia w systemie odpowiedzialny za mod
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym.
+Widok systemowy umożliwiający przeglądanie wydarzeń w ujęciu czasowym i planowanie wydarzeń.
 
 ---
 
@@ -835,95 +835,519 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
+
+**Rezerwacja**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Proces przypisania konkretnego terminu w kalendarzu do planowanej gry.
+
+---
+
+**Termin / slot czasowy**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Określony przedział czasu dostępny do zarezerwowania na grę.
+
+---
+
+**Uczestnik**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Osoba zgłaszająca się do udziału w grze.
+
+---
+
+**Akceptacja zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zatwierdzenie udziału uczestnika w grze przez organizatora.
+
+---
+
+**Odrzucenie zgłoszenia**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Zespół projektowy
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Odmowa udziału uczestnika w grze.
+
+---
+
+**Sesja**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Formularz systemowy służący do kreowania nowej akcji, wymagający określenia jej *typu akcji* oraz *skutków akcji*.
+
+---
+
+**Komunikat do recenzenta**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Treść tekstowa wysyłana przez twórcę gier do recenzenta w celu wyjaśnienia mechanik gry lub odpowiedzi na uwagi w procesie weryfikacji.
+
+---
+
+**Okno komunikacji twórcy gry z recenzentem**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Interfejs wymiany informacji zawierający obszar wiadomości (historia komunikacji) oraz obszar wysyłania, umożliwiający przekazanie komunikatu do recenzenta.
+
+---
+
+**Opis ogólny gry**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Systemowy formularz stanowiący abstrakt projektu gry, w którym definiuje się dane opisu ogólnego gry.
+
+---
+
+**Pozostałe elementy gry**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zbiór komponentów rozszerzających definicję gry poza opis podstawowy, do których należą: akcje, mapa, postacie oraz przedmioty.
+
+---
+
+**Skutek akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Efekt wynikający z wykonania akcji. Może być fabularny (zdarzenie w świecie gry wpływające na narrację) lub systemowy (techniczna zmiana stanu gry, np. zmiana parametrów postaci).
+
+---
+
+**Typ akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Kategoria określająca mechanikę działania wybraną przez twórcę gier w procesie definicji akcji. Do typów akcji należą: akcja czasowa, akcja czujnika lub akcja przedmiotu.
+
+---
+
+# 4. Wymagania użytkownika
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Aktywny okres korzystania z systemu przez zalogowanego użytkownika. Sesja jest identyfikowana przez token sesji, ma ograniczony czas ważności (wygasa po zdefiniowanym czasie nieaktywności) i może zostać zakończona przez wylogowanie lub unieważniona przez system (np. po zmianie hasła).
+
+**Diagram:** Funkcje recenzenta
+
+```mermaid
+flowchart TB
+ A["Recenzent gry"] --> n1(["Wyświetlenie listy gier przez recenzenta"]) -->|generalization| n2(["Wyświetlenie listy gier"])
+ A -->|&lt;&lt;invoke&gt;&gt;| n3(["Recenzja gry"])
+```
+
+**PU001: Wyświetlenie listy gier**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry].
+
+**PU002: Wyświetlenie listy gier przez recenzenta**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry] dodając do każdego rekordu opcję recenzji [gry].
+
+**PU003: Recenzja gry**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla okno do zapisu tekstu. [Recenzent] zapisuje [recenzję] i zatwierdza ją.
+
+**Blokada konta**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Tymczasowe wstrzymanie dostępu do konta użytkownika w reakcji na zdarzenie bezpieczeństwa (np. przekroczenie limitu nieudanych prób logowania) lub decyzję administratora. Blokada uniemożliwia logowanie do czasu odblokowania — automatycznego po upływie zdefiniowanego czasu lub ręcznego przez reset hasła.
+
+---
+
+**Strefa / Komnata**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Wydzielony fizycznie i wirtualnie obszar terenu gry, który może posiadać własne ograniczenia dostępu. Strefy mogą być ukryte na interaktywnej mapie gracza, dopóki jego postać nie zdobędzie odpowiednich uprawnień.
+
+---
+
+**Ekwipunek**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Zbiór wirtualnych zasobów (przedmiotów questowych, kluczy, wirtualnej waluty) przypisanych do danej postaci w konkretnym wydarzeniu. Stan ekwipunku może ulegać zmianie poprzez akcje w grze oraz system handlu.
+
+---
+
+**Transakcja wymiany**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Bezpieczny transfer zasobów wirtualnych między dwoma graczami, autoryzowany za pomocą aplikacji mobilnej (np. poprzez skanowanie kodu QR). Wymaga obecności obu stron transakcji i zatwierdzenia jej w systemie.
+
+---
+
+
 # 4. Wymagania użytkownika
 
 ## 4.1 Wymagania funkcjonalne
 
-### 4.1.1 Zarządzanie ofertą
+### 4.1.1 Zarządzanie wydarzeniami
 
-**Diagram:** Zarządzanie ofertą
+```mermaid
+flowchart LR
 
-**PU001: Dodanie nowego samochodu**
+organizator["Organizator zewnętrzny"]
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Istotne 1
-- Wydanie: 1.0
+subgraph "Zarządzanie zgłoszeniami i rezerwacją gry"
 
-**PU002: Przejrzenie cennika**
+UC1(("Wyświetlenie kalendarza"))
+UC2(("Rezerwacja czasu dla gry"))
+UC3(("Wyświetlenie listy zgłoszeń do gry"))
+UC4(("Akceptacja / odrzucenie zgłoszenia"))
+UC5(("Wysłanie zaproszenia na grę"))
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Priorytet i trudność: Istotne 1
-- Wydanie: 1.0
+UC1 -. include .-> UC2
+UC3 -. include .-> UC4
 
-**PU003: Wygenerowanie raportu sprzedaży**
+end
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
+organizator --> UC1
+organizator --> UC3
+organizator --> UC5
 
-**PU004: Zmiana ceny samochodu**
+```
 
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
+#### PU1: Wyświetlenie kalendarza
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok 
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator przegląda kalendarz dostępnych terminów gry. System wyświetla wolne i zajęte sloty czasowe na podstawie typu wybranej gry.
+
+---
+
+#### PU2: Rezerwacja czasu dla gry
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator wybiera dostępny termin w kalendarzu i dokonuje rezerwacji. System wyświetla prośbę o potwierdzenie (z opcją cofnięcia), następnie wymaga dokonania płatności. Potwierdzenie wysyła się do jego skrzynki wiadomości.
 
 ---
 
-### 4.1.2 Zarządzanie sprzedażą
+#### PU3: Wyświetlenie listy zgłoszeń do gry
 
-**Diagram:** Specyfikowanie wymagań użytkownika
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
 
-**PU101: Dokonanie płatności online**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU102: Dokonanie zamówienia na samochód**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU103: Pokazanie listy samochodów**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU104: Potwierdzenie zamówienia na samochód**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU105: Przejrzenie listy zamówień**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU106: Wydanie samochodu do sprzedaży**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU107: Zarejestrowanie wydania samochodu**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
-
-**PU108: Złożenie zamówienia specjalnego**
-
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: kamil
-- Wydanie: 1.0
+**Opis:** Organizator przegląda listę zgłoszeń uczestników w swojej skrzynce wiadomości.
 
 ---
+
+#### PU4: Akceptacja/odrzucenie zgłoszenia
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator wybiera zgłoszenie z listy i widzi profil gracza. Po naciśnięciu "Akceptuj" lub "Odrzuć" gracz jest przypisany do gry lub zgłoszenie zostaje odrzucone. Wiadomość znika ze skrzynki organizatora.
+
+---
+
+#### PU5: Wysłanie zaproszenia na grę
+
+**Wersja:** 1.0 (14.04.2026)  
+**Odpowiedzialny:** Hlib Filobok  
+**Priorytet i trudność:** Istotne  
+**Wydanie:** 1.0  
+
+**Opis:** Organizator przechodzi do zakładki "Przyjaciele" i wybiera użytkownika. Po naciśnięciu "Zaproś" system wyświetla listę aktualnych gier. Po wyborze gry zaproszenie zostaje wysłane użytkownikowi.
+
+---
+
+## 4.1.10 Administracja kont
+DIAGRAM:
+```mermaid
+flowchart LR
+    Admin([Admin])
+    Czas([Czas])
+
+    u1["Wyświetl listę błędów systemowych"]
+    u2["Wyświetl listę użytkowników ze zgłoszeniami"]
+    u3["Zablokuj konto użytkownika na ograniczony czas"]
+    u5["Dezaktywuj konto użytkownika"]
+    u6["Wyświetl pełny log błędu"]
+    u7["Odblokuj konto po określonym czasie"]
+
+    Admin --> u1
+    Admin --> u2
+
+    u2 -.->|invoke| u3
+    u2 -.->|invoke| u5
+    u1 -.->|invoke| u6
+
+    Czas --> u7
+```
+
+**PU1001: Wyświetlenie listy  użytkowników ze zgłoszeniami **
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: System wyświetla menu administratora. Administrator wybiera opcję wyświetlenia listy użytkowników, którzy zostali zgłoszeni za łamanie regulaminu/ zasad społeczności. system wyświetla listę
+
+  
+**PU1002: Zablokowanie konta użytkownika na ograniczony czas **
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: Invoked by PU1001. Administrator wybiera wybrane konto uczestnika. System wyświetla zapytanie o blokowanie lub dezaktywację konta. Administrator wybiera opcję zablokowania konta na ustalony czas. System nadaje kontu status zablokowanego  na określony czas.
+
+  
+**PU1003: Zablokowanie konta użytkownika na ograniczony czas **
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: Invoked by PU1001. Administrator wybiera wybrane konto uczestnika. System wyświetla zapytanie o blokowanie lub dezaktywację konta. Administrator wybiera opcję dezaktywacji konta. System usuwa konto z listy kont aktywnych. System zmienia status konta na zdezaktywowane
+
+  
+**PU1004: Odblokowanie konta po określonym czasie **
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: System odblokowuje konto po upływie określonego czasu.
+
+  
+  **PU1005: Wyświetlenie listy  błędów systemowych**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: System wyświetla menu administratora. Administrator wybiera opcję wyświetlenia listy błędów systemowych.  System wyświetla listę błędów.
+
+  
+  **PU1006: Wyświetlenie pełnego logu błędu**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialna: Karolina Wiśniewska
+- Wydanie: 1.0
+- Opis: Invoked by PU1005. Administrator wybiera dowolny log błędu. System wyświetla szczegółowy zapis logu błędu systemowego
+
+
+
+---
+## 4.1.11 Autentykacja i historia wydarzeń
+DIAGRAM:
+```mermaid
+flowchart LR
+    User([Użytkownik])
+
+    u1["Rejestracja konta"]
+    u2["Aktywacja konta przez link e-mail"]
+    u3["Logowanie"]
+    u4["Reset hasła"]
+    u5["Wylogowanie"]
+    u6["Wyświetl historię wydarzeń"]
+    u7["Filtruj i sortuj historię wydarzeń"]
+    u8["Wyświetl statystyki uczestnictwa"]
+    u9["Wyświetl szczegóły wydarzenia z historii"]
+
+    User --> u1
+    User --> u3
+    User --> u4
+    User --> u5
+    User --> u6
+
+    u1 -.->|invoke| u2
+    u3 -.->|requires| u2
+    u6 -.->|requires| u3
+    u6 -.->|invoke| u7
+    u6 -.->|invoke| u8
+    u6 -.->|invoke| u9
+```
+
+**PU1101: Rejestracja konta**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: System wyświetla formularz rejestracji. Użytkownik podaje imię, nazwisko, adres e-mail oraz hasło (dwukrotnie). System weryfikuje unikalność adresu e-mail w bazie, zapisuje konto ze statusem „nieaktywne" i wysyła na podany adres e-mail wiadomość z linkiem aktywacyjnym.
+
+**PU1102: Aktywacja konta przez link e-mail**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Invoked by PU1101. Użytkownik klika w link aktywacyjny otrzymany w wiadomości e-mail. System weryfikuje poprawność i ważność linku, zmienia status konta na „aktywne" oraz umożliwia logowanie.
+
+**PU1103: Logowanie**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: System wyświetla ekran logowania. Użytkownik podaje adres e-mail oraz hasło. System weryfikuje dane uwierzytelniające oraz status konta (aktywne / nieaktywne / zablokowane). Po poprawnej autoryzacji system tworzy sesję użytkownika i przyznaje dostęp do funkcji systemu. Po przekroczeniu 5 nieudanych prób w ciągu 15 minut system tymczasowo blokuje konto.
+
+**PU1104: Reset hasła**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Użytkownik wybiera opcję „Nie pamiętam hasła" i podaje adres e-mail. System wysyła na ten adres jednorazowy link do resetu hasła (ważny 1 godzinę). Użytkownik po kliknięciu w link ustala nowe hasło, a system aktualizuje dane konta i unieważnia dotychczasową sesję.
+
+**PU1105: Wylogowanie**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Zalogowany użytkownik wybiera opcję wylogowania. System kończy sesję użytkownika, unieważnia token sesji i przekierowuje na ekran logowania.
+
+**PU1106: Wyświetlenie historii wydarzeń**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Zalogowany użytkownik wybiera zakładkę „Historia wydarzeń". System pobiera listę wydarzeń, w których użytkownik brał udział, i wyświetla ją w porządku chronologicznym wraz z podstawowymi informacjami (nazwa wydarzenia, data, lokalizacja, odgrywana postać, czas trwania, status).
+
+**PU1107: Filtrowanie i sortowanie historii wydarzeń**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Invoked by PU1106. Użytkownik wybiera filtry (przedział czasowy, typ wydarzenia, status, lokalizacja) lub sposób sortowania (data rosnąco/malejąco, nazwa wydarzenia). System aktualizuje wyświetlaną listę zgodnie z wybranymi kryteriami.
+
+**PU1108: Wyświetlenie statystyk uczestnictwa**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Invoked by PU1106. System agreguje dane z historii użytkownika i prezentuje statystyki: liczbę ukończonych sesji, całkowity czas uczestnictwa, najczęściej grane typy postaci, ulubione scenariusze oraz ranking organizatorów.
+
+**PU1109: Wyświetlenie szczegółów wydarzenia z historii**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Opis: Invoked by PU1106. Użytkownik wybiera konkretne wydarzenie z listy. System wyświetla szczegółowy widok wydarzenia — pełny opis postaci, przebieg sesji, współuczestników oraz dodatkowe materiały powiązane z wydarzeniem.
+
+### 4.1.4 Obsługa wydarzeń
+
+**PU401: Uruchomienie wydarzenia**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Julian Stefan
+- Wydanie: 1.0
+- **Opis:** Po osiągnięciu warunków rozpoczęcia wydarzenia, mistrz wydarzenia rozpoczyna wydarzenie.
+
+**PU402: Zakończenie wydarzenia**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Julian Stefan
+- Wydanie: 1.0
+- **Opis:** Po osiągnięciu warunków zakończenia wydarzenia, mistrz wydarzenia konczy wydarzenie.
+
+---
+## 4.1.12 Interaktywna mapa i wymiana zasobów (Kacper Koziara)
+DIAGRAM:
+```mermaid
+flowchart LR
+    Gracz([Gracz])
+
+    u1["Wyświetl interaktywną mapę terenu"]
+    u2["Odkryj nową strefę na mapie"]
+    u3["Zainicjuj wymianę zasobów"]
+    u4["Potwierdź transakcję wymiany (QR)"]
+
+    Gracz --> u1
+    Gracz --> u3
+
+    u1 -.->|invoke| u2
+    u3 -.->|invoke| u4
+```
+
+**PU1016: Wyświetlenie interaktywnej mapy terenu**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: System wyświetla ekran z mapą układu pomieszczeń (komnat). Mapa dynamicznie dostosowuje się do uprawnień posiadanych przez postać, prezentując graczowi ogólny zarys terenu i szczegóły dostępnych dla niego lokacji.
 
 ### 4.1.3 Gracz i jego akcje podczas wydarzenia
 
@@ -973,37 +1397,224 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ## 4.2 Wymagania jakościowe i ograniczenia
 
-**Diagram:** Wymagania jakościowe i ograniczenia
-
-**J022-1: Maksymalna liczba kliknięć w celu otwarcia formularza awarii**
-
-- Typ: «Uzytecznosc»
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Przydatne 1
+**PU1018: Zainicjowanie wymiany zasobów**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
 - Wydanie: 1.0
+- Opis: Gracz wybiera w module handlu przedmioty lub wirtualną walutę ze swojego ekwipunku, które chce przekazać innemu graczowi. System generuje na ekranie jego urządzenia unikalny, jednorazowy kod QR reprezentujący tę ofertę.
 
-**Sposób pomiaru:**  
-Przeprowadzenie serii nawigacji do ekranu formularza awarii z różnych miejsc w interfejsie użytkownika, zgodnie ze scenariuszem TS112
+**PU1019: Potwierdzenie transakcji wymiany (QR)**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Opis: Invoked by PU1018. Drugi gracz przy użyciu swojej aplikacji skanuje kod QR z ekranu inicjatora. System wyświetla podsumowanie, a po obustronnej akceptacji aktualizuje stany ekwipunków obu postaci i zapisuje transakcję w logach.
 
-**Oczekiwane wartości:**  
-liczba kliknięć dla 90% sytuacji wynosi mniej niż 3; dla wszystkich sytuacji wynosi mniej niż 5
+---
+## 4.1.12 Zarządzanie wydarzeniami przez organizatora
+DIAGRAM:
+```mermaid
+flowchart TD
+    User[👤 Organizator]
+    A([Dodanie wydarzenia do kalendarza])
+    B([Zaproszenie graczy])
+    C([Udostępnienie wydarzenia graczom])
+
+    User-->A
+    A-.->|<< invoke >>|B
+    A-.->|<< invoke >>|C
+```
+
+**PU1016: Dodanie wydarzenia do kalendarza**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Organizator dodaje wydarzenie do kalendarza. Przy dodawaniu musi podać najważniejsze informacje na temat wydarzenia - nazwę i ewentualny opis, datę i godzinę, miejsce, maksymalną liczbę graczy oraz wymagania dotyczące postaci. Po dodaniu wydarzenie jest widoczne w kalendarzu dla każdego użytkownika systemu.
+
+**PU1017: Zaproszenie graczy**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk *Zaproś graczy* w menu wydarzenia. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk *Wyślij zaproszenie*. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
+
+**PU1018: Udostępnienie wydarzenia graczom**
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Opis: Invoked by PU1016. Organizator, klikając przycisk *Udostępnij dla graczy* w menu wydarzenia, otwiera graczom możliwość zapisania się na dane wydarzenie. Gracz będzie mógł dokonać zapisu, jeżeli są jeszcze wolne miejsca na wydarzenie.
 
 ---
 
-**J022-2: Rejestracja awarii powinna trwać średnio nie dłużej niż minutę**
+### 4.1.4 Rejestracja i zapis przed wydarzeniem
+```mermaid
+flowchart LR
+  
+G((#128100; \n Gracz))
 
-- Typ: «Uzytecznosc»
-- Wersja: 1.0 (15.02.2023)
-- Odpowiedzialny: smial
-- Priorytet i trudność: Istotne 1
+SRG([Wyświetlenie listy zarejestrowanych wydarzeń])
+JG([Dołączenie do wydarzenia])
+SIL([Wyświetlenie listy zaproszeń])
+AI([Akceptacja zaproszenia])
+SEL([Wyświetlenie listy wydarzeń])
+
+G --> SRG
+G --> SIL
+G --> SEL
+
+SRG -..->|&lt;&lt;invoke&gt;&gt;| JG
+SIL -..->|&lt;&lt;invoke&gt;&gt;| AI
+
+
+```
+
+**PU301: Wyświetlenie listy wydarzeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
 - Wydanie: 1.0
+- **Opis:** System wyświetla listę wydarzeń. Gracz określa filtry wydarzeń. System wyświetla wydarzenia spełniające dane kryteria.
 
-**Sposób pomiaru:**  
-Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
+**PU302: Wyświetlenie listy zaproszeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Istotne 
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę otrzymanych zaproszeń gracza na wydarzenie, które nie zostały jeszcze rozpatrzone.
 
-**Oczekiwane wartości:**  
-średni czas wynosi < 1 min, maksymalny czas wynosi (…)
+**PU303: Akceptacja zaproszenia**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Istotne 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera zaproszenie do akceptacji. System sprawdza dostępność miejsc. W przypadku wolnych miejsc, system dodaje gracza do listy zarejestrowanych i usuwa zaproszenie z listy. W przeciwnym razie, system informuje o braku miejsc.
+
+**PU304: Wyświetlenie listy zarejestrowanych wydarzeń**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera wgląd w swoje rejestracje. System wyświetla wydarzenia, na które gracz jest zarejestrowany.
+
+**PU305: Dołączenie do wydarzenia**
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Priorytet i trudność: Kluczowe 
+- Wydanie: 1.0
+- **Opis:** Gracz wybiera zarejestrowane wydarzenie i deklaruje chęć dołączenia. System sprawdza status wydarzenia i rejestruje obecność gracza.
+
+### 4.1.12 Zarządzanie organizacją wydarzeń
+
+DIAGRAM:
+```mermaid
+flowchart LR
+
+o((Organizator))
+
+uco(["Wyświetlenie kalendarza przez organizatora"])
+uc(["Wyświetlenie kalendarza"])
+
+o --> uco
+
+uco --generalization--> uc
+```
+
+**PU991: Wyświetlenie kalendarza przez organizatora**
+- Wersja: 1.0(14.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+- Opis: System wyświetla kalendarz wydarzeń organizatora. Organizator widzi
+  nadchodzące wydarzenia oraz wolne terminy.
+
+### 4.1.13 Zapisy na wydarzenia
+
+DIAGRAM:
+```mermaid
+flowchart LR
+
+g((Gracz))
+
+ucg(["Wyświetlenie kalendarza przez gracza"])
+uc(["Wyświetlenie kalendarza"])
+
+g --> ucg
+
+ucg --generalization--> uc
+```
+
+**PU981: Wyświetlenie kalendarza przez gracza**
+- Wersja: 1.0(14.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+- Opis: System wyświetla kalendarz wydarzeń gracza. Gracz widzi dostępne
+  wydarzenia, wydarzenia w których bierze udział.
+
+### 4.1.3 Projektowanie świata gry
+
+DIAGRAM:
+```mermaid
+flowchart LR
+
+%% ===== AKTORZY =====
+subgraph AKTORZY
+TG((Twórca gier))
+end
+
+%% ===== FUNKCJE TWORCY =====
+subgraph FUNKCJE_TWORCY
+GDF([Zdefiniowanie gry])
+ADF([Zdefiniowanie akcji])
+SCR([Przesłanie komunikatu do recenzenta])
+end
+
+%% ===== RELACJE =====
+TG --> GDF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+```
+**PU201: Zdefiniowanie gry**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla formularz [opisu ogólnego gry]. Twórca gry wprowadza [dane opisu ogólnego gry] do formularza. Twórca gry może dodać [pozostałe elementy gry]. Twórca gry wciska przycisk zapisz. System zamyka formularz [opisu ogólnego gry] i wyświetla informację o poprawnym zapisie.
+
+**PU202: Zdefiniowanie akcji**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+- **Opis:** System wyświetla formularz [definicji akcji]. Twórca gry wybiera [typ akcji], a następnie uzupełnia [skutki akcji]. Na koniec twórca gry wciska przycisk `zapisz i zamknij`. System zamyka formularz [definicji akcji].
+
+**PU203: Przesłanie komunikatu do recenzenta**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
+
+
+**J011-1: System powinien zapewniać natychmiastową responsywność Panelu Projektanta**
+| Typ: _efektywność wydajnościowa - czas_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+
+**Opis:** Interfejs edycji akcji i parametrów gry musi reagować na działania użytkownika bez zauważalnych opóźnień, zapewniając płynność pracy twórczej (dotyczy PU201, PU202).
+
+**Sposób pomiaru:** Pomiar czasu odpowiedzi interfejsu przy zapisie zmian w akcji przy wykorzystaniu wyspecjalizowanego oprogramowania.
+
+**Oczekiwane wartości:** 95% interakcji poniżej 200 ms.
+
+---
+
+**J011-2: System powinien gwarantować bezpieczeństwo danych podczas edycji (Autozapis)**
+| Typ: _niezawodność - odtwarzalność_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+
+**Opis:** System musi chronić postęp prac Twórcy Gry przed utratą danych w wyniku nagłego zamknięcia przeglądarki lub awarii łącza.
+
+**Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania [opisu ogólnego gry]. Sprawdzenie stanu danych po ponownym zalogowaniu.
+
+**Oczekiwane wartości:** Maksymalna utrata danych nie może przekraczać ostatnich 30 sekund pracy.
 
 ---
 
@@ -1067,3 +1678,99 @@ Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
 
 1-2. -"-  
 3a. System wyświetla komunikat
+
+---
+
+## 5.4 PU1009: Logowanie
+
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Aktor główny: Użytkownik
+- Warunek początkowy: Użytkownik posiada zarejestrowane i aktywowane konto.
+- Warunek końcowy (sukces): Użytkownik jest zalogowany, system utworzył sesję i wyświetla ekran główny.
+
+**Scenariusz główny**
+
+1. Użytkownik uruchamia aplikację i wybiera opcję „Zaloguj się".
+2. System wyświetla formularz logowania z polami adres e-mail oraz hasło.
+3. Użytkownik wprowadza adres e-mail oraz hasło i potwierdza przyciskiem „Zaloguj".
+4. System weryfikuje poprawność danych uwierzytelniających w bazie użytkowników.
+5. System sprawdza status konta (aktywne / nieaktywne / zablokowane).
+6. System tworzy nową sesję użytkownika i generuje token sesji.
+7. System zapisuje informację o zalogowaniu (data, godzina, adres IP) w historii konta.
+8. System przekierowuje użytkownika na ekran główny i wyświetla powitanie.
+
+**Scenariusz alternatywny A: Niepoprawne dane uwierzytelniające**
+
+4a. System nie znajduje użytkownika o podanym adresie e-mail lub hasło nie pasuje do zapisanego w bazie.
+1. System wyświetla komunikat „Niepoprawny adres e-mail lub hasło" bez wskazywania, które pole jest błędne.
+2. System inkrementuje licznik nieudanych prób logowania dla tego konta.
+3. Scenariusz wraca do kroku 2 scenariusza głównego.
+
+**Scenariusz alternatywny B: Konto nieaktywowane**
+
+5a. System stwierdza, że konto ma status „nieaktywne".
+1. System wyświetla komunikat „Konto nie zostało jeszcze aktywowane. Sprawdź skrzynkę e-mail i kliknij w link aktywacyjny".
+2. System oferuje opcję ponownego wysłania linku aktywacyjnego.
+3. Użytkownik wybiera opcję wysłania linku lub zamyka formularz.
+
+**Scenariusz alternatywny C: Konto zablokowane**
+
+5b. System stwierdza, że konto ma status „zablokowane".
+1. System wyświetla komunikat „Konto zostało tymczasowo zablokowane. Spróbuj ponownie za [pozostały czas] lub zresetuj hasło".
+2. System oferuje opcję resetu hasła.
+3. Logowanie zostaje przerwane.
+
+**Scenariusz alternatywny D: Przekroczenie limitu prób**
+
+4b. Licznik nieudanych prób przekracza 5 w ciągu 15 minut.
+1. System zmienia status konta na „zablokowane" na okres 15 minut.
+2. System wysyła na adres e-mail użytkownika powiadomienie o próbach logowania i blokadzie.
+3. System wyświetla komunikat o blokadzie konta.
+4. Logowanie zostaje przerwane.
+
+**Scenariusz alternatywny E: Zapomniane hasło**
+
+3a. Użytkownik wybiera opcję „Nie pamiętam hasła" zamiast potwierdzania logowania.
+1. System przekierowuje do przypadku użycia PU1010 (Reset hasła).
+
+---
+
+## 5.5 PU1018/PU1019: Dokonanie wymiany zasobów między graczami
+
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialny: Kacper Koziara
+- Wydanie: 1.0
+- Aktor główny: Gracz A (Inicjator)
+- Aktor pomocniczy: Gracz B (Odbiorca)
+- Warunek początkowy: Obaj gracze są zalogowani do aplikacji, uczestniczą w tym samym aktywnym wydarzeniu LARP, a Gracz A posiada w ekwipunku zasoby, które chce przekazać.
+- Warunek końcowy (sukces): Wybrane zasoby zostały bezpiecznie przeniesione z ekwipunku Gracza A do ekwipunku Gracza B, a system zapisał log z transakcji.
+
+**Scenariusz główny**
+
+1. Gracz A wybiera w swojej aplikacji moduł „Handel / Wymiana”.
+2. System wyświetla listę dostępnych zasobów w ekwipunku Gracza A.
+3. Gracz A zaznacza przedmioty i/lub wpisuje kwotę wirtualnej waluty, którą chce przekazać, a następnie klika „Generuj ofertę”.
+4. System tymczasowo blokuje wybrane zasoby u Gracza A i wyświetla na jego ekranie jednorazowy kod QR reprezentujący ofertę.
+5. Gracz B otwiera w swojej aplikacji skaner kodów i skanuje kod QR z ekranu Gracza A.
+6. System wyświetla na ekranie Gracza B okno podsumowania („Gracz A chce przekazać Ci: [lista]”) i prosi o akceptację.
+7. Gracz B wybiera przycisk „Zatwierdź transakcję”.
+8. System weryfikuje poprawność danych i dokonuje transferu, aktualizując stany ekwipunków obu postaci w bazie danych.
+9. System zapisuje szczegóły operacji (data, strony transakcji, zasoby) w logach wydarzenia.
+10. System wyświetla obu graczom komunikat o pomyślnym zakończeniu wymiany.
+
+**Scenariusz alternatywny A: Odrzucenie transakcji przez Odbiorcę**
+
+7a. Gracz B wybiera przycisk „Odrzuć”.
+1. System przerywa operację i zdejmuje blokadę z zasobów Gracza A.
+2. System wyświetla Graczowi A komunikat „Transakcja została odrzucona przez drugą stronę”.
+3. Wygenerowany kod QR zostaje trwale unieważniony.
+
+**Scenariusz alternatywny B: Przekroczenie limitu czasu (Timeout)**
+
+5a. Gracz B nie zdąży zeskanować kodu lub zatwierdzić operacji w określonym czasie (np. 3 minuty).
+1. System automatycznie anuluje ofertę i zdejmuje blokadę z zasobów Gracza A.
+2. System wyświetla Graczowi A komunikat „Czas na akceptację transakcji minął”.
+3. Kod QR zostaje unieważniony, proces wymiany należy zainicjować od nowa.
+
