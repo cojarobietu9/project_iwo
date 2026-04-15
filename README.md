@@ -912,15 +912,99 @@ Zgłoszenie wysyłane przez użytkownika w celu poinformowania organizatora lub 
 
 ---
 
-**Recenzja**
+**Dane opisu ogólnego gry**
 
-- Typ: pojęcie systemowe
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Maciej Bankiewicz
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
-Opis uwag i spostrzeżeń dotyczących recenzowanej gry. Jest uzasadnieniem decyzji o dopuszczeniu lub niedopuszczeniu gry do realizacji. Wystawia ją recenzent.
+Konkretne parametry uzupełniane w formularzu *opisu ogólnego gry*. Obejmują one: tytuł gry, zarys tematyki i scenerii (przedstawienie klimatu i tematu świata), minimalną i maksymalną liczbę graczy oraz minimalny i maksymalny czas trwania rozgrywki.
+
+---
+
+**Definicja akcji**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Formularz systemowy służący do kreowania nowej akcji, wymagający określenia jej *typu akcji* oraz *skutków akcji*.
+
+---
+
+**Komunikat do recenzenta**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Treść tekstowa wysyłana przez twórcę gier do recenzenta w celu wyjaśnienia mechanik gry lub odpowiedzi na uwagi w procesie weryfikacji.
+
+---
+
+**Okno komunikacji twórcy gry z recenzentem**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Przydatne
+- Wydanie: 1.0
+
+Interfejs wymiany informacji zawierający obszar wiadomości (historia komunikacji) oraz obszar wysyłania, umożliwiający przekazanie komunikatu do recenzenta.
+
+---
+
+**Opis ogólny gry**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Systemowy formularz stanowiący abstrakt projektu gry, w którym definiuje się dane opisu ogólnego gry.
+
+---
+
+**Pozostałe elementy gry**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Zbiór komponentów rozszerzających definicję gry poza opis podstawowy, do których należą: akcje, mapa, postacie oraz przedmioty.
+
+---
+
+**Skutek akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+
+Efekt wynikający z wykonania akcji. Może być fabularny (zdarzenie w świecie gry wpływające na narrację) lub systemowy (techniczna zmiana stanu gry, np. zmiana parametrów postaci).
+
+---
+
+**Typ akcji**
+
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Kategoria określająca mechanikę działania wybraną przez twórcę gier w procesie definicji akcji. Do typów akcji należą: akcja czasowa, akcja czujnika lub akcja przedmiotu.
 
 ---
 
@@ -1369,6 +1453,52 @@ ucg --generalization--> uc
 - Opis: System wyświetla kalendarz wydarzeń gracza. Gracz widzi dostępne
   wydarzenia, wydarzenia w których bierze udział.
 
+### 4.1.3 Projektowanie świata gry
+
+DIAGRAM:
+```mermaid
+flowchart LR
+
+%% ===== AKTORZY =====
+subgraph AKTORZY
+TG((Twórca gier))
+end
+
+%% ===== FUNKCJE TWORCY =====
+subgraph FUNKCJE_TWORCY
+GDF([Zdefiniowanie gry])
+ADF([Zdefiniowanie akcji])
+SCR([Przesłanie komunikatu do recenzenta])
+end
+
+%% ===== RELACJE =====
+TG --> GDF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+```
+**PU201: Zdefiniowanie gry**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla formularz [opisu ogólnego gry]. Twórca gry wprowadza [dane opisu ogólnego gry] do formularza. Twórca gry może dodać [pozostałe elementy gry]. Twórca gry wciska przycisk zapisz. System zamyka formularz [opisu ogólnego gry] i wyświetla informację o poprawnym zapisie.
+
+**PU202: Zdefiniowanie akcji**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Kluczowe
+- Wydanie: 1.0
+- **Opis:** System wyświetla formularz [definicji akcji]. Twórca gry wybiera [typ akcji], a następnie uzupełnia [skutki akcji]. Na koniec twórca gry wciska przycisk `zapisz i zamknij`. System zamyka formularz [definicji akcji].
+
+**PU203: Przesłanie komunikatu do recenzenta**
+- Wersja: 1.0 (08.04.2026)
+- Odpowiedzialny: Igor Ochocki
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
+
+---
+
 ## 4.2 Wymagania jakościowe i ograniczenia
 
 **Diagram:** Wymagania jakościowe i ograniczenia
@@ -1402,6 +1532,32 @@ Przeprowadzenie serii rejestracji zgodnie ze scenariuszem TS003 (…)
 
 **Oczekiwane wartości:**  
 średni czas wynosi < 1 min, maksymalny czas wynosi (…)
+
+---
+
+**J011-1: System powinien zapewniać natychmiastową responsywność Panelu Projektanta**
+| Typ: _efektywność wydajnościowa - czas_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
+| :--- | :--- | :--- |
+| Priorytet: Istotne || Wydanie: 1.0 |
+
+**Opis:** Interfejs edycji akcji i parametrów gry musi reagować na działania użytkownika bez zauważalnych opóźnień, zapewniając płynność pracy twórczej (dotyczy PU201, PU202).
+
+**Sposób pomiaru:** Pomiar czasu odpowiedzi interfejsu przy zapisie zmian w akcji przy wykorzystaniu wyspecjalizowanego oprogramowania.
+
+**Oczekiwane wartości:** 95% interakcji poniżej 200 ms.
+
+---
+
+**J011-2: System powinien gwarantować bezpieczeństwo danych podczas edycji (Autozapis)**
+| Typ: _niezawodność - odtwarzalność_ | Wersja: 1.0 (08.04.2026) | Odpowiedzialny: Igor Ochocki |
+| :--- | :--- | :--- |
+| Priorytet: Kluczowe || Wydanie: 1.0 |
+
+**Opis:** System musi chronić postęp prac Twórcy Gry przed utratą danych w wyniku nagłego zamknięcia przeglądarki lub awarii łącza.
+
+**Sposób pomiaru:** Symulacja utraty połączenia w trakcie wprowadzania [opisu ogólnego gry]. Sprawdzenie stanu danych po ponownym zalogowaniu.
+
+**Oczekiwane wartości:** Maksymalna utrata danych nie może przekraczać ostatnich 30 sekund pracy.
 
 ---
 
