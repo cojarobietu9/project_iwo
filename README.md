@@ -1684,3 +1684,93 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 2. System wyświetla Graczowi A komunikat „Czas na akceptację transakcji minął”.
 3. Kod QR zostaje unieważniony, proces wymiany należy zainicjować od nowa.
 
+---
+
+## 5.5 PU2: Rezerwacja czasu dla gry
+
+- Wersja: 1.0 (15.04.2026)
+- Odpowiedzialna: FilobokHlib i Maksym Andrushchenko
+- Wydanie: 1.0
+- Aktor główny: Organizator zewnętrzny
+- Warunek początkowy: Organizator zewnętrzny jest zalogowany na stronie głównej i posiada uprawnienia do tworzenia gier, rezerwacji czasu dla gry, zarządzaniem uczęstnikami do gry i komunikacji z nimi.
+- Warunek końcowy (sukces): Rezerwacja czasu została utworzona, terminy są niedostępne dla innych użytkowników, organizator otrzymał potwierdzenie w skrzynce wiadomości, a płatność została przetworzona.
+
+Scenariusz główny
+
+1. Organizator znajduje się na stronie głównej i klika przycisk „Stwórz grę".
+2. System wyświetla formularz tworzenia gry z polami wymaganymi: nazwa gry, typ gry, liczba uczestników, poziom trudności i dodatkowe informacje (opcjonalne).
+3. Organizator wypełnia wszystkie wymagane pola formularza.
+4. System waliduje poprawność danych wpisanych w formularz.
+5. Organizator potwierdza formularz przyciskiem „Dalej".
+6. System pobiera dane z formularza i przekierowuje organizatora do kalendarza.
+7. Kalendarz wyświetla dostępne godziny dostosowane do czasu trwania wybranego typu gry (różne gry mają różny czas trwania).
+8. System uniemożliwia wybranie terminów niedostępnych (zarezerwowane, poza godzinami pracy, itp.).
+9. Organizator wybiera jeden lub więcej dostępnych terminów z kalendarza.
+10. System wyznacza przedział czasowy dla każdego wybranego terminu.
+11. Organizator potwierdza wybór terminów przyciskiem „Potwierdź wybór".
+12. System wyświetla podsumowanie rezerwacji zawierające dane gry, wybrane terminy i całkowity koszt.
+13. Organizator ma możliwość potwierdzenia rezerwacji przyciskiem „Potwierdź i płać" lub cofnięcia operacji przyciskiem „Cofnij".
+14. Organizator potwierdza rezerwację przyciskiem „Potwierdź i płać".
+15. System przenosi organizatora do modułu płatności.
+16. Organizator dokonuje płatności.
+17. System potwierdza wykonanie transakcji.
+18. Po udanej płatności system blokuje wybrane terminy w kalendarzu i rejestruje rezerwację w bazie danych.
+19. System generuje potwierdzenie rezerwacji i wysyła powiadomienie do skrzynki wiadomości organizatora zawierające dane gry, zarezerwowane terminy i numer rezerwacji.
+20. System przekierowuje organizatora na stronę główną.
+
+Scenariusz alternatywny A: Anulowanie na etapie formularza
+
+5a. Organizator klika przycisk „Anuluj" podczas wypełniania formularza.
+1. System powraca na stronę główną bez zapisywania danych.
+2. Dane formularza są tracone.
+
+Scenariusz alternatywny B: Brak wymaganych pól w formularzu
+
+4a. System stwierdza, że jedno lub więcej wymaganych pól formularza jest puste.
+1. System wyświetla komunikat „Uzupełnij wszystkie wymagane pola" i podświetla brakujące pola.
+2. Scenariusz wraca do kroku 3 scenariusza głównego.
+
+Scenariusz alternatywny C: Brak dostępnych terminów
+
+7a. System nie znalazł dostępnych terminów dla wybranego typu gry.
+1. System wyświetla komunikat „Brak dostępnych terminów dla wybranego typu gry".
+2. System oferuje organizatorowi opcje: zmianę danych gry lub powrót do strony głównej.
+3. Organizator wybiera jedną z opcji.
+
+Scenariusz alternatywny D: Cofnięcie operacji przed potwierdzeniem
+
+13a. Organizator klika przycisk „Cofnij" w podsumowaniu rezerwacji.
+1. System powraca do kalendarza.
+2. Wcześniej wybrane terminy są odznaczane.
+3. Organizator może wybrać inne terminy lub anulować operację przyciskiem „Anuluj".
+
+Scenariusz alternatywny E: Brak zaznaczonych terminów
+
+11a. Organizator klika przycisk „Potwierdź wybór" bez wybrania żadnego terminu.
+1. System wyświetla komunikat „Wybierz co najmniej jeden termin".
+2. Scenariusz wraca do kroku 9 scenariusza głównego.
+
+Scenariusz alternatywny F: Błąd płatności
+17a. Płatność nie powiodła się z powodu błędu systemu płatności, braku środków lub innych przyczyn.
+1. System wyświetla komunikat o błędzie płatności.
+2. System oferuje organizatorowi opcje: ponowienie próby płatności lub anulowanie rezerwacji.
+3. Jeśli organizator wybierze anulowanie, rezerwacja nie jest tworzona i terminy pozostają dostępne.
+4. Jeśli organizator wybierze ponowienie próby, system przenosi go do modułu płatności (scenariusz wraca do kroku 15 scenariusza głównego).
+
+Scenariusz alternatywny G: Timeout sesji
+
+(W dowolnym momencie scenariusza głównego lub alternatywnego) Sesja organizatora wygasa z powodu nieaktywności.
+1. System wylogowuje użytkownika.
+2. System wyświetla komunikat „Sesja wygasła. Zaloguj się ponownie".
+3. System przekierowuje organizatora na ekran logowania.
+4. Rezerwacja nie jest tworzona i terminy pozostają dostępne.
+
+Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
+
+9a. Między momentem wyświetlenia kalendarza a potwierdzeniem rezerwacji (krok 11) wybrany termin zostaje zarezerwowany przez innego użytkownika.
+1. System wykrywa konflikt dostępności podczas potwierdzania rezerwacji.
+2. System wyświetla komunikat „Wybrany termin jest już niedostępny. Dostępne są inne terminy".
+3. System oferuje organizatorowi powrót do kalendarza w celu wybrania innych dostępnych terminów.
+4. Scenariusz wraca do kroku 9 scenariusza głównego.
+
+---
