@@ -680,6 +680,18 @@ Działanie wykonywane przez system w wyniku interakcji użytkownika, postaci lub
 
 ---
 
+**Czujnik**
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (21.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+
+Element mapy pozwalający na wchodzenie w [interakcje] przez [gracza]. Może mieć
+postać [kodu QR] lub czujnika NFC. Aktywowanie czujnika przez zeskanowanie go
+powoduje wykonanie powiązanej [akcji].
+
+---
+
 **Użytkownik**
 
 - Typ: aktor systemu
@@ -1522,12 +1534,14 @@ subgraph FUNKCJE_TWORCY
 GDF([Zdefiniowanie gry])
 ADF([Zdefiniowanie akcji])
 SCR([Przesłanie komunikatu do recenzenta])
+SEDF([Zdefiniowanie powiązań czujników i akcji])
 end
 
 %% ===== RELACJE =====
 TG --> GDF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+GDF -. <&ltinvoke>> .-> SEDF
 ```
 **PU201: Zdefiniowanie gry**
 - Wersja: 1.0 (08.04.2026)
@@ -1550,6 +1564,15 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 - Wydanie: 1.0
 - **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
 
+**PU204: Zdefiniowanie powiązań czujników i akcji**
+- Wersja: 1.0(21.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+- **Opis:** System wyświetla formularz [definicji powiązań czujników i zdarzeń].
+  Twórca wybiera umiejscowienie [czujnika] na [mapie]. Następnie wybiera [akcję]
+  z [listy akcji]. Twórca może kontynuować dodawanie [czujników]. Po
+  zakończeniu twórca zapisuje zmiany. System zamyka formularz
+  [definicji powiązań czujników i zdarzeń].
 
 
 ---
@@ -1773,4 +1796,49 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 3. System oferuje organizatorowi powrót do kalendarza w celu wybrania innych dostępnych terminów.
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
 
----
+
+## 5.6 PU204: Zdefiniowanie powiązań czujników i akcji**
+
+- Wersja: 1.0 (21.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+- Aktor główny: Twórca gry
+- Warunek początkowy: Twórca gry jest zalogowany i jest w menu definiowania gry
+  i mapa gry została już zdefiniowana.
+- Warunek końcowy (sukces): Gra posiada zdefiniowane powiązania czujników i
+  akcji zgodne z formularzem.
+
+**Scenariusz główny**
+
+1. Twórca wybiera opcję definicji powiązań czujników i akcji.
+2. System wyświetla formularz definicji powiązań czujników i akcji.
+3. Twórca wybiera opcję zdefiniowania nowego powiązania.
+4. System wyświetla podgląd mapy.
+5. Twórca wybiera pozycję nowego czujnika na mapie.
+6. System wyświetla listę akcji.
+7. Twórca wybiera akcję z listy akcji.
+8. System wyświetla komunikat o pomyślnym zdefiniowaniu powiązania.
+9. Twórca wybiera opcję zapisu zmian oraz zamknięcia formularza.
+10. System zapisuje zdefiniowane powiązania.
+11. System wyświetla komunikat o pomyślnym zapisie powiązań.
+
+**Scenariusz alternatywny: Wykorzystanie zdefiniowanego czujnika**
+
+5a. Twórca wybiera zdefiniowany czujnik na mapie.
+
+**Scenariusz alternatywny: Edycja zdefiniowanego powiązania**
+
+3a. Twórca wybiera opcję edycji zdefiniowanego powiązania z listy powiązań.
+
+**Scenariusz alternatywny: Usunięcie zdefiniowanego powiązania**
+
+3a. Twórca wybiera opcję usunięcia zdefiniowanego powiązania z listy powiązań.
+1. System wyświetla prośbę o potwierdzenie operacji usunięcia.
+2. Twórca wybiera opcję potwierdzenia operacji usunięcia.
+3. System usuwa powiązanie z listy powiązań.
+4. Powrót do kroku 2. scenariusza głównego.
+
+**Scenariusz alternatywny: Zdefiniowanie wielu powiązań**
+
+9a. Twórca wybiera opcję zdefiniowania kolejnego powiązania.
+1. Powrót do kroku 4. scenariusza głównego.
