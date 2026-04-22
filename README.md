@@ -1774,3 +1774,87 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
 
 ---
+
+## 5.6 PU003: Recenzja gry
+
+- Wersja: 1.0 (22.04.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Aktor główny: Recenzent gry
+- Warunek początkowy: Recenzent jest zalogowany w systemie, posiada uprawnienia recenzenta i znajduje się na liście gier wyświetlonej w ramach PU002 (Wyświetlenie listy gier przez recenzenta).
+- Warunek końcowy (sukces): Recenzja została zapisana, powiązana z wybraną grą oraz kontem recenzenta, a jej status zmienia się na „przesłana do twórcy”.
+
+**Scenariusz główny**
+
+1. Recenzent wybiera opcję „Recenzuj grę” przy wybranym rekordzie na liście gier.
+2. System wyświetla okno recenzji zawierające tytuł gry, pole tekstowe na treść recenzji, pole oceny liczbowej (skala 1–10) oraz przyciski „Zapisz szkic”, „Wyślij” i „Anuluj”.
+3. Recenzent wprowadza treść recenzji oraz ocenę liczbową.
+4. Recenzent wybiera przycisk „Wyślij”.
+5. System waliduje treść recenzji (wymagana długość minimalna, obecność oceny, brak zakazanych słów).
+6. System zapisuje recenzję w bazie recenzji i wiąże ją z grą oraz kontem recenzenta.
+7. System aktualizuje status recenzji na „przesłana do twórcy”.
+8. System wyświetla potwierdzenie „Recenzja została zapisana i przesłana do twórcy gry”.
+9. System wywołuje przypadek użycia „Przesłanie komunikatu do twórcy” w celu powiadomienia twórcy o nowej recenzji. `<<invoke>>` Przesłanie komunikatu do twórcy
+10. System zamyka okno recenzji i wraca do listy gier.
+
+**Scenariusz alternatywny A: Zapisanie szkicu recenzji**
+
+1.-3. tak jak w scenariuszu głównym.
+
+4a. Recenzent wybiera przycisk „Zapisz szkic” zamiast „Wyślij”.
+1. System zapisuje treść recenzji ze statusem „szkic”, bez walidacji długości i bez wysyłania powiadomienia.
+2. System wyświetla komunikat „Szkic recenzji został zapisany. Możesz wrócić do niego później”.
+3. System zamyka okno recenzji i wraca do listy gier.
+
+**Scenariusz alternatywny B: Niepoprawna treść recenzji**
+
+1.-4. tak jak w scenariuszu głównym.
+
+5a. System stwierdza, że treść recenzji jest pusta, krótsza niż wymagane minimum lub brakuje oceny liczbowej.
+1. System wyświetla komunikat „Uzupełnij treść recenzji oraz ocenę przed wysłaniem” i podświetla brakujące pola.
+2. System nie zapisuje recenzji.
+3. Scenariusz wraca do kroku 3 scenariusza głównego.
+
+**Scenariusz alternatywny C: Anulowanie recenzji**
+
+1.-2. tak jak w scenariuszu głównym.
+
+3a. Recenzent wybiera przycisk „Anuluj” przed wysłaniem recenzji.
+1. System wyświetla pytanie „Czy na pewno chcesz zamknąć okno bez zapisania recenzji?”.
+2. Recenzent potwierdza anulowanie.
+3. System porzuca wprowadzone dane bez zapisywania.
+4. System zamyka okno recenzji i wraca do listy gier.
+
+final: failure
+POST: recenzja nie została zapisana w systemie.
+
+**Scenariusz alternatywny D: Recenzent już zrecenzował tę grę**
+
+1a. System wykrywa, że recenzent posiada już zapisaną recenzję dla tej gry.
+1. System wyświetla komunikat „Posiadasz już recenzję dla tej gry. Możesz ją edytować zamiast tworzyć nową”.
+2. System oferuje opcje „Edytuj istniejącą recenzję” lub „Anuluj”.
+3. Recenzent wybiera jedną z opcji.
+4. W przypadku wyboru „Edytuj istniejącą recenzję” system wczytuje poprzednią treść i ocenę do okna recenzji. Scenariusz wraca do kroku 3 scenariusza głównego.
+5. W przypadku wyboru „Anuluj” system wraca do listy gier.
+
+**Scenariusz alternatywny E: Błąd zapisu recenzji**
+
+1.-5. tak jak w scenariuszu głównym.
+
+6a. System nie jest w stanie zapisać recenzji z powodu błędu bazy danych lub braku połączenia.
+1. System wyświetla komunikat „Nie udało się zapisać recenzji. Spróbuj ponownie za chwilę”.
+2. System zachowuje wprowadzoną treść w oknie recenzji, aby recenzent nie stracił pracy.
+3. Scenariusz wraca do kroku 4 scenariusza głównego.
+
+**Scenariusz alternatywny F: Wygaśnięcie sesji**
+
+(W dowolnym momencie scenariusza głównego lub alternatywnego) Sesja recenzenta wygasa z powodu nieaktywności.
+1. System zapisuje lokalnie wprowadzoną treść jako szkic powiązany z kontem recenzenta.
+2. System wylogowuje użytkownika.
+3. System wyświetla komunikat „Sesja wygasła. Zaloguj się ponownie — szkic recenzji został zachowany”.
+4. System przekierowuje recenzenta na ekran logowania.
+
+final: failure
+POST: recenzja nie została przesłana; wprowadzona treść zachowana jako szkic.
+
+---
