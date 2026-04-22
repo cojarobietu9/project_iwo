@@ -847,7 +847,7 @@ Tyko użytkownik, do którego dana wiadomość została wysłana jest w stanie j
 
 ---
 
-# 4. Wymagania użytkownika
+**Sesja**
 
 - Typ: pojęcie systemowe
 - Wersja: 1.0 (15.04.2026)
@@ -857,37 +857,6 @@ Tyko użytkownik, do którego dana wiadomość została wysłana jest w stanie j
 
 Aktywny okres korzystania z systemu przez zalogowanego użytkownika. Sesja jest identyfikowana przez token sesji, ma ograniczony czas ważności (wygasa po zdefiniowanym czasie nieaktywności) i może zostać zakończona przez wylogowanie lub unieważniona przez system (np. po zmianie hasła).
 
-**Diagram:** Funkcje recenzenta
-
-```mermaid
-flowchart TB
- A["Recenzent gry"] --> n1(["Wyświetlenie listy gier przez recenzenta"]) -->|generalization| n2(["Wyświetlenie listy gier"])
- A -->|&lt;&lt;invoke&gt;&gt;| n3(["Recenzja gry"])
-```
-
-**PU001: Wyświetlenie listy gier**
-
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Maciej Bankiewicz
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry].
-
-**PU002: Wyświetlenie listy gier przez recenzenta**
-
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Maciej Bankiewicz
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry] dodając do każdego rekordu opcję recenzji [gry].
-
-**PU003: Recenzja gry**
-
-- Wersja: 1.0 (14.04.2026)
-- Odpowiedzialny: Maciej Bankiewicz
-- Priorytet i trudność: Istotne
-- Wydanie: 1.0
-- **Opis:** System wyświetla okno do zapisu tekstu. [Recenzent] zapisuje [recenzję] i zatwierdza ją.
 
 **Blokada konta**
 
@@ -1047,28 +1016,28 @@ flowchart LR
     Czas --> u7
 ```
 
-**PU1001: Wyświetlenie listy  użytkowników ze zgłoszeniami **
+**PU1001: Wyświetlenie listy  użytkowników ze zgłoszeniami**
 - Wersja: 1.0 (14.04.2026)
 - Odpowiedzialna: Karolina Wiśniewska
 - Wydanie: 1.0
 - Opis: System wyświetla menu administratora. Administrator wybiera opcję wyświetlenia listy użytkowników, którzy zostali zgłoszeni za łamanie regulaminu/ zasad społeczności. system wyświetla listę
 
   
-**PU1002: Zablokowanie konta użytkownika na ograniczony czas **
+**PU1002: Zablokowanie konta użytkownika na ograniczony czas**
 - Wersja: 1.0 (14.04.2026)
 - Odpowiedzialna: Karolina Wiśniewska
 - Wydanie: 1.0
 - Opis: Invoked by PU1001. Administrator wybiera wybrane konto uczestnika. System wyświetla zapytanie o blokowanie lub dezaktywację konta. Administrator wybiera opcję zablokowania konta na ustalony czas. System nadaje kontu status zablokowanego  na określony czas.
 
   
-**PU1003: Zablokowanie konta użytkownika na ograniczony czas **
+**PU1003: Zablokowanie konta użytkownika na ograniczony czas**
 - Wersja: 1.0 (14.04.2026)
 - Odpowiedzialna: Karolina Wiśniewska
 - Wydanie: 1.0
 - Opis: Invoked by PU1001. Administrator wybiera wybrane konto uczestnika. System wyświetla zapytanie o blokowanie lub dezaktywację konta. Administrator wybiera opcję dezaktywacji konta. System usuwa konto z listy kont aktywnych. System zmienia status konta na zdezaktywowane
 
   
-**PU1004: Odblokowanie konta po określonym czasie **
+**PU1004: Odblokowanie konta po określonym czasie**
 - Wersja: 1.0 (14.04.2026)
 - Odpowiedzialna: Karolina Wiśniewska
 - Wydanie: 1.0
@@ -1252,15 +1221,18 @@ pu_komunikat([Przesłanie komunikatu do twórcy])
 pu_lista_gier_org([Wyświetlenie listy gier przez organizatora])
 pu_lista_gier([Wyświetlenie listy gier])
 pu_recenzja_gry([Recenzja gry])
+pu_lista_recenzent([Wyświetlenie listy gier przez recenzenta])
 
 tworca --> pu_lista_gier_tw
 org --> pu_lista_gier_org
 rec --> pu_recenzja_gry
+rec --> pu_lista_recenzent
 
 pu_lista_gier_org ~~~ pu_lista_gier
 pu_lista_gier_tw ~~~ pu_lista_gier
-pu_lista_gier_org --> pu_lista_gier 
-pu_lista_gier_tw --> pu_lista_gier
+pu_lista_gier_org ==>|generalization| pu_lista_gier 
+pu_lista_gier_tw ==>|generalization| pu_lista_gier
+pu_lista_recenzent ==>|generalization| pu_lista_gier
 pu_recenzja_gry -."&lt;&lt;invoke&gt;&gt;".-> pu_komunikat
 
 end
@@ -1269,17 +1241,42 @@ end
 **PU109: Wyświetlenie listy gier przez twórcę** 
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Łukasz Czajka
-- Opis: Twórcy gier mają możliwość wyświetlania listy gier, których są twórcami. Wybranie pozycji z listy pozwala na czynności takie jak edycja.
+- **Opis:** Twórcy gier mają możliwość wyświetlania listy gier, których są twórcami. Wybranie pozycji z listy pozwala na czynności takie jak edycja.
 
 **PU110: Wyświetlenie listy gier przez organizatora** 
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Łukasz Czajka
-- Opis: Organizatorzy mają możliwość wyświetlania gier, które mogą zostać zorganizowane.
+- **Opis:** Organizatorzy mają możliwość wyświetlania gier, które mogą zostać zorganizowane.
 
 **PU111: Przesłanie komunikatu do twórcy** 
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Łukasz Czajka
-- Opis: Recenzenci mają możliwość przesłania uwag dotyczących recenzowanej gry.
+- **Opis:** Recenzenci mają możliwość przesłania uwag dotyczących recenzowanej gry.
+
+**PU112: Wyświetlenie listy gier**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry].
+
+**PU113: Wyświetlenie listy gier przez recenzenta**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry] dodając do każdego rekordu opcję recenzji [gry].
+
+**PU114: Recenzja gry**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla okno do zapisu tekstu. [Recenzent] zapisuje [recenzję] i zatwierdza ją.
+
 ---
 
 ## 4.1.12 Akcje Gracza w trakcie gry (Cezary Rybiński)
@@ -1522,12 +1519,14 @@ subgraph FUNKCJE_TWORCY
 GDF([Zdefiniowanie gry])
 ADF([Zdefiniowanie akcji])
 SCR([Przesłanie komunikatu do recenzenta])
+KED([Edycja komnaty])
 end
 
 %% ===== RELACJE =====
 TG --> GDF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+GDF -. "&lt;&lt;invoke&gt;&gt;" .-> KED 
 ```
 **PU201: Zdefiniowanie gry**
 - Wersja: 1.0 (08.04.2026)
@@ -1550,46 +1549,17 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 - Wydanie: 1.0
 - **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
 
-
+**PU204: Edycja komnaty**
+- Wersja: 1.0 (22.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla [panel edycji komnaty (strefy)]. Twórca gry edytuje takie elementy jak: wyposażenie, rozmieszczenie kodów QR, dostępność komnaty, widoczność komnaty na interaktywnej mapie. System zapisuje dane i wyświetla informację o potwierdzeniu zapisania zmian.
 
 ---
 
 # 5. Scenariusze i scenopisy
 
-## 5.1 PU001: Dodanie nowego samochodu
-
-**Scenariusz główny**
-
-1. Aktor wybiera opcję
-2. System wyświetla ekran
-
-**Diagram:** Dodanie nowego samochodu - scenopis
-
----
-
-## 5.2 PU101: Dokonanie płatności online
-
-**Scenariusz główny**
-
-1. Aktor wybiera opcję
-2. System wyświetla ekran
-
----
-
-## 5.3 PU106: Wydanie samochodu do sprzedaży
-
-**Scenariusz główny**
-
-1. Aktor wybiera opcję
-2. System wyświetla okno
-3. System zapisuje dane
-
-**Błąd danych**
-
-1-2. -"-  
-3a. System wyświetla komunikat
-
----
 
 ## 5.4 PU1009: Logowanie
 
@@ -1772,5 +1742,46 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 2. System wyświetla komunikat „Wybrany termin jest już niedostępny. Dostępne są inne terminy".
 3. System oferuje organizatorowi powrót do kalendarza w celu wybrania innych dostępnych terminów.
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
+
+## 5.7 PU204: Edycja komnaty
+- Wersja: 1.0 (22.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Wydanie: 1.0
+- Aktor główny: Twórca gier
+- Warunek początkowy: Twórca gry jest zalogowany i wybiera opcję edycji w definicji gry.
+- Warunek końcowy (sukces): Zmiany w komnacie zostały zapisane.  
+- Warunek końcowy (porażka): Zmiany w komnacie nie zostały zapisane, dane pozostały bez zmian.
+
+**Scenariusz główny**
+
+1. Twórca gry wybiera opcję edycji komnaty.
+2. System wyświetla formularz edycji komnaty z możliwością zmiany wyposażenia, dostępności, widoczności na mapie oraz rozmieszczenia kodów QR.
+3. Twórca gry dokonuje zmian w wyposażeniu komnaty, dostępności, widoczności oraz kodach QR.
+4. Twórca gry wybiera opcję „Zapisz zmiany”.
+5. System sprawdza zgodność wyposażenia z dostępnością w magazynie.
+   - [wszystko zgodne z magazynem]  
+6. System zapisuje zmiany w komnacie.
+7. System wyświetla potwierdzenie zapisania zmian.
+8. System aktualizuje stan komnaty na mapie interaktywnej.
+
+Koniec: sukces
+
+**Scenariusz alternatywny A: Brak wymaganych przedmiotów w magazynie**
+
+1-4. Jak w scenariuszu głównym.  
+[przedmiot w komnacie brak w magazynie]  
+5a. System wyświetla komunikat o braku przedmiotu w magazynie.  
+6a. Twórca gry wybiera „Ok”.  
+Powrót do kroku 3. w scenariuszu głównym.
+
+**Scenariusz alternatywny B: Błąd zapisu zmian**
+
+1-4. Jak w scenariuszu głównym.  
+5c. System próbuje zapisać zmiany.  
+[błąd zapisu / problem z połączeniem]  
+6c. System wyświetla komunikat o błędzie zapisu zmian.  
+7c. Twórca gry wybiera „Ok”.  
+
+Koniec: porażka
 
 ---
