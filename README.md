@@ -1771,3 +1771,25 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
 
 ---
+
+## 5.x PU1: Wyświetlenie kalendarza
+
+- Wersja: 1.0 (29.04.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Aktor główny: Użytkownik
+- Warunek początkowy: Użytkownik jest zalogowany na swoje konto w serwisie i jego konto nie jest objęte blokadą.
+- Warunek końcowy (sukces): Strona z kalendarzem wydarzeń została wyświetlona przez system.
+
+Scenariusz główny
+
+1. Użytkownik wybiera opcję *Kalendarz* w głównym menu aplikacji.
+2. System wyświetla użytkownikowi stronę z kalendarzem wydarzeń.
+
+Scenariusz alternatywny: Sesja użytkownika wygasła przed kliknięciem opcji *Kalendarz*
+
+2a. System wylogowuje użytkownika.
+1. System wyświetla komunikat "Sesja wygasła. Zaloguj się ponownie" oraz okno logowania.
+2. Strona z kalendarzem nie zostaje wyświetlona.
+
+---
