@@ -857,7 +857,21 @@ Tyko użytkownik, do którego dana wiadomość została wysłana jest w stanie j
 
 Aktywny okres korzystania z systemu przez zalogowanego użytkownika. Sesja jest identyfikowana przez token sesji, ma ograniczony czas ważności (wygasa po zdefiniowanym czasie nieaktywności) i może zostać zakończona przez wylogowanie lub unieważniona przez system (np. po zmianie hasła).
 
----
+**Diagram:** Funkcje recenzenta
+
+```mermaid
+flowchart TB
+ A["Recenzent gry"] --> n1(["Wyświetlenie listy gier przez recenzenta"]) -->|generalization| n2(["Wyświetlenie listy gier"])
+ A -->|&lt;&lt;invoke&gt;&gt;| n3(["Zrecenzowanie gry"])
+```
+
+**PU001: Wyświetlenie listy gier**
+
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla listę zawierającą wszystkie stworzone uprzednio [gry]. Listę można przewijać, filtrować, wyszukiwać konkretne [gry]. Lista jest stronicowana - na jedną stronę listy przypada maksymalnie 30 [gier]; strony mogą być zmieniane u góry i dołu listy.
 
 **Dane użytkownika**
 
@@ -866,10 +880,15 @@ Aktywny okres korzystania z systemu przez zalogowanego użytkownika. Sesja jest 
 - Odpowiedzialna: Polina Nesterova
 - Priorytet i trudność: Kluczowe
 - Wydanie: 1.0
+- **Opis:** Spełnia to co _PU001: Wyświetlenie listy gier_. Dodatkowo do każdej [gry] dodaje opcję [recenzji].
 
-Zestaw informacji identyfikujących i opisujących użytkownika w systemie (m.in. imię, nazwisko, adres e-mail, hasło, numer telefonu). Dane użytkownika są wprowadzane w trakcie rejestracji, weryfikowane przez system pod kątem poprawności i unikalności, a następnie przechowywane w profilu konta. Zmiana wrażliwych danych wymaga dodatkowej autoryzacji.
+**PU003: Zrecenzowanie gry**
 
----
+- Wersja: 1.0 (14.04.2026)
+- Odpowiedzialny: Maciej Bankiewicz
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- **Opis:** System wyświetla okno do zapisu recenzji. [Recenzent] zatwierdza [recenzję], a System ją zapisuje.
 
 **Blokada konta**
 
@@ -1300,12 +1319,10 @@ flowchart LR
     u1["Wysłanie skargi"]
     u2["Wyjście z wydarzenia"]
     u3["Targowanie się"]
-    u4["Skanowanie kodu QR"]
 
     Player --> u1
     Player --> u2
     Player --> u3
-    u3-.->|<< invoke >>|u4
 ```
 
 **PU1201: Wysłanie skargi**
@@ -1828,7 +1845,7 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 ---
 
 ## 5.6 PU3: Definiowanie warunków zwycięstwa w scenariuszu gry
-
+ 
 - Wersja: 1.0 (21.04.2026)
 - Odpowiedzialny: Tomasz Rogalski
 - Wydanie: 1.0
