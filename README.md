@@ -1846,38 +1846,26 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 
 **Scenariusz główny**
 
-1. Organizator wybiera sekcję „Warunki zwycięstwa” w panelu edycji scenariusza gry.
-2. System wyświetla formularz definiowania warunków, umożliwiając wybór trybu gry (indywidualny lub frakcyjny).
-3. Organizator wybiera docelową grupę/frakcję, dla której chce ustalić warunki.
-4. Organizator określa typ warunku zwycięstwa (np. zdobycie określonej liczby punktów, wykonanie konkretnych zadań fabularnych, przetrwanie limitu czasu).
-5. System dynamicznie dodaje szczegółowe pola konfiguracyjne do wybranego typu warunku.
-6. Organizator wprowadza wymagane wartości (np. próg punktowy, lista wymaganych zadań).
-7. Organizator zatwierdza formularz przyciskiem „Zapisz warunek”.
-8. System waliduje poprawność dodanego warunku ze specyfiką całej gry.
-9. System zapisuje dodane warunki w bazie danych przypisanej do danego scenariusza.
-10. System wyświetla potwierdzenie poprawnego zdefiniowania warunków i aktualizuje listę warunków widoczną dla tego wydarzenia.
+1. Organizator wybiera opcję „Warunki zwycięstwa”.
+2. System wyświetla formularz definiowania warunków.
+3. Organizator wprowadza dane warunku i zatwierdza formularz.
+4. System waliduje poprawność dodanego warunku.
+   [dane poprawne]
+5. System zapisuje dodane warunki.
+6. System wyświetla potwierdzenie poprawnego zdefiniowania warunków.
 
-**Scenariusz alternatywny A: Błędne lub niekompletne wartości w formularzu**
+**Scenariusz alternatywny 1: Błędne lub niekompletne wartości w formularzu**
 
-8a. System stwierdza, że wprowadzono błędne wartości (np. nieistniejąca liczba zadań, ujemny próg punktowy).
+1.-4. tak jak w scenariuszu głównym
+[dane niepoprawne]
+5a. System podświetla błędne pola i wyświetla komunikat o błędnych danych.
+Powrót do zdania 3. w scenariuszu głównym.
 
-1. System przerywa operację zapisu i podświetla błędne pola.
-2. System wyświetla komunikat błędu „Uzupełnij poprawnie wszystkie wymagane pola warunku”.
-3. Scenariusz wraca do kroku 6 scenariusza głównego.
+**Scenariusz alternatywny 2: Logiczna sprzeczność warunków gry**
 
-**Scenariusz alternatywny B: Anulowanie wprowadzania warunku**
-
-7a. Organizator klika przycisk „Anuluj”.
-
-1. System porzuca wprowadzane dane bez zapisywania.
-2. System powraca do panelu głównego edycji scenariusza gry.
-
-**Scenariusz alternatywny C: Logiczna sprzeczność warunków gry**
-
-8b. System wykrywa konflikt nowego warunku z wcześniej przypisanymi warunkami w tej samej grze (np. wykluczające się osiągnięcia dla różnych frakcji w tym samym czasie).
-
-1. System wyświetla komunikat „Wykryto sprzeczność z już istniejącymi warunkami zwycięstwa”.
-2. System wymusza edycję przed zapisaniem i wskazuje problematyczny konflikt.
-3. Scenariusz wraca do kroku 4 scenariusza głównego.
+1.-4. tak jak w scenariuszu głównym
+[konflikt warunków]
+5b. System wymusza edycję przed zapisaniem i wyświetla komunikat o sprzeczności z istniejącymi warunkami.
+Powrót do zdania 2. w scenariuszu głównym.
 
 ---
