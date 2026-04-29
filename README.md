@@ -1868,4 +1868,7 @@ Powrót do zdania 3. w scenariuszu głównym.
 5b. System wymusza edycję przed zapisaniem i wyświetla komunikat o sprzeczności z istniejącymi warunkami.
 Powrót do zdania 2. w scenariuszu głównym.
 
+**Scenopis:**
+![Scenopis - Definiowanie warunków zwycięstwa](scenopisy/scenopis_tr.png)
+
 ---
