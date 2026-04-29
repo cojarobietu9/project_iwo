@@ -919,6 +919,25 @@ Bezpieczny transfer zasobów wirtualnych między dwoma graczami, autoryzowany za
 
 ---
 
+**Komunikat do recenzenta**
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (29.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+
+Treść tekstowa napisana przez twórcę gier do recenzenta, w celu wyeliminowania niejasności dotyczących mechanik gry lub odpowiedzi na pytanie.
+
+---
+
+**Okno komunikacji twórcy gry z recenzentem**
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (29.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+
+Okno zawierające historię kontaktu z recenzentem wraz z funkcją wysłania komunikatów do recenzenta.
+
+---
 
 # 4. Wymagania użytkownika
 
@@ -1924,3 +1943,65 @@ final: failure
 POST: recenzja nie została przesłana; wprowadzona treść zachowana jako szkic powiązany z kontem recenzenta.
 
 ---
+## 5.8 PU203: Przesłanie komunikatu do recenzenta
+- Wersja 1.0 (29.04.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+- Aktor główny: Twórca gry
+- Warunek początkowy: Twórca gry jest zalogowany i znajduje się w formularzu opisu ogólnego gry.
+- Warunek końcowy (success): Komunikat do recenzenta został wysłany i jest widoczny w oknie komunikacji twórcy gry z recenzentem.
+- Warunek końcowy (failure): Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
+
+**Scenariusz główny**
+
+1. Twórca gry wybiera opcję przesłania komunikatu do recenzenta.
+2. System wyświetla okno komunikacji twórcy gry z recenzentem.
+3. Twórca gry wpisuje komunikat do recenzenta.
+4. Twórca gry wybiera opcję "Wyślij". \
+[komunikat do recenzenta poprawny]
+5. System wysyła komunikat do recenzenta.
+6. System wyświetla potwierdzenie wysłania komunikatu do recenzenta.
+7. System dodaje wiadomość do okna komunikacji twórcy gry z recenzentem.
+
+**final:** success
+
+**POST:** Komunikat do recenzenta został wysłany i jest widoczny w oknie komunikacji twórcy gry z recenzentem.
+
+**Scenariusz alternatywny A: Pusty komunikat**
+
+1-4. Jak w scenariuszu głównym. \
+[komunikat do recenzenta pusty] \
+5a. System wyświetla komunikat o braku danych. \
+6a. Twórca gry wybiera "Ok".
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
+
+**Scenariusz alternatywny B: Przekroczenie limitu znaków**
+
+1-4. Jak w scenariuszu głównym. \
+[komunikat do recenzenta zbyt długi] \
+5b. System wyświetla komunikat o przekroczeniu limitu znaków. \
+6b. Twórca gry wybiera "Ok". 
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
+
+**Scenariusz alternatywny C: Błąd połączenia**
+
+1-5. Jak w scenariuszu głównym. \
+[błąd połączenia / brak odpowiedzi serwera] \
+6c. System wyświetla komunikat o błędzie wysłania. \
+7c. Twórca gry wybiera "Ok". 
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
