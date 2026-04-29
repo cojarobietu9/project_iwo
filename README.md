@@ -579,7 +579,273 @@ J07: Interfejs aplikacji powinien posiadać tryb 'Dark-Mode'.
 | Interfejs aplikacji mobilnej musi być dostosowany do pracy w warunkach niskiego oświetlenia. |
 
 ## 3.5 Słownik
+# Słownik pojęć systemu – Diagramy klas
 
+---
+
+## 1. Użytkownicy i bezpieczeństwo konta
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Uzytkownik {
+        +imie: String
+        +nazwisko: String
+        +email: String
+        +haslo: String
+        +numerTelefonu: String
+    }
+
+    class DaneUzytkownika {
+        +imie: String
+        +nazwisko: String
+        +email: String
+        +haslo: String
+        +numerTelefonu: String
+        +zmianaWymagaAutoryzacji: Boolean
+    }
+
+    class Sesja {
+        +tokenSesji: String
+        +czasWaznosci: DateTime
+        +aktywna: Boolean
+    }
+
+    class BlokadaKonta {
+        +przyczyna: String
+        +dataBlokady: DateTime
+        +czyAktywna: Boolean
+    }
+
+    class Gracz {
+    }
+
+    class Organizator {
+    }
+
+    class OrganizatorZewnetrzny {
+    }
+
+    class TworcaGier {
+    }
+
+    class MistrzWydarzenia {
+    }
+
+    class Recenzent {
+    }
+
+    class Administrator {
+    }
+
+    Uzytkownik <|-- Gracz
+    Uzytkownik <|-- Organizator
+    Uzytkownik <|-- TworcaGier
+    Uzytkownik <|-- MistrzWydarzenia
+    Uzytkownik <|-- Recenzent
+    Uzytkownik <|-- Administrator
+    Uzytkownik <|-- OrganizatorZewnetrzny
+
+    Uzytkownik "1" *-- "1"  DaneUzytkownika : przechowuje
+    Uzytkownik "1" *-- "0..*" Sesja : posiada
+    Uzytkownik "1" *-- "0..*" BlokadaKonta : moze miec
+```
+
+---
+
+## 2. Struktura gry
+
+```mermaid
+classDiagram
+    direction TB
+
+    class TworcaGier {
+    }
+
+    class OrganizatorZewnetrzny {
+    }
+
+    class Gra {
+        +zasady: String
+    }
+
+    class Mapa {
+    }
+
+    class Pomieszczenie {
+    }
+
+    class Strefa {
+        +ukryta: Boolean
+        +ograniczeniaDostepu: Boolean
+    }
+
+    class Postac {
+        +atrybuty: Map
+    }
+
+    class Ekwipunek {
+        +wirtualnaWaluta: Number
+    }
+
+    class Przedmiot {
+        +efekty: String
+    }
+
+    class MiniGra {
+        +opis: String
+    }
+
+    class Akcja {
+        +typ: String
+    }
+
+    TworcaGier "1"        --> "0..*" Gra       : definiuje
+    OrganizatorZewnetrzny "1" --> "0..*" Gra   : tworzy
+
+    Gra "1" *-- "1"    Mapa    : zawiera
+    Gra "1" *-- "0..*" Postac  : zawiera
+    Gra "1" *-- "0..*" Akcja   : dopuszcza
+
+    Mapa "1" *-- "0..*" Pomieszczenie : zawiera
+    Mapa "1" *-- "0..*" Strefa        : zawiera
+
+    Postac "1" *-- "1"    Ekwipunek  : posiada
+    Postac "1" --> "0..*" Przedmiot  : nosi
+    Postac "1" --> "0..*" Akcja      : moze wykonac
+
+    Ekwipunek "1" *-- "0..*" Przedmiot : zawiera
+
+    MiniGra --|> Gra : jest rodzajem
+```
+
+---
+
+## 3. Wydarzenie i rozgrywka
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Gra {
+        +zasady: String
+    }
+
+    class Organizator {
+    }
+
+    class MistrzWydarzenia {
+    }
+
+    class Gracz {
+    }
+
+    class Wydarzenie {
+        +czas: DateTime
+        +miejsce: String
+    }
+
+    class KalendarzWydarzen {
+    }
+
+    class Zaproszenie {
+    }
+
+    Organizator    "1" --> "0..*" Wydarzenie : zarzadza
+    MistrzWydarzenia "1" --> "0..*" Wydarzenie : prowadzi
+
+    Wydarzenie "0..*" --> "1"    Gra    : jest instancja
+    Wydarzenie "1"    -- "0..*" Gracz  : uczestnicza
+
+    KalendarzWydarzen "1" --> "0..*" Wydarzenie : prezentuje
+
+    Zaproszenie "0..*" --> "1" Gracz      : wysylane do
+    Zaproszenie "0..*" -- "1" Wydarzenie : dotyczy
+```
+
+---
+
+## 4. Interakcje i transakcje
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Gracz {
+    }
+
+    class Przedmiot {
+        +efekty: String
+    }
+
+    class Akcja {
+        +typ: String
+    }
+
+    class Interakcja {
+        +cooldown: Duration
+    }
+
+    class KodQR {
+        +zawartosc: String
+    }
+
+    class TransakcjaWymiany {
+        +status: String
+        +zatwierdzona: Boolean
+    }
+
+    Interakcja "0..*" --> "1"    Gracz    : inicjuje
+    Interakcja "0..*" --> "1"    Przedmiot : dotyczy
+    Interakcja "0..*" --> "1"    KodQR    : wymaga
+    Interakcja "1"    --|> "0..*" Akcja    : wyzwala
+
+    TransakcjaWymiany "0..*" --> "2" Gracz : miedzy graczami
+    TransakcjaWymiany "0..*" --> "1" KodQR : autoryzowana przez
+```
+
+---
+
+## 5. Komunikacja
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Uzytkownik {
+        +imie: String
+        +nazwisko: String
+        +email: String
+    }
+
+    class Wydarzenie {
+        +czas: DateTime
+        +miejsce: String
+    }
+
+    class Zaproszenie {
+    }
+
+    class Wiadomosc {
+        +tresc: String
+        +dataWyslania: DateTime
+        +zawieraZalacznik: Boolean
+    }
+
+    class Skarga {
+        +tresc: String
+        +dataZgloszenia: DateTime
+    }
+
+    Zaproszenie "0..*" --> "1" Uzytkownik : wysylane do
+    Zaproszenie "0..*" --> "1" Wydarzenie : dotyczy
+
+    Wiadomosc "0..*" --> "1" Uzytkownik : nadawca
+    Wiadomosc "0..*" --> "1" Uzytkownik : odbiorca
+
+    Skarga "0..*" --> "1" Uzytkownik : zglaszajacy
+```
 **Diagram:** Słownik
 
 ---
