@@ -2311,6 +2311,32 @@ Powrót do kroku 3. w scenariuszu głównym
 
 **final:** failure
 
+**POST:** Komunikat do recenzenta nie został wysłany.
+
+**Scenariusz alternatywny B: Przekroczenie limitu znaków**
+
+1-4. Jak w scenariuszu głównym. \
+[komunikat do recenzenta zbyt długi] \
+5b. System wyświetla komunikat o przekroczeniu limitu znaków. \
+6b. Twórca gry wybiera "Ok". 
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
+
+**Scenariusz alternatywny C: Błąd połączenia**
+
+1-5. Jak w scenariuszu głównym. \
+[błąd połączenia / brak odpowiedzi serwera] \
+6c. System wyświetla komunikat o błędzie wysłania. \
+7c. Twórca gry wybiera "Ok". 
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
 **POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
 
 ---
