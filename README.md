@@ -1916,6 +1916,31 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 3. System oferuje organizatorowi powrót do kalendarza w celu wybrania innych dostępnych terminów.
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
 
+#5.9 UC202: Zdefiniowanie akcji
+- Wersja 1.0
+- Odpowiedzialna: Karolina Wiśniewska
+- Aktor Główny: Twórca Gry
+Warunek początkowy: Twórca gry zalogowany, znajduje się w trybie definicji gry
+
+Scenariusz Główny:
+1. Twórca wybiera dodanie akcji
+2. System wyświetla formularz dodania akcji
+3. Twórca wprowadza dane
+4. Twórca wybiera przycisk zapisania akcji
+5. System zapisuje akcję
+6. System wyświetla informacje o sukcesir
+7. System zamyka formularz
+Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
+
+Scenariusz Alternatywny A:
+6a. System wykrył niepełne dane akcji przy dodaniu
+7. System wyświetla informcje o nieuzupełnieniu danych przez twórcę gry
+8. Scenariusz wraca do kroku 3 scenariusza głównego
+
+Scenariusz Alternatywny B:
+6a. System nie zapisał akcji
+7. System wyświetla informację o błędzie zapisu
+8. Scenariusz wraca do kroku 3 scenariusza głównego
 ---
 
 ## 5.5.1 PU205: Wyświetlenie scenariusza gry w edytorze
