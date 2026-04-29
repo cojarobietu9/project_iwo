@@ -679,6 +679,29 @@ Działanie wykonywane przez system w wyniku interakcji użytkownika, postaci lub
 
 ---
 
+**Czujnik**
+- Typ: pojęcie domenowe
+- Wersja: 1.1 (24.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+
+Element [mapy] pozwalający na wchodzenie w [interakcje] przez [gracza].
+Ma określony [typ czujnika] oraz pozycję na [mapie]. Aktywowanie czujnika zależy
+od jego typu i powoduje wykonanie powiązanej [akcji].
+
+---
+
+**Typ czujnika**
+- Typ: pojęcie domenowe
+- Wersja: 1.0 (24.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+
+Sposób, w jaki [czujnik] może być aktywowany. Możliwe typy: NFC, [kod QR],
+czujnik ruchu.
+
+---
+
 **Użytkownik**
 
 - Typ: aktor systemu
@@ -1574,12 +1597,14 @@ subgraph FUNKCJE_TWORCY
 GDF([Zdefiniowanie gry])
 ADF([Zdefiniowanie akcji])
 SCR([Przesłanie komunikatu do recenzenta])
+SEDF([Zdefiniowanie czujnika])
 end
 
 %% ===== RELACJE =====
 TG --> GDF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> ADF
 GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
+GDF -. <&ltinvoke>> .-> SEDF
 ```
 
 **PU201: Zdefiniowanie gry**
@@ -1605,6 +1630,16 @@ GDF -. "&lt;&lt;invoke&gt;&gt;" .-> SCR
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 - **Opis:** Twórca gry wprowadza treść [komunikatu do recenzenta] a następnie klika wyślij. System wyświetla informację o potwierdzeniu przesłania komunikatu i dodaje ją do [okna komunikacji twórcy gry z recenzentem].
+
+**PU204: Zdefiniowanie czujnika**
+- Wersja: 1.1(24.04.2026)
+- Odpowiedzialna: Alicja Rosiak
+- Wydanie: 1.0
+- **Opis:** System wyświetla [formularz definicji czujnika]. Twórca wybiera
+  umiejscowienie [czujnika] na [mapie]. Następnie wybiera [akcję]
+  z [listy akcji]. Po zakończeniu twórca zapisuje zmiany. System zamyka
+  [formularz definicji czujnika].
+
 
 ---
 
@@ -1842,42 +1877,47 @@ Scenariusz alternatywny H: Wybrany termin stanie się niedostępny
 3. System oferuje organizatorowi powrót do kalendarza w celu wybrania innych dostępnych terminów.
 4. Scenariusz wraca do kroku 9 scenariusza głównego.
 
----
 
-## 5.6 PU3: Definiowanie warunków zwycięstwa w scenariuszu gry
- 
-- Wersja: 1.0 (21.04.2026)
-- Odpowiedzialny: Tomasz Rogalski
+## 5.6 PU204: Zdefiniowanie czujnika**
+
+- Wersja: 1.1 (24.04.2026)
+- Odpowiedzialna: Alicja Rosiak
 - Wydanie: 1.0
-- Aktor główny: Organizator wydarzenia
-- Warunek początkowy: Organizator jest zalogowany w aplikacji i znajduje się w panelu edycji wybranego scenariusza gry.
-- Warunek końcowy (sukces): Warunki zwycięstwa dla graczy lub frakcji zostały pomyślnie zdefiniowane i zapisane w scenariuszu gry.
+- Aktor główny: Twórca gry
+- Warunek początkowy: Twórca gry jest zalogowany
+  i jest w menu definiowania gry
+  i conajmniej jedna akcja została zdefiniowana dla danej gry
+  i mapa gry została została zdefiniowana dla danej gry
 
 **Scenariusz główny**
 
-1. Organizator wybiera opcję „Warunki zwycięstwa”.
-2. System wyświetla formularz definiowania warunków.
-3. Organizator wprowadza dane warunku i zatwierdza formularz.
-4. System waliduje poprawność dodanego warunku.
-   [dane poprawne]
-5. System zapisuje dodane warunki.
-6. System wyświetla potwierdzenie poprawnego zdefiniowania warunków.
+1. Twórca wybiera opcję dodania nowego czujnika.
+2. System wyświetla formularz definicji czujnika.
+3. Twórca wybiera opcję wybrania pozycji czujnika.
+4. System wyświetla okno podglądu mapy.
+5. Twórca wybiera pozycję nowego czujnika.
+6. System zamyka okno podglądu mapy.
+7. Twórca uzupełnia pozostałe dane czujnika.
+8. Twórca wybiera opcję zapisu i zamknięcia formularza.  
+[dane poprawne]
+9. System zapisuje nowy czujnik.  
+[zapis pomyślny]
+10. System wyświetla komunikat o pomyślnym dodaniu czujnika.
 
-**Scenariusz alternatywny 1: Błędne lub niekompletne wartości w formularzu**
+Warunek końcowy: nowy czujnik jest zarejestrowany dla danej gry
 
-1.-4. tak jak w scenariuszu głównym
-[dane niepoprawne]
-5a. System podświetla błędne pola i wyświetla komunikat o błędnych danych.
-Powrót do zdania 3. w scenariuszu głównym.
+**Scenariusz alternatywny 1**
 
-**Scenariusz alternatywny 2: Logiczna sprzeczność warunków gry**
+1.-8. jak w Scenariuszu głównym  
+[dane niepoprawne]  
+9a. System wyświetla komunikat o błędnych danych.  
+Powrót do kroku 3. w Scenariuszu głównym
 
-1.-4. tak jak w scenariuszu głównym
-[konflikt warunków]
-5b. System wymusza edycję przed zapisaniem i wyświetla komunikat o sprzeczności z istniejącymi warunkami.
-Powrót do zdania 2. w scenariuszu głównym.
+**Scenariusz alternatywny 2**
 
-**Scenopis:**
-![Scenopis - Definiowanie warunków zwycięstwa](scenopisy/scenopis_tr.png)
+1.-9. jak w Scenariuszu głównym  
+[zapis niepomyślny]  
+10b. System wyświetla komunikat o błędzie zapisu.  
+11b. System zamyka formularz definicji czujnika.
 
----
+Warunek końcowy: nowy czujnik nie został zarejestrowany dla danej gry
