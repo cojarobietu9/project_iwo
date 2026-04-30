@@ -2166,22 +2166,27 @@ Warunek początkowy: Twórca gry zalogowany, znajduje się w trybie definicji gr
 Scenariusz Główny:
 1. Twórca wybiera dodanie akcji
 2. System wyświetla formularz dodania akcji
-3. Twórca wprowadza dane
+3. Twórca wprowadza dane  akcji
 4. Twórca wybiera przycisk zapisania akcji
-5. System zapisuje akcję
-6. System wyświetla informacje o sukcesir
-7. System zamyka formularz
+5. System weryfikuje poprawność danych akcji
+7. System zapisuje akcję
+8. System weryfikuje powodzenie zapisania akcji 
+9. System wyświetla informacje o sukcesir
+10. System zamyka formularz
 Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
 
 Scenariusz Alternatywny A:
+
 6a. System wykrył niepełne dane akcji przy dodaniu
 7. System wyświetla informcje o nieuzupełnieniu danych przez twórcę gry
 8. Scenariusz wraca do kroku 3 scenariusza głównego
 
 Scenariusz Alternatywny B:
+
 6a. System nie zapisał akcji
 7. System wyświetla informację o błędzie zapisu
 8. Scenariusz wraca do kroku 3 scenariusza głównego
+
 ---
 
 ## 5.6 PU52: Wyświetlenie scenariusza gry w edytorze
