@@ -2016,9 +2016,11 @@ flowchart LR
     PG(("👤 Projektant gier"))
     PU56(["PU56: Wyświetlenie scenariusza\\ngry w edytorze"])
     PU57(["PU57: Projektowanie zadań w scenariuszu gry"])
+    PU58(["PU58: Definiowanie warunków zwycięstwa w scenariuszu gry"])
     PU49 -.->|"<<invoke>>"| PU56
     PG --> PU56
     PU56 -->|"<<invoke>>"| PU57
+    PU56 -->|"<<invoke>>"| PU58
 ```
 
 #### PU56: Wyświetlenie scenariusza gry w edytorze
@@ -2028,7 +2030,7 @@ flowchart LR
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 - Aktor główny: Projektant gier
-- **Opis:** Projektant wybiera istniejącą grę lub scenariusz i otwiera go w module edycji. System wczytuje zapis scenariusza z bazy i prezentuje widok edytora (struktura scenariusza, m.in. lista zadań i metadane - szczegóły UI w scenopisie). Ten przypadek **poprzedza** projektowanie nowych zadań (**PU57**): dodawanie zadania ma miejsce dopiero przy już wyświetlonym w edytorze scenariuszu.
+- **Opis:** Projektant wybiera istniejącą grę lub scenariusz i otwiera go w module edycji. System wczytuje zapis scenariusza z bazy i prezentuje widok edytora (struktura scenariusza, m.in. lista zadań, warunków zwycięstwa i metadane - szczegóły UI w scenopisie). Ten przypadek **poprzedza** projektowanie nowych zadań (**PU57**) i warunków zwycięstwa (**PU58**): operacje te mają miejsce dopiero przy już wyświetlonym w edytorze scenariuszu.
 
 #### PU57: Projektowanie zadań w scenariuszu gry
 
@@ -2041,7 +2043,16 @@ flowchart LR
 
 Powiązanie z wymaganiami funkcjonalnymi: **F28**.
 
----
+#### PU58: Definiowanie warunków zwycięstwa w scenariuszu gry
+
+- Wersja: 1.0 (05.05.2026)
+- Odpowiedzialny: Tomasz Rogalski
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+- Aktor główny: Projektant gier
+- **Opis:** Przy aktywnym widoku edytora scenariusza projektant wybiera opcję zdefiniowania warunków zwycięstwa. System wyświetla formularz definiowania warunków zwycięstwa, gdzie możliwe jest określenie ich parametrów. Po zatwierdzeniu formularza i pomyślnej walidacji po stronie systemu, warunki są zapisywane w strukturze scenariusza. Szczegóły scenariusza krok po kroku: rozdział 5.
+
+Powiązanie z wymaganiami funkcjonalnymi: **F23**.
 
 # 5. Scenariusze i scenopisy
 
@@ -2268,37 +2279,37 @@ Powrót do kroku 3. w scenariuszu głównym
 4. System przekierowuje Użytkownika dyskretnie do widoku logowania z komunikatem: „Twoja sesja przedawniła się dla względów bezpieczeństwa. Zaloguj się, aby kontynuować.”
 5. (Po pomyślnym zalogowaniu poprzez [PU14: Logowanie](#pu14-logowanie)) System używa zapisanych lokalnie parametrów, automatycznie odświeżając i odtwarzając użytkownikowi widok listy gier z wybranymi opcjami paginacji i filtroania z dokładnego punktu w którym przestał działać.
 
-## 5.5 [Definiowanie warunków zwycięstwa w scenariuszu gry]
+## 5.5 [PU58: Definiowanie warunków zwycięstwa w scenariuszu gry](#pu58-definiowanie-warunków-zwycięstwa-w-scenariuszu-gry)
 
-- Wersja: 1.0 (21.04.2026)
+- Wersja: 1.0 (05.05.2026)
 - Odpowiedzialny: Tomasz Rogalski
 - Wydanie: 1.0
-- Aktor główny: Organizator wydarzenia
-- Warunek początkowy: Organizator jest zalogowany w aplikacji i znajduje się w panelu edycji wybranego scenariusza gry.
-- Warunek końcowy (sukces): Warunki zwycięstwa dla graczy lub frakcji zostały pomyślnie zdefiniowane i zapisane w scenariuszu gry.
+- Aktor główny: Projektant gier
+- **Związek z [PU56: Wyświetlenie scenariusza gry w edytorze](#pu56-wyświetlenie-scenariusza-gry-w-edytorze):** Przypadek **PU58** realizuje się **po** otwarciu scenariusza w edytorze (PU56). Punkt wyjścia stanowi krok 3 scenariusza PU56 (widok edytora aktywny).
+- Warunek początkowy: Projektant gier jest zalogowany w aplikacji i znajduje się w panelu edycji wybranego scenariusza gry.
+- Warunek końcowy (sukces): Warunki zwycięstwa dla graczy lub frakcji zostały pomyślnie zdefiniowane i zapisane w strukturze scenariusza.
 
 **Scenariusz główny**
 
-1. Organizator wybiera opcję „Warunki zwycięstwa”.
-2. System wyświetla formularz definiowania warunków zwycięstwa.
-3. Organizator wprowadza dane warunku zwycięstwa.
-4. System waliduje poprawność dodanego warunku zwycięstwa.
+1. System wyświetla formularz definiowania warunków zwycięstwa po wybraniu opcji przez projektanta przy aktywnym widoku edytora.
+2. Projektant wprowadza dane warunku zwycięstwa.
+3. System waliduje poprawność dodanego warunku zwycięstwa.
    [dane poprawne]
-5. System wyświetla potwierdzenie poprawnego zdefiniowania warunku zwycięstwa.
+4. System wyświetla potwierdzenie poprawnego zdefiniowania warunku zwycięstwa na podglądzie scenariusza.
 
 **Scenariusz alternatywny 1: Błędne lub niekompletne wartości w formularzu**
 
-1.-4. tak jak w scenariuszu głównym  
+1.-3. tak jak w scenariuszu głównym  
 [dane niepoprawne]  
-5a. System wyświetla komunikat o błędnych danych.  
-Powrót do zdania 3. w scenariuszu głównym.
+4a. System wyświetla komunikat o błędnych danych.  
+Powrót do zdania 2. w scenariuszu głównym.
 
 **Scenariusz alternatywny 2: Logiczna sprzeczność warunków gry**
 
-1.-4. tak jak w scenariuszu głównym  
+1.-3. tak jak w scenariuszu głównym  
 [konflikt warunków]  
-5b. System wyświetla komunikat o sprzeczności z istniejącymi warunkami.  
-Powrót do zdania 3. w scenariuszu głównym.
+4b. System wyświetla komunikat o sprzeczności z istniejącymi warunkami.  
+Powrót do zdania 2. w scenariuszu głównym.
 
 **Scenopis:**
 ![Scenopis - Definiowanie warunków zwycięstwa](scenopisy/scenopis_tr.png)
