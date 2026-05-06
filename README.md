@@ -1031,12 +1031,29 @@ Zgłoszenie wysyłane przez [Użytkownika] w celu poinformowania [Organizatora] 
 **Recenzja**
 
 - Typ: pojęcie systemowe
-- Wersja: 1.0 (15.04.2026)
+- Wersja: 1.1 (06.05.2026)
 - Odpowiedzialny: Maciej Bankiewicz
 - Priorytet i trudność: Istotne
 - Wydanie: 1.0
 
 Ocena i weryfikacja [Gry] dokonana przez [Recenzenta] zawierająca tekst recenzji i decyzję o zatwierdzeniu.
+
+Walidacja recenzji: tekst recenzji musi posiadać minimalną długość, ocena liczbowa w skali 1–10 jest wymagana, treść nie może zawierać zakazanych słów.
+
+---
+
+**Status recenzji**
+
+- Typ: pojęcie systemowe
+- Wersja: 1.0 (06.05.2026)
+- Odpowiedzialna: Polina Nesterova
+- Priorytet i trudność: Istotne
+- Wydanie: 1.0
+
+Stan [Recenzji] w procesie recenzowania [Gry]. Dostępne statusy:
+
+- SR1: szkic – recenzja zapisana przez recenzenta, nieprzesłana do twórcy.
+- SR2: przesłana do twórcy – recenzja wysłana i oczekująca na zapoznanie się przez twórcę.
 
 ---
 
@@ -2273,49 +2290,49 @@ Powrót do zdania 2. w scenariuszu głównym.
 
 ## 5.6 [PU55: Recenzja gry](#recenzja)
 
-- Wersja: 1.0 (22.04.2026)
+- Wersja: 1.1 (06.05.2026)
 - Odpowiedzialna: Polina Nesterova
 - Wydanie: 1.0
 - Aktor główny: Recenzent gry
 - Warunek początkowy: Recenzent jest zalogowany w systemie, posiada uprawnienia recenzenta i znajduje się na liście gier wyświetlonej w ramach [PU29: Wyświetlenie listy gier przez recenzenta](#pu29-wyświetlenie-listy-gier-przez-recenzenta).
-- Warunek końcowy (sukces): Recenzja została zapisana, powiązana z wybraną grą oraz kontem recenzenta, a jej status zmienia się na „przesłana do twórcy”.
+- Warunek końcowy (sukces): Recenzja została zapisana i powiązana z wybraną grą oraz kontem recenzenta.
 
 **Scenariusz główny**
 
-1. Recenzent wybiera opcję „Recenzuj grę” przy wybranym rekordzie na liście gier.
-2. System wyświetla okno recenzji zawierające tytuł gry, pole tekstowe na treść recenzji, pole oceny liczbowej (skala 1–10) oraz przyciski „Zapisz szkic”, „Wyślij” i „Anuluj”.
-3. Recenzent wprowadza treść recenzji oraz ocenę liczbową.
-4. Recenzent wybiera przycisk „Wyślij”.
-5. System waliduje treść recenzji (wymagana długość minimalna, obecność oceny, brak zakazanych słów).
-[treść recenzji poprawna]
-6. System zapisuje recenzję w bazie recenzji i wiąże ją z grą oraz kontem recenzenta.
-7. System aktualizuje status recenzji na „przesłana do twórcy”.
-8. System wyświetla potwierdzenie „Recenzja została zapisana i przesłana do twórcy gry”.
+1. Recenzent wybiera opcję recenzji wybranej gry.
+2. System wyświetla okno recenzji.
+3. Recenzent wprowadza recenzję.
+4. Recenzent wysyła recenzję.
+5. System waliduje recenzję.
+[recenzja poprawna]
+6. System zapisuje recenzję.
+7. System aktualizuje [Status recenzji].
+8. System wyświetla potwierdzenie wysłania.
 `<<invoke>>` Przesłanie komunikatu do twórcy
 9. System zamyka okno recenzji i wraca do listy gier.
 
 final: success
-POST: recenzja została zapisana w bazie recenzji, powiązana z grą i kontem recenzenta, a jej status to „przesłana do twórcy”.
+POST: recenzja została zapisana i powiązana z grą oraz kontem recenzenta.
 
 **Scenariusz alternatywny A: Zapisanie szkicu recenzji**
 
 1.-3. tak jak w scenariuszu głównym.
 
-4a. Recenzent wybiera przycisk „Zapisz szkic” zamiast „Wyślij”.
-5a. System zapisuje treść recenzji ze statusem „szkic”, bez walidacji długości i bez wysyłania powiadomienia.
-6a. System wyświetla komunikat „Szkic recenzji został zapisany. Możesz wrócić do niego później”.
+4a. Recenzent zapisuje szkic recenzji.
+5a. System zapisuje szkic recenzji.
+6a. System wyświetla potwierdzenie zapisu szkicu.
 7a. System zamyka okno recenzji i wraca do listy gier.
 
 final: success
-POST: recenzja została zapisana w bazie recenzji ze statusem „szkic”, powiązana z kontem recenzenta; powiadomienie do twórcy nie zostało wysłane.
+POST: szkic recenzji został zapisany i powiązany z kontem recenzenta.
 
 **Scenariusz alternatywny B: Niepoprawna treść recenzji**
 
 1.-4. tak jak w scenariuszu głównym.
 
-[treść recenzji niepoprawna]
-5b. System stwierdza, że treść recenzji jest pusta, krótsza niż wymagane minimum lub brakuje oceny liczbowej.
-6b. System wyświetla komunikat „Uzupełnij treść recenzji oraz ocenę przed wysłaniem” i podświetla brakujące pola.
+[recenzja niepoprawna]
+5b. System stwierdza błąd walidacji recenzji.
+6b. System wyświetla komunikat o błędzie walidacji.
 7b. System nie zapisuje recenzji.
 
 Powrót do kroku 3 scenariusza głównego.
@@ -2324,10 +2341,10 @@ Powrót do kroku 3 scenariusza głównego.
 
 1.-2. tak jak w scenariuszu głównym.
 
-3a. Recenzent wybiera przycisk „Anuluj” przed wysłaniem recenzji.
-4a. System wyświetla pytanie „Czy na pewno chcesz zamknąć okno bez zapisania recenzji?”.
+3a. Recenzent anuluje recenzję.
+4a. System wyświetla prośbę o potwierdzenie.
 5a. Recenzent potwierdza anulowanie.
-6a. System porzuca wprowadzone dane bez zapisywania.
+6a. System porzuca wprowadzone dane.
 7a. System zamyka okno recenzji i wraca do listy gier.
 
 final: failure
@@ -2335,12 +2352,12 @@ POST: recenzja nie została zapisana w systemie.
 
 **Scenariusz alternatywny D: Recenzent już zrecenzował tę grę**
 
-1a. System wykrywa, że recenzent posiada już zapisaną recenzję dla tej gry.
-2a. System wyświetla komunikat „Posiadasz już recenzję dla tej gry. Możesz ją edytować zamiast tworzyć nową”.
-3a. System oferuje opcje „Edytuj istniejącą recenzję” lub „Anuluj”.
-4a. Recenzent wybiera jedną z opcji.
-[wybrano „Edytuj istniejącą recenzję”]
-5a. System wczytuje poprzednią treść i ocenę do okna recenzji.
+1a. System wykrywa istniejącą recenzję dla wybranej gry.
+2a. System wyświetla komunikat o istniejącej recenzji.
+3a. System oferuje edycję istniejącej recenzji.
+4a. Recenzent wybiera edycję recenzji.
+[edycja wybrana]
+5a. System wczytuje istniejącą recenzję.
 
 Powrót do kroku 3 scenariusza głównego.
 
@@ -2348,7 +2365,7 @@ Powrót do kroku 3 scenariusza głównego.
 
 1a.-4a. tak jak w scenariuszu alternatywnym D.
 
-[wybrano „Anuluj”]
+[anulowanie wybrane]
 5b. System zamyka komunikat i wraca do listy gier.
 
 final: failure
@@ -2358,10 +2375,10 @@ POST: nowa recenzja nie została utworzona; istniejąca recenzja pozostaje bez z
 
 1.-5. tak jak w scenariuszu głównym.
 
-[błąd bazy danych lub braku połączenia]
+[błąd zapisu]
 6c. System nie jest w stanie zapisać recenzji.
-7c. System wyświetla komunikat „Nie udało się zapisać recenzji. Spróbuj ponownie za chwilę”.
-8c. System zachowuje wprowadzoną treść w oknie recenzji, aby recenzent nie stracił pracy.
+7c. System wyświetla komunikat o błędzie.
+8c. System zachowuje wprowadzoną treść recenzji.
 
 Powrót do kroku 4 scenariusza głównego.
 
@@ -2369,9 +2386,9 @@ Powrót do kroku 4 scenariusza głównego.
 
 (W dowolnym momencie scenariusza głównego lub alternatywnego) Sesja recenzenta wygasa z powodu nieaktywności.
 
-1g. System zapisuje lokalnie wprowadzoną treść jako szkic powiązany z kontem recenzenta.
-2g. System wylogowuje użytkownika.
-3g. System wyświetla komunikat „Sesja wygasła. Zaloguj się ponownie — szkic recenzji został zachowany”.
+1g. System zapisuje szkic recenzji powiązany z kontem recenzenta.
+2g. System wylogowuje recenzenta.
+3g. System wyświetla komunikat o wygaśnięciu sesji.
 4g. System przekierowuje recenzenta na ekran logowania.
 
 final: failure
