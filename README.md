@@ -896,7 +896,7 @@ classDiagram
         +dataWyslania: DateTime
     }
 
-    StatusRecenzji {
+    class StatusRecenzji {
         +status: String
     }
 
