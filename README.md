@@ -2309,7 +2309,7 @@ Powrót do zdania 2. w scenariuszu głównym.
 7. System aktualizuje [Status recenzji].
 8. System wyświetla potwierdzenie wysłania.
 `<<invoke>>` Przesłanie komunikatu do twórcy
-9. System zamyka okno recenzji i wraca do listy gier.
+9. System wraca do listy gier.
 
 final: success
 POST: recenzja została zapisana i powiązana z grą oraz kontem recenzenta.
@@ -2321,7 +2321,7 @@ POST: recenzja została zapisana i powiązana z grą oraz kontem recenzenta.
 4a. Recenzent zapisuje szkic recenzji.
 5a. System zapisuje szkic recenzji.
 6a. System wyświetla potwierdzenie zapisu szkicu.
-7a. System zamyka okno recenzji i wraca do listy gier.
+7a. System wraca do listy gier.
 
 final: success
 POST: szkic recenzji został zapisany i powiązany z kontem recenzenta.
@@ -2344,8 +2344,8 @@ Powrót do kroku 3 scenariusza głównego.
 3a. Recenzent anuluje recenzję.
 4a. System wyświetla prośbę o potwierdzenie.
 5a. Recenzent potwierdza anulowanie.
-6a. System porzuca wprowadzone dane.
-7a. System zamyka okno recenzji i wraca do listy gier.
+6a. System porzuca dane recenzji.
+7a. System wraca do listy gier.
 
 final: failure
 POST: recenzja nie została zapisana w systemie.
@@ -2366,7 +2366,7 @@ Powrót do kroku 3 scenariusza głównego.
 1a.-4a. tak jak w scenariuszu alternatywnym D.
 
 [anulowanie wybrane]
-5b. System zamyka komunikat i wraca do listy gier.
+5b. System wraca do listy gier.
 
 final: failure
 POST: nowa recenzja nie została utworzona; istniejąca recenzja pozostaje bez zmian.
@@ -2376,9 +2376,9 @@ POST: nowa recenzja nie została utworzona; istniejąca recenzja pozostaje bez z
 1.-5. tak jak w scenariuszu głównym.
 
 [błąd zapisu]
-6c. System nie jest w stanie zapisać recenzji.
+6c. System zgłasza błąd zapisu.
 7c. System wyświetla komunikat o błędzie.
-8c. System zachowuje wprowadzoną treść recenzji.
+8c. System zachowuje treść recenzji.
 
 Powrót do kroku 4 scenariusza głównego.
 
@@ -2386,13 +2386,13 @@ Powrót do kroku 4 scenariusza głównego.
 
 (W dowolnym momencie scenariusza głównego lub alternatywnego) Sesja recenzenta wygasa z powodu nieaktywności.
 
-1g. System zapisuje szkic recenzji powiązany z kontem recenzenta.
+1g. System zapisuje szkic recenzji.
 2g. System wylogowuje recenzenta.
 3g. System wyświetla komunikat o wygaśnięciu sesji.
 4g. System przekierowuje recenzenta na ekran logowania.
 
 final: failure
-POST: recenzja nie została przesłana; wprowadzona treść zachowana jako szkic powiązany z kontem recenzenta.
+POST: recenzja nie została przesłana; treść zachowana jako szkic recenzji.
 
 
 
