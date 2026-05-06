@@ -2025,7 +2025,7 @@ Scenariusz Główny:
 5. System weryfikuje poprawność danych akcji
 6. System zapisuje akcję
 7. System weryfikuje powodzenie zapisania akcji 
-8. System wyświetla informacje o sukcesir
+8. System wyświetla informacje o sukcesie
 9. System zamyka formularz
 Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
 
