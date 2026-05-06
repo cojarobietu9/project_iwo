@@ -2023,10 +2023,10 @@ Scenariusz Główny:
 3. Twórca wprowadza dane  akcji
 4. Twórca wybiera przycisk zapisania akcji
 5. System weryfikuje poprawność danych akcji
-7. System zapisuje akcję
-8. System weryfikuje powodzenie zapisania akcji 
-9. System wyświetla informacje o sukcesir
-10. System zamyka formularz
+6. System zapisuje akcję
+7. System weryfikuje powodzenie zapisania akcji 
+8. System wyświetla informacje o sukcesir
+9. System zamyka formularz
 Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
 
 Scenariusz Alternatywny A:
@@ -2037,7 +2037,7 @@ Scenariusz Alternatywny A:
 
 Scenariusz Alternatywny B:
 
-6a. System nie zapisał akcji
+7a. System nie zapisał akcji
 7. System wyświetla informację o błędzie zapisu
 8. Scenariusz wraca do kroku 3 scenariusza głównego
 
