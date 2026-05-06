@@ -845,7 +845,36 @@ classDiagram
 
     Skarga "0..*" --> "1" Uzytkownik : zglaszajacy
 ```
-**Diagram:** Słownik
+
+## 6. Tworzenie i recenzowanie gier
+```mermaid
+classDiagram
+    direction TB
+
+    class TworcaGier {
+    }
+
+    class Recenzent {
+    }
+
+    class Recenzja {
+        +tresc: String
+        +dataWyslania: DateTime
+    }
+
+    StatusRecenzji {
+        +status: String
+    }
+
+    class Gra {
+    }
+
+    TworcaGier "1" --> "0..*" Gra : definiuje
+    Recenzent "1" --> "0..*" Recenzja : tworzy
+    Recenzja "1" --> "1" Gra : dotyczy
+    StatusRecenzji "1" --> "1" Recenzja : opisuje
+
+```
 
 ---
 
