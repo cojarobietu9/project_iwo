@@ -836,12 +836,16 @@ classDiagram
         +tresc: String
         +dataZgloszenia: DateTime
     }
+    
+    class KomunikatDoRecenzenta {
+    }
 
     Zaproszenie "0..*" --> "1" Uzytkownik : wysylane do
     Zaproszenie "0..*" --> "1" Wydarzenie : dotyczy
 
     Wiadomosc "0..*" --> "1" Uzytkownik : nadawca
     Wiadomosc "0..*" --> "1" Uzytkownik : odbiorca
+    KomunikatDoRecenzenta --|> Wiadomosc
 
     Skarga "0..*" --> "1" Uzytkownik : zglaszajacy
 ```
@@ -1212,7 +1216,7 @@ Bezpieczny transfer zasobów wirtualnych z [Ekwipunku] między dwoma [Graczami],
 - Odpowiedzialny: Michał Marciniak
 - Wydanie: 1.0
 
-Treść tekstowa napisana przez twórcę gier do recenzenta, w celu wyeliminowania niejasności dotyczących mechanik gry lub odpowiedzi na pytanie.
+Wiadomość wysyłana przez twórcę gry do recenzenta w ramach komunikacji dotyczącej konkretnej gry.
 
 ---
 
@@ -2109,6 +2113,7 @@ Scenariusz Alternatywny B:
 - Odpowiedzialny: Michał Marciniak
 - Wydanie: 1.0
 - Aktor główny: Twórca gry
+- Wywoływany z: [PU49: Zdefiniowanie gry](#pu49-zdefiniowanie-gry)
 - Warunek początkowy: Twórca gry jest zalogowany i znajduje się w formularzu opisu ogólnego gry.
 - Warunek końcowy (success): Komunikat do recenzenta został wysłany i jest widoczny w oknie komunikacji twórcy gry z recenzentem.
 - Warunek końcowy (failure): Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
@@ -2118,11 +2123,10 @@ Scenariusz Alternatywny B:
 1. Twórca gry wybiera opcję przesłania komunikatu do recenzenta.
 2. System wyświetla okno komunikacji twórcy gry z recenzentem.
 3. Twórca gry wpisuje komunikat do recenzenta.
-4. Twórca gry wybiera opcję "Wyślij". \
+4. Twórca gry wybiera opcję wysłania. \
 [komunikat do recenzenta poprawny]
 5. System wysyła komunikat do recenzenta.
-6. System wyświetla potwierdzenie wysłania komunikatu do recenzenta.
-7. System dodaje wiadomość do okna komunikacji twórcy gry z recenzentem.
+6. System dodaje wiadomość do okna komunikacji twórcy gry z recenzentem.
 
 **final:** success
 
@@ -2166,6 +2170,9 @@ Powrót do kroku 3. w scenariuszu głównym
 **final:** failure
 
 **POST:** Komunikat do recenzenta nie został wysłany, treść pozostaje w polu edycji.
+
+**Scenopis**
+![](./scenopisy/PU52_Przeslanie_komunikatu_do_recenzenta.png)
 
 ---
 
