@@ -2761,3 +2761,53 @@ final: failure
 
 9a2.1 Twórca gry wybiera opcję zapisu z wyjściem.
 9a2.2 System skacze do kroku 7 scenariusza głównego, ale mapa gry pozostaje oznaczona jako niepoprawna, co uniemożliwia publikację gry do czasu poprawy mapy gry.
+
+## 5.12 [PU39: Dodanie wydarzenia do kalendarza](#pu39-dodanie-wydarzenia-do-kalendarza)
+
+- Wersja 1.0 (15.05.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+- Aktor główny: Organizator
+- Wywoływany z: [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza)
+- Warunek początkowy: Organizator jest zalogowany i znajduje się w kalendarzu.
+- Warunek końcowy (success): Wydarzenie zostało dodane do kalendarza i jest widoczne w kalendarzu.
+- Warunek końcowy (failure): Wydarzenie nie zostało dodane do kalendarza.
+
+**Scenariusz główny**
+
+1. Organizator wybiera opcję dodania wydarzenia do kalendarza
+2. System wyświetla formularz dodania wydarzenia do kalendarza
+3. Organizator wprowadza dane wydarzenia
+4. Organizator wybiera opcję dodania.
+[dane poprawne i termin wolny]
+5. System dodaje wydarzenie do kalendarza
+
+**final:** success
+
+**POST:** Wydarzenie zostało dodane do kalendarza i jest widoczne w kalendarzu.
+
+**Scenariusz alternatywny A: Błędne dane**
+
+1-4. Jak w scenariuszu głównym. \
+[dane niepoprawne] \
+5a. System wyświetla komunikat o niepoprawnych danych. \
+6a. Organizator wybiera "Ok".
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Wydarzenie nie zostało dodane do kalendarza.
+
+**Scenariusz alternatywny B: Zajęty termin**
+
+1-4. Jak w scenariuszu głównym. \
+[termin wydarzenia zajęty] \
+5b. System wyświetla komunikat o zajętym terminie. \
+6b. Organizator wybiera "Ok".
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Wydarzenie nie zostało dodane do kalendarza.
