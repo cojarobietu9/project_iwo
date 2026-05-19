@@ -2800,3 +2800,7 @@ final: failure
 
 **final**: failure \
 **POST**: Wydarzenie nie zostało udostępnione.
+
+**Scenopis**
+
+![](./scenopisy/scenopis-pu41.png)
