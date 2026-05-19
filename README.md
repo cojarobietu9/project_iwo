@@ -2794,7 +2794,7 @@ Warunek końcowy: Nie wyświetlono listy wydarzeń
 
 Warunek końcowy: Nie wyświetlono listy wydarzeń
 
-![](scenopisy/Wyswietlenie_listy_wydarzen.png)
+![](scenopisy/PU42_Wyswietlenie_listy_wydarzen.png)
 
 
 
