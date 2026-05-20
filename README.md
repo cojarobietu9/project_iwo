@@ -1856,7 +1856,7 @@ flowchart TD
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Olaf Smoleński
 - Wydanie: 1.0
-- Opis: Invoked by PU1. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ po wyświetleniu kalendarza. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
+- Opis: Invoked by PU47. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ po wyświetleniu kalendarza. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
 
 #### PU41: Udostępnienie wydarzenia graczom
 
@@ -2768,7 +2768,7 @@ final: failure
 - Odpowiedzialna: Polina Nesterova
 - Wydanie: 1.0
 - Aktor główny: Organizator wydarzenia
-- **Związek z [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza):** Przypadek **PU40** jest wywoływany z PU1 po wyświetleniu [Kalendarza]; organizator wybiera [Wydarzenie] i inicjuje zaproszenie graczy.
+- **Związek z [PU47: Wyświetlenie kalendarza przez organizatora](#pu47-wyświetlenie-kalendarza-przez-organizatora):** Przypadek **PU40** jest wywoływany z PU47; organizator wybiera [Wydarzenie] z [Kalendarza] i inicjuje zaproszenie graczy.
 - Warunek początkowy: Organizator jest zalogowany; [Wydarzenie] zostało pomyślnie utworzone; organizator ma dostęp do opcji [zaproszenia graczy].
 
 **Scenariusz główny (sukces)**
@@ -2810,26 +2810,7 @@ final: failure
 
 ---
 
-**Scenariusz alternatywny 2: Brak wyników wyszukiwania**
-
-1–3a. Tak jak w scenariuszu alternatywnym 1.
-
-[brak wyników]
-
-4b. System wyświetla pustą [listę zarejestrowanych graczy].
-
-5b. Organizator usuwa [kryteria wyszukiwania] z [pola wyszukiwania].
-
-6b. System wyświetla ponownie pełną [listę zarejestrowanych graczy].
-
-7b. Scenariusz wraca do kroku 3 scenariusza głównego.
-
-**final:** failure (brak wysłania)
-**POST:** [Zaproszenia] nie zostały wysłane; [pole wyszukiwania] zostało wyczyszczone, pełna [lista zarejestrowanych graczy] jest ponownie widoczna.
-
----
-
-**Scenariusz alternatywny 3: Brak wybranych graczy**
+**Scenariusz alternatywny 2: Brak wybranych graczy**
 
 1–4. Tak jak w scenariuszu głównym.
 
@@ -2844,79 +2825,7 @@ final: failure
 
 ---
 
-**Scenariusz alternatywny 4: Gracz już zaproszony**
-
-1–5. Tak jak w scenariuszu głównym.
-
-[wybór niepoprawny - [aktywne zaproszenie istnieje]]
-
-6g. System wyświetla [komunikat o istniejących zaproszeniach].
-
-7g. Organizator wybiera [opcję pominięcia zaproszonych].
-
-8g. System zapisuje [Zaproszenia] wyłącznie dla [Graczy] bez aktywnego [Zaproszenia].
-
-9g. Scenariusz wraca do kroku 7 scenariusza głównego.
-
-**final:** success (zaproszono tylko nowych graczy)
-**POST:** [Zaproszenia] zostały wysłane wyłącznie do [Graczy] bez aktywnego [Zaproszenia]; wcześniej zaproszeni [Gracze] pozostali bez zmian.
-
----
-
-**Scenariusz alternatywny 5: Gracz już zarejestrowany na wydarzenie**
-
-1–5. Tak jak w scenariuszu głównym.
-
-[wybór niepoprawny - [gracz zarejestrowany na wydarzenie]]
-
-6b. System wyświetla [komunikat o już zarejestrowanych graczach] i wyklucza ich z [wyboru].
-
-7b. Organizator wybiera [opcję kontynuacji].
-
-8b. Scenariusz wraca do kroku 6 scenariusza głównego (z pominięciem już zarejestrowanych [Graczy]).
-
-**final:** success (zaproszono tylko niezarejestrowanych graczy)
-**POST:** [Zaproszenia] zostały wysłane wyłącznie do [Graczy], którzy nie byli zarejestrowani na [Wydarzenie].
-
----
-
-**Scenariusz alternatywny 6: Przekroczenie limitu miejsc**
-
-1–5. Tak jak w scenariuszu głównym.
-
-[wybór niepoprawny - [przekroczony limit uczestników]]
-
-6c. System wyświetla [ostrzeżenie o przekroczeniu limitu miejsc].
-
-7c. Organizator wybiera [opcję skorygowania wyboru].
-
-8c. Scenariusz wraca do kroku 3 scenariusza głównego.
-
-**final:** failure (brak wysłania)
-**POST:** [Zaproszenia] nie zostały wysłane; [wybór graczy] pozostaje aktywny w [oknie zapraszania graczy].
-
----
-
-**Scenariusz alternatywny 7: Anulowanie zaproszenia**
-
-1–3. Tak jak w scenariuszu głównym.
-
-4d. Organizator wybiera [opcję anuluj].
-
-5d. System wyświetla [zapytanie o porzucenie wyboru].
-
-6d. Organizator potwierdza [wyjście bez wysłania].
-
-7d. System zamyka [okno zapraszania graczy].
-
-**Warunek końcowy:** Żadne [Zaproszenie] nie zostało utworzone; system wraca do menu [Wydarzenia].
-
-**final:** failure (brak wysłania)
-**POST:** [Wybór graczy] został porzucony; stan [Wydarzenia] pozostaje bez zmian.
-
----
-
-**Scenariusz alternatywny 8: Błąd zapisu zaproszeń**
+**Scenariusz alternatywny 3: Błąd zapisu zaproszeń**
 
 1–5. Tak jak w scenariuszu głównym.
 
