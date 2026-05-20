@@ -2823,7 +2823,7 @@ Powrót do kroku 3. w scenariuszu głównym
 - Wydanie: 1.0
 - Aktor główny: Organizator
 - Specjalizacja: [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza)
-- Warunek początkowy: Organizator jest zalogowany i znajduje się w menu głównym aplikacji.
+- Warunek początkowy: Organizator jest zalogowany i znajduje się w menu organizatora.
 - Warunek końcowy (success): Wyświetlony kalendarz
 
 **Scenariusz główny**
