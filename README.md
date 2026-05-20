@@ -2442,14 +2442,14 @@ Powrót do zdania 2. w scenariuszu głównym.
 
 ---
 
-**Scenariusz alternatywny B: Niepoprawna treść recenzji**
+**Scenariusz alternatywny B: Puste pola formularza recenzji**
 
 1.-4. tak jak w scenariuszu głównym.
 
-[recenzja niepoprawna]
+[pola formularza puste]
 
-5b. System stwierdza błąd walidacji recenzji.
-6b. System wyświetla komunikat o błędzie walidacji.
+5b. System stwierdza, że wymagane pola formularza recenzji są puste.
+6b. System wyświetla komunikat o konieczności wypełnienia pól.
 7b. System nie zapisuje recenzji.
 
 Powrót do kroku 3 scenariusza głównego.
