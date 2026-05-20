@@ -1856,7 +1856,7 @@ flowchart TD
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Olaf Smoleński
 - Wydanie: 1.0
-- Opis: Invoked by PU39. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ w menu wydarzenia. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
+- Opis: Invoked by PU1. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ po wyświetleniu kalendarza. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
 
 #### PU41: Udostępnienie wydarzenia graczom
 
@@ -2768,20 +2768,20 @@ final: failure
 - Odpowiedzialna: Polina Nesterova
 - Wydanie: 1.0
 - Aktor główny: Organizator wydarzenia
-- **Związek z [PU39: Dodanie wydarzenia do kalendarza](#pu39-dodanie-wydarzenia-do-kalendarza):** Przypadek **PU40** realizuje się **po** utworzeniu [Wydarzenia] zgodnie z PU39.
-- Warunek początkowy: Organizator jest zalogowany; w menu zarządzania utworzonym [Wydarzeniem] dostępna jest opcja [zaproszenia graczy].
+- **Związek z [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza):** Przypadek **PU40** jest wywoływany z PU1 po wyświetleniu [Kalendarza]; organizator wybiera [Wydarzenie] i inicjuje zaproszenie graczy.
+- Warunek początkowy: Organizator jest zalogowany; [Wydarzenie] zostało pomyślnie utworzone; organizator ma dostęp do opcji [zaproszenia graczy].
 
 **Scenariusz główny (sukces)**
 
 1. Organizator wybiera [opcję zaproszenia graczy].
-2. System wyświetla [okno zapraszania graczy] z [listą zarejestrowanych graczy] oraz [polem wyszukiwania].
+2. System wyświetla [okno zapraszania graczy].
 3. Organizator wybiera [graczy] z [listy zarejestrowanych graczy].
 4. Organizator wybiera [opcję wysłania zaproszenia].
 5. System waliduje wybór.
 
 [wybór poprawny]
 
-6. System tworzy [Zaproszenia] i powiązuje je z wybranymi [Graczami] oraz [Wydarzeniem].
+6. System zapisuje [Zaproszenia] dla wybranych [Graczy] w ramach [Wydarzenia].
 7. System wysyła [powiadomienia o zaproszeniu] do wybranych [Graczy].
 8. System wyświetla [potwierdzenie wysłania zaproszeń].
 
@@ -2816,16 +2816,16 @@ final: failure
 
 [brak wyników]
 
-4b. System wyświetla [komunikat o braku wyników] oraz [opcję wyczyszczenia filtra].
+4b. System wyświetla pustą [listę zarejestrowanych graczy].
 
-5b. Organizator wybiera [opcję wyczyszczenia filtra].
+5b. Organizator usuwa [kryteria wyszukiwania] z [pola wyszukiwania].
 
-6b. System przywraca pełną [listę zarejestrowanych graczy].
+6b. System wyświetla ponownie pełną [listę zarejestrowanych graczy].
 
 7b. Scenariusz wraca do kroku 3 scenariusza głównego.
 
 **final:** failure (brak wysłania)
-**POST:** [Zaproszenia] nie zostały wysłane; filtr został wyczyszczony, pełna [lista zarejestrowanych graczy] jest ponownie widoczna.
+**POST:** [Zaproszenia] nie zostały wysłane; [pole wyszukiwania] zostało wyczyszczone, pełna [lista zarejestrowanych graczy] jest ponownie widoczna.
 
 ---
 
@@ -2837,12 +2837,10 @@ final: failure
 
 5a. System wyświetla [komunikat o konieczności wybrania gracza].
 
-6a. Organizator zamyka [komunikat].
-
-7a. Scenariusz wraca do kroku 3 scenariusza głównego.
+6a. Scenariusz wraca do kroku 3 scenariusza głównego.
 
 **final:** failure (brak wysłania)
-**POST:** [Zaproszenia] nie zostały wysłane; [okno zapraszania graczy] pozostaje otwarte.
+**POST:** [Zaproszenia] nie zostały wysłane; [okno zapraszania graczy] pozostaje otwarte z widocznym [komunikatem].
 
 ---
 
@@ -2852,13 +2850,13 @@ final: failure
 
 [wybór niepoprawny - [aktywne zaproszenie istnieje]]
 
-6a. System wyświetla [komunikat o istniejących zaproszeniach] z [listą zaproszonych graczy] oraz oferuje [opcję pominięcia zaproszonych] lub [opcję anulowania].
+6g. System wyświetla [komunikat o istniejących zaproszeniach].
 
-7a. Organizator wybiera [opcję pominięcia zaproszonych].
+7g. Organizator wybiera [opcję pominięcia zaproszonych].
 
-8a. System tworzy [Zaproszenia] wyłącznie dla [Graczy] bez aktywnego [Zaproszenia].
+8g. System zapisuje [Zaproszenia] wyłącznie dla [Graczy] bez aktywnego [Zaproszenia].
 
-9a. Scenariusz wraca do kroku 7 scenariusza głównego.
+9g. Scenariusz wraca do kroku 7 scenariusza głównego.
 
 **final:** success (zaproszono tylko nowych graczy)
 **POST:** [Zaproszenia] zostały wysłane wyłącznie do [Graczy] bez aktywnego [Zaproszenia]; wcześniej zaproszeni [Gracze] pozostali bez zmian.
@@ -2888,7 +2886,7 @@ final: failure
 
 [wybór niepoprawny - [przekroczony limit uczestników]]
 
-6c. System wyświetla [ostrzeżenie o przekroczeniu limitu miejsc] z [opcją skorygowania wyboru] lub [opcją wysłania mimo to].
+6c. System wyświetla [ostrzeżenie o przekroczeniu limitu miejsc].
 
 7c. Organizator wybiera [opcję skorygowania wyboru].
 
@@ -2928,31 +2926,14 @@ final: failure
 
 7e. System wyświetla [komunikat o błędzie wysłania] z [opcją ponowienia próby].
 
-8e. System zachowuje [wybór graczy].
+8e. Organizator wybiera [opcję ponowienia próby].
 
-9e. Organizator wybiera [opcję ponowienia próby].
-
-10e. Scenariusz wraca do kroku 5 scenariusza głównego.
+9e. Scenariusz wraca do kroku 5 scenariusza głównego.
 
 **final:** failure (brak zapisu)
 **POST:** [Zaproszenia] nie zostały zapisane; [wybór graczy] pozostaje zachowany w [oknie zapraszania graczy].
 
 ---
-
-**Scenariusz alternatywny 9: Wygaśnięcie sesji**
-
-(W dowolnym momencie scenariusza głównego lub alternatywnego) [Sesja] organizatora wygasa z powodu nieaktywności.
-
-1f. System wyświetla [komunikat o wygaśnięciu sesji].
-
-2f. System wylogowuje organizatora.
-
-3f. System przekierowuje organizatora do [ekranu logowania].
-
-**Warunek końcowy:** [Zaproszenia] nie zostały utworzone; [wybór graczy] zostaje porzucony.
-
-**final:** failure (brak zapisu)
-**POST:** Organizator został wylogowany; [wybór graczy] nie został zachowany.
 
 **Scenopis**
 ![Scenopis PU40 — Zaproszenie graczy](./scenopisy/Scenopis_PU40_Zaproszenie_graczy.svg)
