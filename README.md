@@ -2362,7 +2362,7 @@ Powrót do kroku 5 w scenariuszu głównym.
 Powrót do kroku 5 w scenariuszu głównym.
 
 **Scenopis:**
-![Scenopis - Wyświetlenie listy gier](scenopisy/scenopis_pu53.png)
+![Scenopis - Wyświetlenie listy gier](scenopisy/scenopis_pu53_0.png)
 
 - Wersja: 1.0 (05.05.2026)
 - Odpowiedzialny: Tomasz Rogalski
