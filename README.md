@@ -2770,7 +2770,7 @@ final: failure
 - Odpowiedzialny: Michał Marciniak
 - Wydanie: 1.0
 - Aktor główny: Organizator
-- Wywoływany z: [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza)
+- Wywoływany z: [PU47: Wyświetlenie kalendarza przez ogranizatora](#pu47-wyświetlenie-kalendarza-przez-organizatora)
 - Warunek początkowy: Organizator jest zalogowany i znajduje się w kalendarzu.
 - Warunek końcowy (success): Wydarzenie zostało dodane do kalendarza i jest widoczne w kalendarzu.
 - Warunek końcowy (failure): Wydarzenie nie zostało dodane do kalendarza.
