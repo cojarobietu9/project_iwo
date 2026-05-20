@@ -2127,7 +2127,7 @@ Powiązanie z wymaganiami funkcjonalnymi: **F23**.
 - Aktor Główny: Twórca Gry
   Warunek początkowy: Twórca gry zalogowany, znajduje się w trybie definicji gry
 
-Scenariusz Główny:
+**Scenariusz Główny**
 
 1. Twórca wybiera dodanie [akcji]
 2. System wyświetla [formularz zdefiniuj akcję]
@@ -2142,14 +2142,16 @@ Scenariusz Główny:
 11. System zamyka formularz
 Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
 
-Scenariusz Alternatywny A:
+**Scenariusz Alternatywny A - niepełne dane**
 
+[niepoprawne dane - [niepełne dane]
 6a. System wykrył niepełne dane akcji przy dodaniu
 7. System wyświetla [komunikat o brakujących danych]
 8. Scenariusz wraca do kroku 3 scenariusza głównego
 
-Scenariusz Alternatywny B:
+**Scenariusz Alternatywny B - błąd  zapisu**
 
+[system nie zapisał akcji - [błąd zapisu akcji]]
 7a. System nie zapisał akcji
 7. System wyświetla [komunikat o błędzie zapisu]
 8. Scenariusz wraca do kroku 3 scenariusza głównego
