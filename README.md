@@ -2129,27 +2129,29 @@ Powiązanie z wymaganiami funkcjonalnymi: **F23**.
 
 Scenariusz Główny:
 
-1. Twórca wybiera dodanie akcji
-2. System wyświetla formularz dodania akcji
-3. Twórca wprowadza dane  akcji
-4. Twórca wybiera przycisk zapisania akcji
-5. System weryfikuje poprawność danych akcji
-6. System zapisuje akcję
-7. System weryfikuje powodzenie zapisania akcji 
-8. System wyświetla informacje o sukcesie
-9. System zamyka formularz
+1. Twórca wybiera dodanie [akcji]
+2. System wyświetla [formularz zdefiniuj akcję]
+3. Twórca wprowadza [dane akcji]
+4. Twórca wybiera przycisk [zapisania akcji]
+5. System weryfikuje poprawność [danych akcji]
+   [dane poprawne]
+7. System zapisuje [akcję]
+8. System weryfikuje powodzenie zapisania [akcji]
+   [zapisanie zakonczone sukcesem] 
+10. System wyświetla [komunikat sukcesu dodania zdefiniowanej akcji]
+11. System zamyka formularz
 Warunek końcowy: Dodanie nowej akcji zakończone powodzeniem
 
 Scenariusz Alternatywny A:
 
 6a. System wykrył niepełne dane akcji przy dodaniu
-7. System wyświetla informcje o nieuzupełnieniu danych przez twórcę gry
+7. System wyświetla [komunikat o brakujących danych]
 8. Scenariusz wraca do kroku 3 scenariusza głównego
 
 Scenariusz Alternatywny B:
 
 7a. System nie zapisał akcji
-7. System wyświetla informację o błędzie zapisu
+7. System wyświetla [komunikat o błędzie zapisu]
 8. Scenariusz wraca do kroku 3 scenariusza głównego
 
 ![](./scenopisy/Scenopis_Scenariusz5.1_PU51.png)
@@ -2768,22 +2770,22 @@ Aktor główny: Gracz
 Warunek początkowy: Gracz jest zalogowany i znajduje się w widoku "Menu gracza". Istnieją wydarzenia, na które nie jest zarejestrowany.
 
 **Scenariusz główny**
-1.  Gracz wybiera opcję "Wydarzenia" w Menu gracza
-2.  System pobiera dane i wyświetla ekran "Lista Wydarzeń", zawieracy tabelę wydarzeń oraz opcję "Filtry".
-3.  Gracz wybiera opcję "Filtry"
-4.  System wyświetla ekran "Menu Filtrów", zawierający listę filtrów wydarzeń.
-5.  Gracz wybiera jeden z filtrów
-6.  System wyświetla posortowane wydarzenia w sposób określony przez filtr
+1.  Gracz wybiera opcję [Wydarzenia] w [Menu gracza]
+2.  System pobiera dane i wyświetla ekran [Lista Wydarzeń], zawieracy tabelę wydarzeń oraz opcję [Filtry].
+3.  Gracz wybiera opcję [Filtry]
+4.  System wyświetla ekran [Menu Filtrów], zawierający listę [filtrów wydarzeń].
+5.  Gracz wybiera jeden z [filtrów]
+6.  System wyświetla posortowane wydarzenia w sposób określony przez [filtr]
 
 **Scenariusz alternatywny A - sesja gracza wygasła przed wyświetleniem listy**
 2a. System wylogowuje gracza.
-3.System wyświetla komunikat "Sesja wygasła. Zaloguj się ponownie" oraz okno logowania.
+3.System wyświetla [okno logowania].
 
 Warunek końcowy: Nie wyświetlono listy wydarzeń
 
 **Scenariusz alternatywny B - sesja gracza wygasła przed wyświetleniem posortowanej listy**
 6a. System wylogowuje gracza.
-7.System wyświetla komunikat "Sesja wygasła. Zaloguj się ponownie" oraz okno logowania.
+7.System wyświetla [okno logowania].
 
 Warunek końcowy: Nie wyświetlono listy wydarzeń
 
