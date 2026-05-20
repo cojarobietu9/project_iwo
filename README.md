@@ -1833,15 +1833,17 @@ flowchart LR
 DIAGRAM:
 
 ```mermaid
-flowchart TD
+flowchart LR
     User(("👤 Organizator"))
     A(["Dodanie wydarzenia do kalendarza"])
     B(["Zaproszenie graczy"])
     C(["Udostępnienie wydarzenia graczom"])
+    D(["Wyświetlenie kalendarza przez organizatora"])
 
-    User-->A
-    A-.->|<< invoke >>|B
-    A-.->|<< invoke >>|C
+    User-->D
+    D-.->|<< invoke >>|A
+    D-.->|<< invoke >>|B
+    D-.->|<< invoke >>|C
 ```
 
 #### PU39: Dodanie wydarzenia do kalendarza
@@ -1856,7 +1858,7 @@ flowchart TD
 - Wersja: 1.0 (15.04.2026)
 - Odpowiedzialny: Olaf Smoleński
 - Wydanie: 1.0
-- Opis: Invoked by PU39. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ w menu wydarzenia. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
+- Opis: Invoked by PU47. Organizator wysyła graczom zaproszenia na wydarzenie. Organizator może wybrać graczy, którym wyśle zaproszenie, klikając przycisk _Zaproś graczy_ po wyświetleniu kalendarza. Po jego kliknięciu pokazuje się lista zarejestrowanych graczy, spośród których organizator wybiera poszczególne osoby i klika przycisk _Wyślij zaproszenie_. Zaproszony gracz otrzymuje powiadomienie o zaproszeniu na wydarzenie.
 
 #### PU41: Udostępnienie wydarzenia graczom
 
@@ -2243,13 +2245,14 @@ Scenariusz Alternatywny B:
 
 **Scenariusz główny**
 
-1. Twórca gry wybiera opcję przesłania komunikatu do recenzenta.
-2. System wyświetla okno komunikacji twórcy gry z recenzentem.
-3. Twórca gry wpisuje komunikat do recenzenta.
-4. Twórca gry wybiera opcję wysłania. \
+1. Twórca gry wybiera [opcję przesłania komunikatu do recenzenta].
+2. System wyświetla [okno komunikacji twórcy gry z recenzentem].
+3. Twórca gry wpisuje [komunikat do recenzenta].
+4. Twórca gry wybiera [opcję wysłania].
+5. System waliduje dane. \
 [komunikat do recenzenta poprawny]
-5. System wysyła komunikat do recenzenta.
-6. System dodaje wiadomość do okna komunikacji twórcy gry z recenzentem.
+6. System wysyła komunikat do recenzenta.
+7. System dodaje wiadomość do okna komunikacji twórcy gry z recenzentem.
 
 **final:** success
 
@@ -2257,10 +2260,9 @@ Scenariusz Alternatywny B:
 
 **Scenariusz alternatywny A: Pusty komunikat**
 
-1-4. Jak w scenariuszu głównym. \
+1-5. Jak w scenariuszu głównym. \
 [komunikat do recenzenta pusty] \
-5a. System wyświetla komunikat o braku danych. \
-6a. Twórca gry wybiera "Ok".
+6a. System wyświetla [komunikat o braku danych].
 
 Powrót do kroku 3. w scenariuszu głównym
 
@@ -2270,10 +2272,9 @@ Powrót do kroku 3. w scenariuszu głównym
 
 **Scenariusz alternatywny B: Przekroczenie limitu znaków**
 
-1-4. Jak w scenariuszu głównym. \
+1-5. Jak w scenariuszu głównym. \
 [komunikat do recenzenta zbyt długi] \
-5b. System wyświetla komunikat o przekroczeniu limitu znaków. \
-6b. Twórca gry wybiera "Ok".
+6b. System wyświetla [komunikat o przekroczeniu limitu znaków].
 
 Powrót do kroku 3. w scenariuszu głównym
 
@@ -2285,8 +2286,7 @@ Powrót do kroku 3. w scenariuszu głównym
 
 1-5. Jak w scenariuszu głównym. \
 [błąd połączenia / brak odpowiedzi serwera] \
-6c. System wyświetla komunikat o błędzie wysłania. \
-7c. Twórca gry wybiera "Ok".
+6c. System wyświetla [komunikat o błędzie wysłania].
 
 Powrót do kroku 3. w scenariuszu głównym
 
@@ -2362,7 +2362,7 @@ Powrót do kroku 5 w scenariuszu głównym.
 Powrót do kroku 5 w scenariuszu głównym.
 
 **Scenopis:**
-![Scenopis - Wyświetlenie listy gier](scenopisy/scenopis_pu53.png)
+![Scenopis - Wyświetlenie listy gier](scenopisy/scenopis_pu53_0.png)
 
 - Wersja: 1.0 (05.05.2026)
 - Odpowiedzialny: Tomasz Rogalski
@@ -2413,12 +2413,15 @@ Powrót do zdania 2. w scenariuszu głównym.
 3. Recenzent wprowadza treść recenzji.
 4. Recenzent wysyła recenzję.
 5. System waliduje recenzję.
+
 [recenzja poprawna]
+
 6. System zapisuje recenzję.
 7. System aktualizuje [Status recenzji].
 8. System wyświetla potwierdzenie wysłania.
 `<<invoke>>` Przesłanie komunikatu do twórcy
-9. System przekierowuje recenzenta do listy gier.
+9. Recenzent zamyka potwierdzenie.
+10. System przekierowuje recenzenta do listy gier.
 
 **final:** success
 **POST:** recenzja została zapisana i powiązana z grą oraz kontem recenzenta.
@@ -2439,14 +2442,14 @@ Powrót do zdania 2. w scenariuszu głównym.
 
 ---
 
-**Scenariusz alternatywny B: Niepoprawna treść recenzji**
+**Scenariusz alternatywny B: Puste pola formularza recenzji**
 
 1.-4. tak jak w scenariuszu głównym.
 
-[recenzja niepoprawna]
-5b. System stwierdza błąd walidacji recenzji.
-6b. System wyświetla komunikat o błędzie walidacji.
-7b. System nie zapisuje recenzji.
+[pola formularza puste]
+
+5b. System wyświetla komunikat o konieczności wypełnienia pól.
+6b. System nie zapisuje recenzji.
 
 Powrót do kroku 3 scenariusza głównego.
 
@@ -2473,7 +2476,9 @@ Powrót do kroku 3 scenariusza głównego.
 2a. System wyświetla komunikat o istniejącej recenzji.
 3a. System oferuje edycję istniejącej recenzji.
 4a. Recenzent wybiera edycję recenzji.
+
 [edycja wybrana]
+
 5a. System wczytuje istniejącą recenzję.
 
 Powrót do kroku 3 scenariusza głównego.
@@ -2485,7 +2490,8 @@ Powrót do kroku 3 scenariusza głównego.
 1a.-4a. tak jak w scenariuszu alternatywnym D.
 
 [anulowanie wybrane]
-5b. System wraca do listy gier.
+
+5b. System przekierowuje recenzenta do listy gier.
 
 **final:** failure
 **POST:** nowa recenzja nie została utworzona; istniejąca recenzja pozostaje bez zmian.
@@ -2497,25 +2503,11 @@ Powrót do kroku 3 scenariusza głównego.
 1.-5. tak jak w scenariuszu głównym.
 
 [błąd zapisu]
+
 6c. System zgłasza błąd zapisu.
 7c. System wyświetla komunikat o błędzie.
-8c. System zachowuje treść recenzji.
 
 Powrót do kroku 4 scenariusza głównego.
-
----
-
-**Scenariusz alternatywny G: Wygaśnięcie sesji**
-
-(W dowolnym momencie scenariusza głównego lub alternatywnego) Sesja recenzenta wygasa z powodu nieaktywności.
-
-1g. System zapisuje szkic [Recenzji].
-2g. System wylogowuje recenzenta.
-3g. System wyświetla komunikat o wygaśnięciu sesji.
-4g. System przekierowuje recenzenta do ekranu logowania.
-
-**final:** failure
-**POST:** recenzja nie została przesłana; treść zachowana jako szkic [Recenzji].
 
 **Scenopis**
 ![Scenopis PU55 — Recenzja gry](./scenopisy/Scenopis_PU55_Recenzja_gry.png)
@@ -2726,8 +2718,9 @@ final: success
 
 Powrót do kroku 3 scenariusza głównego.
 
-**Scenariusz alternatywny B: Błąd zapisu mapy gry w przeglądarce użytkownika**     
-5a. System wykrywa błąd zapisu mapy gry w przeglądarce.    
+**Scenariusz alternatywny B: Błąd zapisu mapy gry w przeglądarce użytkownika**
+
+5a. System wykrywa błąd zapisu mapy gry w przeglądarce.
 6a. System sprawdza czas od ostatniego zapisu.    
 7a. System wyświetla komunikat o błędzie zapisu mapy gry w przeglądarce, informuje użytkownika o tym, że ostatni zapis został wykonany [czas] temu, oferuje możliwości wyjścia, ponowienia zapisu lub kontynuowania bez zapisu.    
 8a. Twórca gry wybra opcję ponowienia zapisu mapy gry w przeglądarce.    
@@ -2797,6 +2790,143 @@ final: failure
 1a. System wykrywa, że zdefiniowany w scenariuszu limit czasu trwania rozgrywki upłynął.
 2a. System automatycznie wywołuje blokadę akcji graczy.
 3a. Scenariusz przechodzi do kroku 5 scenariusza głównego (automatyczna zmiana statusu na „Zakończone”, naliczenie XP i wygenerowanie podsumowania).
+## 5.12 [PU39: Dodanie wydarzenia do kalendarza](#pu39-dodanie-wydarzenia-do-kalendarza)
+
+- Wersja 1.0 (20.05.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+- Aktor główny: Organizator
+- Wywoływany z: [PU47: Wyświetlenie kalendarza przez organizatora](#pu47-wyświetlenie-kalendarza-przez-organizatora)
+- Warunek początkowy: Organizator jest zalogowany i znajduje się w kalendarzu.
+- Warunek końcowy (success): Wydarzenie zostało dodane do kalendarza i jest widoczne w kalendarzu.
+- Warunek końcowy (failure): Wydarzenie nie zostało dodane do kalendarza.
+
+**Scenariusz główny**
+
+1. Organizator wybiera [opcję dodania wydarzenia].
+2. System wyświetla [formularz dodania wydarzenia do kalendarza].
+3. Organizator wprowadza [dane wydarzenia].
+4. Organizator wybiera [opcję dodania].
+5. System waliduje dane. \
+[dane poprawne i termin wolny]
+6. System dodaje [wydarzenie] do [kalendarza].
+
+**final:** success
+
+**POST:** Wydarzenie zostało dodane do kalendarza i jest widoczne w kalendarzu.
+
+**Scenariusz alternatywny A: Błędne dane**
+
+1-5. Jak w scenariuszu głównym. \
+[dane niepoprawne] \
+6a. System wyświetla [komunikat o błędnych danych wydarzenia]. \
+7a. Organizator wybiera "OK".
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Wydarzenie nie zostało dodane do kalendarza.
+
+**Scenariusz alternatywny B: Zajęty termin**
+
+1-5. Jak w scenariuszu głównym. \
+[termin wydarzenia zajęty] \
+6b. System wyświetla [komunikat o zajętej dacie]. \
+7b. Organizator wybiera "OK".
+
+Powrót do kroku 3. w scenariuszu głównym
+
+**final:** failure
+
+**POST:** Wydarzenie nie zostało dodane do kalendarza.
+
+**Scenopis**:
+![](./scenopisy/PU39_Dodanie_wydarzenia_do_kalendarza.png)
+
+## 5.13 [PU47: Wyświetlenie kalendarza przez organizatora](#pu47-wyświetlenie-kalendarza-przez-organizatora)
+
+- Wersja 1.0 (20.05.2026)
+- Odpowiedzialny: Michał Marciniak
+- Wydanie: 1.0
+- Aktor główny: Organizator
+- Specjalizacja: [PU1: Wyświetlenie kalendarza](#pu1-wyświetlenie-kalendarza)
+- Warunek początkowy: Organizator jest zalogowany i znajduje się w menu organizatora.
+- Warunek końcowy (success): Wyświetlony kalendarz
+
+**Scenariusz główny**
+
+1. Organizator wybiera [opcję wyświetlenia kalendarza].
+2. System wyświetla [kalendarz] z [opcją dodania wydarzenia].
+
+**final:** success
+
+**POST:** Wyświetlony kalendarz
+
+![](./scenopisy/PU47_Wyswietlenie_kalendarza_przez_organizatora.png)
+
+
+## 5.xx PU41: Udostępnienie wydarzenia graczom
+
+- Wersja 1.0 (19.05.2026)
+- Odpowiedzialny: Olaf Smoleński
+- Wydanie: 1.0
+- Aktor główny: Organizator
+- Wywoływany z: [PU39: Dodanie wydarzenia do kalendarza](#pu39-dodanie-wydarzenia-do-kalendarza)
+- Warunek początkowy: Organizator jest zalogowany i ma otwarte menu danego wydarzenia.
+- Warunek końcowy (success): Wydarzenie zostało udostępnione graczom.
+- Warunek końcowy (failure): Wydarzenie nie zostało udostępnione graczom.
+
+**Scenariusz główny**
+
+1. Organizator wybiera opcję udostępnienia wydarzenia graczom.
+2. System wyświetla formularz udostępnienia wydarzenia.
+3. Organizator wprowadza datę otwarcia i zamknięcia zapisów na wydarzenie.
+4. Organizator wybiera opcję dodania.
+5. System udostępnia wydarzenie dla graczy.
+6. System wyświetla komunikat o udostępnieniu wydarzenia.
+
+**final**: success \
+**POST**: Wydarzenie zostało udostępnione, gracze mogą dokonywać zapisów w określonym terminie.
+
+**Scenariusz alternatywny A**: Brak lub niepoprawna data otwarcia i/lub zamknięcia
+
+1-4. Jak w scenariuszu głównym. \
+\[brak lub niepoprawna data] \
+5a. System wyświetla komunikat o niepoprawnej dacie. \
+6a. Organizator wybiera "OK". \
+(powrót do kroku 3. w scenariuszu głównym)
+
+**final**: failure \
+**POST**: Wydarzenie nie zostało udostępnione.
+
+**Scenopis**
+
+![](./scenopisy/scenopis-pu41.png)
+## 5.12 [PU40: Zaproszenie graczy](#pu40-zaproszenie-graczy)
+
+- Wersja: 1.0 (18.05.2026)
+- Odpowiedzialna: Polina Nesterova
+- Wydanie: 1.0
+- Aktor główny: Organizator wydarzenia
+- **Związek z [PU47: Wyświetlenie kalendarza przez organizatora](#pu47-wyświetlenie-kalendarza-przez-organizatora):** Przypadek **PU40** jest wywoływany z PU47; organizator wybiera [Wydarzenie] z [Kalendarza] i inicjuje zaproszenie graczy.
+- Warunek początkowy: Organizator jest zalogowany; [Wydarzenie] zostało pomyślnie utworzone; organizator ma dostęp do opcji [zaproszenia graczy].
+
+**Scenariusz główny (sukces)**
+
+1. Organizator wybiera [opcję zaproszenia graczy].
+2. System wyświetla [okno zapraszania graczy].
+3. Organizator wybiera [graczy] z [listy zarejestrowanych graczy].
+4. Organizator wybiera [opcję wysłania zaproszenia].
+5. System waliduje wybór.
+
+[wybór poprawny]
+
+6. System zapisuje [Zaproszenia] dla wybranych [Graczy] w ramach [Wydarzenia].
+7. System wysyła [powiadomienia o zaproszeniu] do wybranych [Graczy].
+8. System wyświetla [potwierdzenie wysłania zaproszeń].
+
+**Warunek końcowy:** [Zaproszenia] zostały zapisane i powiązane z wybranymi [Graczami] oraz [Wydarzeniem]; zaproszeni [Gracze] otrzymali [powiadomienie o zaproszeniu].
 
 **final:** success
 
@@ -2830,3 +2960,99 @@ final: failure
 **Scenopis**
 ![](./scenopisy/scenopis-pu21.png)
 
+**Scenariusz alternatywny 1: Filtrowanie listy graczy**
+
+1–2. Tak jak w scenariuszu głównym.
+
+3a. Organizator wprowadza [kryteria wyszukiwania] w [polu wyszukiwania].
+
+4a. System filtruje [listę zarejestrowanych graczy].
+
+[wyniki znalezione]
+
+5a. Organizator wybiera [graczy] z [przefiltrowanej listy].
+
+6a. Scenariusz wraca do kroku 4 scenariusza głównego.
+
+**final:** success (kontynuacja scenariusza głównego)
+**POST:** [Lista zarejestrowanych graczy] została przefiltrowana zgodnie z [kryteriami wyszukiwania].
+
+---
+
+**Scenariusz alternatywny 2: Brak wybranych graczy**
+
+1–4. Tak jak w scenariuszu głównym.
+
+[wybór niepoprawny - [brak zaznaczonych graczy]]
+
+5a. System wyświetla [komunikat o konieczności wybrania gracza].
+
+6a. Scenariusz wraca do kroku 3 scenariusza głównego.
+
+**final:** failure (brak wysłania)
+**POST:** [Zaproszenia] nie zostały wysłane; [okno zapraszania graczy] pozostaje otwarte z widocznym [komunikatem].
+
+---
+
+**Scenariusz alternatywny 3: Błąd zapisu zaproszeń**
+
+1–5. Tak jak w scenariuszu głównym.
+
+[błąd zapisu]
+
+6e. System zgłasza [błąd zapisu zaproszeń].
+
+7e. System wyświetla [komunikat o błędzie wysłania] z [opcją ponowienia próby].
+
+8e. Organizator wybiera [opcję ponowienia próby].
+
+9e. Scenariusz wraca do kroku 5 scenariusza głównego.
+
+**final:** failure (brak zapisu)
+**POST:** [Zaproszenia] nie zostały zapisane; [wybór graczy] pozostaje zachowany w [oknie zapraszania graczy].
+
+---
+
+**Scenopis**
+![Scenopis PU40 — Zaproszenie graczy](./scenopisy/Scenopis_PU40_Zaproszenie_graczy.svg)
+
+---
+
+## 5.13 [PU43: Wyświetlenie listy zaproszeń](#pu43-wyswietlenie-listy-zaproszen)
+- Wersja: 1.0 (19.05.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Aktor główny: Gracz
+- Warunek początkowy: Gracz jest zalogowany w systemie i znajduje się w widoku "Menu gracza". Posiada nierozpatrzone zaproszenia na wydarzenia.
+- Warunek końcowy (sukces): System wyświetla listę zaproszeń, a gracz pomyślnie podejmuje decyzję dotyczącą wybranego zaproszenia, po czym wraca do widoku listy.
+
+**Scenariusz główny (Akceptacja zaproszenia)**
+1. Gracz wybiera opcję "Moje zaproszenia" w Menu gracza.
+2. System pobiera dane i wyświetla ekran "Lista zaproszeń", prezentujący tabelę z nierozpatrzonymi zaproszeniami (Nazwa wydarzenia, Data, Liczba uczestników, Akcja).
+3. Gracz klika przycisk "Więcej" w kolumnie akcji przy wybranym zaproszeniu.
+4. System wyświetla okno decyzji "Zaproszenie na wydarzenie" z dostępnymi opcjami: "Zaakceptuj", "Odrzuć" oraz "Anuluj".
+5. Gracz wybiera opcję "Zaakceptuj".
+6. System rejestruje akceptację zaproszenia i wyświetla komunikat o sukcesie: "Zaproszenie zostało zaakceptowane".
+7. Gracz klika przycisk "OK".
+8. System zamyka komunikat i powraca do zaktualizowanego ekranu "Lista zaproszeń" (zaproszenie znika z listy).
+
+**Scenariusz alternatywny A: Odrzucenie zaproszenia**
+
+5a. Gracz wybiera opcję "Odrzuć".
+
+6a. System rejestruje odrzucenie zaproszenia i wyświetla komunikat o sukcesie: "Zaproszenie zostało odrzucone".
+
+7a. Gracz klika przycisk "OK".
+
+8a. System zamyka komunikat i powraca do zaktualizowanego ekranu "Lista zaproszeń" (zaproszenie znika z listy).
+
+**Scenariusz alternatywny B: Anulowanie akcji w oknie decyzji**
+
+5b. Gracz wybiera opcję "Anuluj".
+
+6b. System zamyka okno decyzji bez wprowadzania jakichkolwiek zmian w statusie zaproszenia.
+
+7b. System powraca bezpośrednio do ekranu "Lista zaproszeń".
+
+**Scenopis**
+![](./scenopisy/PU43_wyswietlenie_listy_zaproszen.png)
