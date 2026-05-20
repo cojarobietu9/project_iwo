@@ -2641,6 +2641,9 @@ Scenariusz alternatywny: Sesja użytkownika wygasła przed kliknięciem opcji _K
 1. System wyświetla komunikat "Sesja wygasła. Zaloguj się ponownie" oraz okno logowania.
 2. Strona z kalendarzem nie zostaje wyświetlona.
 
+**Scenopis**
+![](./scenopisy/scenopis-pu1.png)
+
 ## 5.10 [Edycja komnaty]
 
 - Wersja: 1.0 (22.04.2026)
@@ -2715,8 +2718,9 @@ final: success
 
 Powrót do kroku 3 scenariusza głównego.
 
-**Scenariusz alternatywny B: Błąd zapisu mapy gry w przeglądarce użytkownika**     
-5a. System wykrywa błąd zapisu mapy gry w przeglądarce.    
+**Scenariusz alternatywny B: Błąd zapisu mapy gry w przeglądarce użytkownika**
+
+5a. System wykrywa błąd zapisu mapy gry w przeglądarce.
 6a. System sprawdza czas od ostatniego zapisu.    
 7a. System wyświetla komunikat o błędzie zapisu mapy gry w przeglądarce, informuje użytkownika o tym, że ostatni zapis został wykonany [czas] temu, oferuje możliwości wyjścia, ponowienia zapisu lub kontynuowania bez zapisu.    
 8a. Twórca gry wybra opcję ponowienia zapisu mapy gry w przeglądarce.    
@@ -2838,3 +2842,44 @@ final: failure
 
 **Scenopis**
 ![Scenopis PU40 — Zaproszenie graczy](./scenopisy/Scenopis_PU40_Zaproszenie_graczy.svg)
+
+---
+
+## 5.13 [PU43: Wyświetlenie listy zaproszeń](#pu43-wyswietlenie-listy-zaproszen)
+- Wersja: 1.0 (19.05.2026)
+- Odpowiedzialny: Cezary Rybiński
+- Wydanie: 1.0
+- Aktor główny: Gracz
+- Warunek początkowy: Gracz jest zalogowany w systemie i znajduje się w widoku "Menu gracza". Posiada nierozpatrzone zaproszenia na wydarzenia.
+- Warunek końcowy (sukces): System wyświetla listę zaproszeń, a gracz pomyślnie podejmuje decyzję dotyczącą wybranego zaproszenia, po czym wraca do widoku listy.
+
+**Scenariusz główny (Akceptacja zaproszenia)**
+1. Gracz wybiera opcję "Moje zaproszenia" w Menu gracza.
+2. System pobiera dane i wyświetla ekran "Lista zaproszeń", prezentujący tabelę z nierozpatrzonymi zaproszeniami (Nazwa wydarzenia, Data, Liczba uczestników, Akcja).
+3. Gracz klika przycisk "Więcej" w kolumnie akcji przy wybranym zaproszeniu.
+4. System wyświetla okno decyzji "Zaproszenie na wydarzenie" z dostępnymi opcjami: "Zaakceptuj", "Odrzuć" oraz "Anuluj".
+5. Gracz wybiera opcję "Zaakceptuj".
+6. System rejestruje akceptację zaproszenia i wyświetla komunikat o sukcesie: "Zaproszenie zostało zaakceptowane".
+7. Gracz klika przycisk "OK".
+8. System zamyka komunikat i powraca do zaktualizowanego ekranu "Lista zaproszeń" (zaproszenie znika z listy).
+
+**Scenariusz alternatywny A: Odrzucenie zaproszenia**
+
+5a. Gracz wybiera opcję "Odrzuć".
+
+6a. System rejestruje odrzucenie zaproszenia i wyświetla komunikat o sukcesie: "Zaproszenie zostało odrzucone".
+
+7a. Gracz klika przycisk "OK".
+
+8a. System zamyka komunikat i powraca do zaktualizowanego ekranu "Lista zaproszeń" (zaproszenie znika z listy).
+
+**Scenariusz alternatywny B: Anulowanie akcji w oknie decyzji**
+
+5b. Gracz wybiera opcję "Anuluj".
+
+6b. System zamyka okno decyzji bez wprowadzania jakichkolwiek zmian w statusie zaproszenia.
+
+7b. System powraca bezpośrednio do ekranu "Lista zaproszeń".
+
+**Scenopis**
+![](./scenopisy/PU43_wyswietlenie_listy_zaproszen.png)
